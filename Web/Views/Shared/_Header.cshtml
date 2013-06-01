@@ -1,0 +1,28 @@
+﻿<div class="container">
+    <div class="navbar navbar-top">
+        <div class="navbar-inner">
+            <div class="container">
+
+                <!-- Logo -->
+                <a class="brand" href="~/Home"></a>
+                
+                <!-- Account -->
+                <ul class="account">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li class="welcome">Welcome, @User.Identity.Name)</li>
+                        <li class="logout">
+                            @Html.ActionLink("Log out", "LogOff", "Membership")
+                        </li>       
+                    }
+                    else
+                    {
+                        <li class="login">
+                            @Html.ActionLink("Log In", "LogIn", "Membership")
+                        </li>
+                    }
+                </ul>                    
+            </div>
+        </div>
+    </div>
+</div>

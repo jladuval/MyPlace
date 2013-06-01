@@ -55,7 +55,8 @@
         {
             var token = _membership.GeneratePasswordResetToken(email);
             var user = _membership.GetUser(email);
-            //_emailManager.SendResetPassword(user, token);
+
+            // _emailManager.SendResetPassword(user, token);
         }
 
         public bool IsPasswordResetTokenValid(string token)
@@ -78,8 +79,7 @@
             _membership.ActivateUserEmail(token);
             var email = _membership.GetUsernameFromActivationToken(token);
             SendWelcomeEmail(email);
-            LoginUser(email,
-                false);
+            LoginUser(email, false);
         }
 
         public User GetUserByEmail(string email)

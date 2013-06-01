@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "_BaseLayout.cshtml";
+    ViewBag.BodyClass = "content";
+}
+
+@section HeaderNavigation {    
+    @Html.Partial("_HeaderNavigation")
+}
+
+@RenderBody()
+
+@section PageScripts
+{
+    @RenderSection("PageScripts", required: false)
+}
