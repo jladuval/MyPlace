@@ -1,0 +1,10 @@
+﻿@model Web.Models.Home.UserModel
+
+@using (Html.BeginForm("CreateUser", "Home", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.Name)
+    @Html.TextBoxFor(x => x.Name)
+    @Html.LabelFor(x => x.Email)
+    @Html.TextBoxFor(x => x.Email)
+    <input type ="submit" value="Submit!!!!"/>
+} 

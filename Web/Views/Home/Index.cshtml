@@ -1,13 +1,4 @@
-﻿@model Web.Models.Home.EntityModel
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Home";
 }
-
-<h2>Index</h2>
-<p> Current Value : @Model.Name</p>
-
-@using(Html.BeginForm("ChangeCurrentName", "Home"))
-{
-    @Html.TextBoxFor(x => x.Name)
-    <input type="submit" value="Submit"/>
-}
+Template

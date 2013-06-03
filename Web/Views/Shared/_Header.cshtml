@@ -10,7 +10,7 @@
                 <ul class="account">
                     @if (Request.IsAuthenticated)
                     {
-                        <li class="welcome">Welcome, @User.Identity.Name)</li>
+                        <li class="welcome">Welcome</li>
                         <li class="logout">
                             @Html.ActionLink("Log out", "LogOff", "Membership")
                         </li>       
