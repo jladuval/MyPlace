@@ -15,10 +15,11 @@
     @Html.TextBoxFor(x => x.LastName)
     @Html.ValidationMessageFor(x => x.LastName)
 
-    <div id="googleMap" style="width:500px;height:380px;"></div>
+    <div id="googleMap" style="width:600px;height:450px;"></div>
 }
 
 @section PageScripts
 {
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCWDvzKRlIivJbwLUH-UJ1NgxySV99pH1s&sensor=TRUE "></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCWDvzKRlIivJbwLUH-UJ1NgxySV99pH1s&sensor=true"></script>
+    <script src="~/Scripts/Custom/SelectLocation.js"></script>
 }
