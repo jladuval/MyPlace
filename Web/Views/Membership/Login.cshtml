@@ -1,0 +1,22 @@
+﻿@model Web.Models.Membership.LoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+<h2>Login</h2>
+@using (Html.BeginForm("Login", "Membership"))
+{
+    @Html.LabelFor(x => x.Email)
+    @Html.EditorFor(x => x.Email)
+    @Html.ValidationMessageFor(x => x.Email)
+
+    @Html.LabelFor(x => x.Password)
+    @Html.PasswordFor(x => x.Password)
+    @Html.ValidationMessageFor(x => x.Password)
+
+    @Html.LabelFor(x => x.RememberMe)
+    @Html.CheckBoxFor(x => x.RememberMe)
+
+    <input type="submit" value="Submit" />
+}

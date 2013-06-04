@@ -165,7 +165,7 @@
     </Compile>
     <Compile Include="Migrations\Migrator.cs" />
     <Compile Include="Models\Home\UserModel.cs" />
-    <Compile Include="Models\Membership\LogInModel.cs" />
+    <Compile Include="Models\Membership\LoginModel.cs" />
     <Compile Include="Models\Membership\MoreDetailsModel.cs" />
     <Compile Include="Models\Membership\SignupModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -227,6 +227,7 @@
     <Content Include="Views\Shared\_PageScripts.cshtml" />
     <Content Include="Views\Membership\MoreDetails.cshtml" />
     <Content Include="Views\Membership\SignUp.cshtml" />
+    <Content Include="Views\Membership\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

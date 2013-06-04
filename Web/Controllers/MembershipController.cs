@@ -28,6 +28,30 @@
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult Login()
+        {
+            return View("Login");
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var email = model.Email;
+                var pass = model.Password;
+                var rememberMe = model.RememberMe;
+
+                var user = _securityUserReader.CheckUserCredentials(new CheckUserCredentialsQuery { Email = email, Password = pass });
+                if (user != null)
+                {
+                    _gate.Dispatch(new LogInUserCommand { Email = email, UserId = user.UserId, RememberMe = rememberMe, Roles = user.Roles });
+                    return RedirectToAction("Index", "Home", null);
+                }
+            }
+            return View(model);
+        }
+
         public ActionResult Index()
         {
             return View("SignUp");
@@ -59,23 +83,6 @@
             return View("MoreDetails");
         }
 
-        [HttpPost]
-        public ActionResult LogIn(LogInModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var email = model.Email;
-                var pass = model.Password;
-                var rememberMe = model.RememberMe;
-
-                var user = _securityUserReader.CheckUserCredentials(new CheckUserCredentialsQuery { Email = email, Password = pass });
-                if (user != null)
-                {
-                    _gate.Dispatch(new LogInUserCommand { Email = email, UserId = user.UserId, RememberMe = rememberMe, Roles = user.Roles });
-                    return RedirectToAction("Index", "Home", null);
-                }
-            }
-            return View(model);
-        }
+        
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Web.Models.Membership
 {
-	public class LogInModel
+	public class LoginModel
 	{
 		public string Email { get; set; }
 
