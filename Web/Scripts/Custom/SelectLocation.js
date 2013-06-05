@@ -29,9 +29,21 @@
         };
         map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
         setMarker(lat, lng);
+        reverseLookup(lat, lng);
         google.maps.event.addListener(map, 'click', function (event) {
             placeMarker(event.latLng);
+            reverseLookup(event.latLng.lat(), event.latLng.lng());
         });
+    }
+
+    function reverseLookup(lat, lng) {
+        $.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=true")
+            .done(function(data) {
+                alert(data.results.formatted_address);
+            })
+            .fail(function() {
+
+            });
     }
 
     function setMarker(lat, lng) {
@@ -53,8 +65,6 @@
         else {
             marker.setPosition(location);
         }
-        map.setCenter(location);
-
     }
 
 
