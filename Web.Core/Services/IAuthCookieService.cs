@@ -1,5 +1,7 @@
-﻿namespace Security.Interfaces.Application.Services
+﻿namespace Web.Core.Services
 {
+    using Web.Core;
+
     public interface IAuthCookieService
     {
         CustomPrincipalInfo GetUserCookiesInfo();

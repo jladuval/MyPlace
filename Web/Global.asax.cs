@@ -11,8 +11,7 @@
 
     using Common.DI;
 
-    using Security.Interfaces.Application.Impersonation;
-
+    using Web.Core.Impersonation;
     using Web.Migrations;
 
     public class MvcApplication : System.Web.HttpApplication
@@ -31,8 +30,7 @@
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional });
         }
 
         protected void Application_PostAuthenticateRequest(object sender, EventArgs e)

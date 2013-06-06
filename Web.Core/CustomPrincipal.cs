@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-
-namespace Security.Interfaces.Application
+﻿namespace Web.Core
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Security.Principal;
+
     public class CustomPrincipal : ICustomPrincipal
     {
         public CustomPrincipal(string email)
@@ -18,11 +18,11 @@ namespace Security.Interfaces.Application
 
         public string Email { get; set; }
 
-        public IEnumerable<UserRoles> Roles { get; set; }
+        public IList<string> Roles { get; set; }
 
         public bool IsInRole(string role)
         {
-            return Roles.Any(x => x.ToString("g") == role);
+            return Roles.Any(x => x == role);
         }
     }
 }

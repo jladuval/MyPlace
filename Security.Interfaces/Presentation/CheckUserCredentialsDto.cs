@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using Security.Interfaces.Application;
-
-namespace Security.Interfaces.Presentation
+﻿namespace Security.Interfaces.Presentation
 {
+    using System;
+    using System.Collections.Generic;
+
     public class CheckUserCredentialsDto
     {
         public Guid UserId { get; set; }
 
-        public IList<UserRoles> Roles { get; set; }
+        public IList<string> Roles { get; set; }
     }
 }

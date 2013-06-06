@@ -1,12 +1,11 @@
-﻿namespace Security.Impersonation
+﻿namespace Web.Core.Impersonation
 {
     using System.Web;
 
     using Base.DDD.Domain.Annotations;
 
-    using Security.Interfaces.Application;
-    using Security.Interfaces.Application.Impersonation;
-    using Security.Interfaces.Application.Services;
+    using Web.Core;
+    using Web.Core.Services;
 
     [DomainService]
     public class DefaultIdentityProvider : IIdentityProvider

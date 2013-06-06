@@ -7,6 +7,7 @@
     using Security.Interfaces.Commands;
     using Security.Interfaces.Queries;
 
+    using Web.Core.Services;
     using Web.Models.Membership;
 
     public class MembershipController : Controller
@@ -15,16 +16,19 @@
 
         private readonly IGate _gate;
 
-        public MembershipController(ISecurityUserReader securityUserReader, IGate gate)
+        private readonly IAuthenticationService _authenticationService;
+
+        public MembershipController(ISecurityUserReader securityUserReader, IGate gate, IAuthenticationService authenticationService)
         {
             _securityUserReader = securityUserReader;
             _gate = gate;
+            authenticationService = authenticationService;
         }        
 
         [Authorize]
         public ActionResult LogOff()
         {
-            _gate.Dispatch(new LogOffUserCommand());
+            _authenticationService.LogOff();
             return RedirectToAction("Index", "Home");
         }
 
@@ -45,7 +49,7 @@
                 var user = _securityUserReader.CheckUserCredentials(new CheckUserCredentialsQuery { Email = email, Password = pass });
                 if (user != null)
                 {
-                    _gate.Dispatch(new LogInUserCommand { Email = email, UserId = user.UserId, RememberMe = rememberMe, Roles = user.Roles });
+                    _authenticationService.LogIn(email, rememberMe, user.UserId, user.Roles);
                     return RedirectToAction("Index", "Home", null);
                 }
             }
@@ -69,7 +73,7 @@
 
                     _gate.Dispatch(new SignUpUserCommand(email, password));
                     var user = _securityUserReader.CheckUserCredentials(new CheckUserCredentialsQuery { Email = email, Password = password });
-                    _gate.Dispatch(new LogInUserCommand { Email = email, UserId = user.UserId, RememberMe = true, Roles = user.Roles });
+                    _authenticationService.LogIn(email, true, user.UserId, user.Roles);
                     return RedirectToAction("Index", "Home", null);
                 }
                 return RedirectToAction("MoreDetails");
@@ -82,7 +86,5 @@
         {
             return View("MoreDetails");
         }
-
-        
     }
 }

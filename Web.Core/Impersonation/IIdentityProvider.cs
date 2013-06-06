@@ -1,7 +1,7 @@
-﻿using System.Web;
-
-namespace Security.Interfaces.Application.Impersonation
+﻿namespace Web.Core.Impersonation
 {
+    using System.Web;
+
     public interface IIdentityProvider
     {
         void ProcessIdentity(HttpApplication application);

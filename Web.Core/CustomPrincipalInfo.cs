@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Security.Interfaces.Application
+﻿namespace Web.Core
 {
+    using System;
+    using System.Collections.Generic;
+
     public class CustomPrincipalInfo
     {
         public Guid UserId { get; set; }
 
         public string Email { get; set; }
 
-        public IEnumerable<UserRoles> Roles { get; set; }
+        public IList<string> Roles { get; set; }
 
         public static explicit operator CustomPrincipal(CustomPrincipalInfo info)
         {

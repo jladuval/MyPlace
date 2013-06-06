@@ -40,15 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\CustomPrincipal.cs" />
-    <Compile Include="Application\CustomPrincipalInfo.cs" />
-    <Compile Include="Application\Extensions\UserPrincipalExtensions.cs" />
-    <Compile Include="Application\ICustomPrincipal.cs" />
-    <Compile Include="Application\Impersonation\IIdentityProvider.cs" />
-    <Compile Include="Application\Services\IAuthCookieService.cs" />
     <Compile Include="Application\UserRoles.cs" />
-    <Compile Include="Commands\LogInUserCommand.cs" />
-    <Compile Include="Commands\LogOffUserCommand.cs" />
     <Compile Include="Commands\SignUpUserCommand.cs" />
     <Compile Include="Presentation\CheckUserCredentialsDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

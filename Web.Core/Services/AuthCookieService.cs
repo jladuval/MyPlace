@@ -1,4 +1,4 @@
-﻿namespace Security.Services
+﻿namespace Web.Core.Services
 {
     using System;
     using System.Web;
@@ -6,9 +6,8 @@
 
     using Base.DDD.Domain.Annotations;
 
-    using Security.Extensions;
-    using Security.Interfaces.Application;
-    using Security.Interfaces.Application.Services;
+    using Web.Core;
+    using Web.Core.Extensions;
 
     [DomainService]
     public class AuthCookieService : IAuthCookieService

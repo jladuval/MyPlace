@@ -1,11 +1,11 @@
-﻿namespace Security.Extensions
+﻿namespace Web.Core.Extensions
 {
     using System;
     using System.Web;
     using System.Web.Script.Serialization;
     using System.Web.Security;
 
-    using Security.Interfaces.Application;
+    using Web.Core;
 
     public static class AuthCookieExtensions
     {

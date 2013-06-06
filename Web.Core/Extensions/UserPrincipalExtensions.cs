@@ -1,9 +1,11 @@
-﻿using System;
-using System.Security.Principal;
-using System.Web;
-
-namespace Security.Interfaces.Application.Extensions
+﻿namespace Web.Core.Extensions
 {
+    using System;
+    using System.Security.Principal;
+    using System.Web;
+
+    using Web.Core;
+
     public static class UserPrincipalExtensions
     {
         public static ICustomPrincipal TryGetPrincipal(this IPrincipal user)

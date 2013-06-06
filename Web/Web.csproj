@@ -271,6 +271,10 @@
       <Project>{819bcb47-8aa8-46eb-8151-823986bed414}</Project>
       <Name>Security %28Bounded Contexts\Security\Security%29</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Web.Core\Web.Core.csproj">
+      <Project>{153130DD-102E-41DD-9CC0-822CAA434F4D}</Project>
+      <Name>Web.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

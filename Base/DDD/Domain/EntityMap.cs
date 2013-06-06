@@ -1,8 +1,9 @@
-﻿using System;
-using FluentNHibernate.Mapping;
-
-namespace Base.DDD.Domain
+﻿namespace Base.DDD.Domain
 {
+    using System;
+
+    using FluentNHibernate.Mapping;
+
     public class EntityMap : ClassMap<Entity>
     {
         public EntityMap()

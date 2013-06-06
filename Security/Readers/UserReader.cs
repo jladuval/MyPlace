@@ -35,7 +35,7 @@
                        ? new CheckUserCredentialsDto
                            {
                                UserId = user.Id,
-                               Roles = user.Roles.Select(x => (UserRoles)Enum.Parse(typeof(UserRoles), x.Name, true)).ToList()
+                               Roles = user.Roles.Select(x => x.Name).ToList()
                            }
                        : null;
         }
