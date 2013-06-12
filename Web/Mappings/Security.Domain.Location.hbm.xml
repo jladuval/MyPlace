@@ -1,0 +1,38 @@
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Security.Domain.Location, Security, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" table="`Location`">
+    <id access="backfield" name="Id" type="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" unsaved-value="00000000-0000-0000-0000-000000000000">
+      <column name="Id" />
+      <generator class="guid.comb" />
+    </id>
+    <property access="backfield" name="CreatedDate" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="CreatedDate" not-null="true" />
+    </property>
+    <property name="ModifiedDate" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ModifiedDate" not-null="true" />
+    </property>
+    <property name="Address" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Address" not-null="true" />
+    </property>
+    <property name="Suburb" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Suburb" not-null="true" />
+    </property>
+    <property name="City" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="City" not-null="true" />
+    </property>
+    <property name="Country" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Country" not-null="true" />
+    </property>
+    <property name="Postcode" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Postcode" not-null="true" />
+    </property>
+    <property name="Latitude" type="System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Latitude" not-null="true" />
+    </property>
+    <property name="Longitude" type="System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Longitude" not-null="true" />
+    </property>
+    <property name="GeoLoc" type="NHibernate.Spatial.Type.MsSql2008GeographyType, NHibernate.Spatial.MsSql2008, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <column name="GeoLoc" not-null="true" sql-type="GEOGRAPHY" />
+    </property>
+  </class>
+</hibernate-mapping>

@@ -7,8 +7,11 @@ namespace Base.DDD.Domain
     public abstract class Entity
     {
         public Guid Id { get; private set; }
+
         public bool Deleted { get; private set; }
+
         public DateTime CreatedDate { get; private set; }
+
         public DateTime ModifiedDate { get; set; }
 
         public void MarkAsRemoved()

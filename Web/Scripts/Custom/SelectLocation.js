@@ -47,11 +47,12 @@
     }
 
     function populateAddress(locationInfo) {
+        var length = locationInfo.length;
         $('#address').val(locationInfo[0].short_name + ' ' + locationInfo[1].short_name);
         $('#suburb').val(locationInfo[2].short_name);
         $('#city').val(locationInfo[3].short_name);
-        $('#country').val(locationInfo[5].short_name);
-        $('#postcode').val(locationInfo[6].short_name);
+        $('#country').val(locationInfo[length-2].short_name);
+        $('#postcode').val(locationInfo[length-1].short_name);
     }
 
     function setMarker(lat, lng) {

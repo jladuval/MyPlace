@@ -21,7 +21,7 @@
         public string Suburb { get; set; }
 
         [Required]
-        [Display(Name = "City")]
+        [Display(Name = "City / Province")]
         public string City { get; set; }
 
         [Required]

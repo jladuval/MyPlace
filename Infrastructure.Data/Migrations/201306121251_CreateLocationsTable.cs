@@ -11,6 +11,12 @@
                 .WithColumn("Id")
                     .AsGuid()
                     .PrimaryKey()
+                .WithColumn("CreatedDate")
+                    .AsCustom("datetime2(7)")
+                    .NotNullable()
+                .WithColumn("ModifiedDate")
+                    .AsCustom("datetime2(7)")
+                    .Nullable()
                 .WithColumn("Address")
                     .AsString(255)
                     .NotNullable()
@@ -25,6 +31,12 @@
                     .NotNullable()
                 .WithColumn("Postcode")
                     .AsString(255)
+                    .NotNullable()
+                .WithColumn("Latitude")
+                    .AsFloat()
+                    .NotNullable()
+                .WithColumn("Longitude")
+                    .AsString()
                     .NotNullable();
 
             Alter.Table("Users").InSchema("dbo")
@@ -39,6 +51,8 @@
                   .ToTable("Locations")
                   .InSchema("dbo")
                   .PrimaryColumn("Id");
+
+            Execute.Sql("ALTER TABLE dbo.Locations ADD GeoLoc geography NULL");
         }
 
         public override void Down()
