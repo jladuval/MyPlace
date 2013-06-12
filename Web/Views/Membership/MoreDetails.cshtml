@@ -14,6 +14,26 @@
     @Html.LabelFor(x => x.LastName)
     @Html.TextBoxFor(x => x.LastName)
     @Html.ValidationMessageFor(x => x.LastName)
+    
+    @Html.LabelFor(x => x.Address)
+    @Html.TextBoxFor(x => x.Address, new {@id = "address"})
+    @Html.ValidationMessageFor(x => x.Address)
+
+    @Html.LabelFor(x => x.Suburb)
+    @Html.TextBoxFor(x => x.Suburb, new {@id = "suburb"})
+    @Html.ValidationMessageFor(x => x.Suburb)
+
+    @Html.LabelFor(x => x.City)
+    @Html.TextBoxFor(x => x.City, new {@id = "city"})
+    @Html.ValidationMessageFor(x => x.City)
+
+    @Html.LabelFor(x => x.Country)
+    @Html.TextBoxFor(x => x.Country, new {@id = "country"})
+    @Html.ValidationMessageFor(x => x.Country)
+
+    @Html.LabelFor(x => x.PostCode)
+    @Html.TextBoxFor(x => x.PostCode, new {@id = "postcode"})
+    @Html.ValidationMessageFor(x => x.PostCode)
 
     <div id="googleMap" style="width:600px;height:450px;"></div>
 }

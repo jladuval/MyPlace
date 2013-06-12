@@ -50,6 +50,7 @@
     <Compile Include="Migrations\201305011300_CreateUsersTable.cs" />
     <Compile Include="Migrations\201305021622_CreateRolesTable.cs" />
     <Compile Include="Migrations\201305021645_CreateUsersInRolesTable.cs" />
+    <Compile Include="Migrations\201306121251_CreateLocationsTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

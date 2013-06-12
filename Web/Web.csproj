@@ -158,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
+    <Compile Include="Controllers\DinnerListController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MembershipController.cs" />
     <Compile Include="Global.asax.cs">
@@ -228,6 +229,7 @@
     <Content Include="Views\Membership\MoreDetails.cshtml" />
     <Content Include="Views\Membership\SignUp.cshtml" />
     <Content Include="Views\Membership\Login.cshtml" />
+    <Content Include="Views\DinnerList\DinnerList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

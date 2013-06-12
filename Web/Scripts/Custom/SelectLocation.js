@@ -39,11 +39,19 @@
     function reverseLookup(lat, lng) {
         $.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=true")
             .done(function(data) {
-                alert(data.results.formatted_address);
+                populateAddress(data.results[0].address_components);
             })
             .fail(function() {
 
             });
+    }
+
+    function populateAddress(locationInfo) {
+        $('#address').val(locationInfo[0].short_name + ' ' + locationInfo[1].short_name);
+        $('#suburb').val(locationInfo[2].short_name);
+        $('#city').val(locationInfo[3].short_name);
+        $('#country').val(locationInfo[5].short_name);
+        $('#postcode').val(locationInfo[6].short_name);
     }
 
     function setMarker(lat, lng) {

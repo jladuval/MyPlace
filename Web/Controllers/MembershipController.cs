@@ -22,7 +22,7 @@
         {
             _securityUserReader = securityUserReader;
             _gate = gate;
-            authenticationService = authenticationService;
+            _authenticationService = authenticationService;
         }        
 
         [Authorize]
@@ -85,6 +85,12 @@
         public ActionResult MoreDetails()
         {
             return View("MoreDetails");
+        }
+
+        [HttpPost]
+        public ActionResult MoreDetails(MoreDetailsModel model)
+        {
+            return RedirectToAction("Index", "DinnerList");
         }
     }
 }

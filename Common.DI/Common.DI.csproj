@@ -91,6 +91,10 @@
       <Project>{819bcb47-8aa8-46eb-8151-823986bed414}</Project>
       <Name>Security %28Bounded Contexts\Security\Security%29</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Web.Core\Web.Core.csproj">
+      <Project>{153130dd-102e-41dd-9cc0-822caa434f4d}</Project>
+      <Name>Web.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
