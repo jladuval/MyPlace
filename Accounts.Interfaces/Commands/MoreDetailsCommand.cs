@@ -1,6 +1,7 @@
 ﻿namespace Accounts.Interfaces.Commands
 {
     using System;
+    using System.Text;
 
     public class MoreDetailsCommand
     {
@@ -16,10 +17,6 @@
 
         public string Postcode { get; set; }
 
-        public double Latitude { get; set; }
-
-        public double Longitude { get; set; }
-
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -32,9 +29,7 @@
             string suburb,
             string city,
             string country,
-            string postcode,
-            double latitude,
-            double longitude)
+            string postcode)
         {
             UserId = userId;
             FirstName = firstName;
@@ -44,8 +39,21 @@
             City = city;
             Country = country;
             Postcode = postcode;
-            Latitude = latitude;
-            Longitude = longitude;
+        }
+
+        public string LocationToString()
+        {
+            var result = new StringBuilder();
+            result.Append(Address);
+            result.Append(", ");
+            result.Append(Suburb);
+            result.Append(", ");
+            result.Append(City);
+            result.Append(", ");
+            result.Append(Country);
+            result.Append(", ");
+            result.Append(Postcode);
+            return result.ToString();
         }
     }
 }
