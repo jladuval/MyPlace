@@ -71,6 +71,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Accounts\Accounts.csproj">
+      <Project>{D072AF01-3B02-43AC-87E9-5E12AC914238}</Project>
+      <Name>Accounts %28Bounded Contexts\Accounts\Accounts%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Base.Infrastructure.NHibernate\Infrastructure.NHibernate.csproj">
       <Project>{A69FAEB3-AC87-4A05-B476-7005BBE82989}</Project>
       <Name>Infrastructure.NHibernate</Name>

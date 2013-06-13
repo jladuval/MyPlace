@@ -12,7 +12,7 @@ namespace Security.Tests.Application.HandlerTests
 
         public SignupUserCommandHandlerTest()
         {
-            //_handler.UserRepository = new Mock<IUserRepository>().SetupAllProperties().Object;
+            //_handler.UserAggregateRepository = new Mock<IUserRepository>().SetupAllProperties().Object;
         }
 
         [Fact]

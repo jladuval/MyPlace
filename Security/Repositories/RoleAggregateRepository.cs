@@ -13,7 +13,7 @@
     using Security.Domain;
 
     [DomainRepositoryImplementation]
-    public class RoleRepository : GenericRepositoryForBaseEntity<Role>, IRoleRepository
+    public class RoleRepository : AggregateRepository<Role>, IRoleRepository
     {
         public RoleRepository(ISession session, InjectorHelper injectorHelper)
             : base(session, injectorHelper)

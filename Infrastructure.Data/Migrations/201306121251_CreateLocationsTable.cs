@@ -33,10 +33,10 @@
                     .AsString(255)
                     .NotNullable()
                 .WithColumn("Latitude")
-                    .AsFloat()
+                    .AsDouble()
                     .NotNullable()
                 .WithColumn("Longitude")
-                    .AsString()
+                    .AsDouble()
                     .NotNullable();
 
             Alter.Table("Users").InSchema("dbo")

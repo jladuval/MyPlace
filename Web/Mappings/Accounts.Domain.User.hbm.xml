@@ -1,0 +1,26 @@
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class xmlns="urn:nhibernate-mapping-2.2" name="Accounts.Domain.User, Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" table="Users">
+    <id access="backfield" name="Id" type="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" unsaved-value="00000000-0000-0000-0000-000000000000">
+      <column name="Id" />
+      <generator class="guid.comb" />
+    </id>
+    <property access="backfield" name="CreatedDate" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="CreatedDate" not-null="true" />
+    </property>
+    <property name="ModifiedDate" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ModifiedDate" not-null="true" />
+    </property>
+    <property name="FirstName" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="FirstName" not-null="false" />
+    </property>
+    <property name="LastName" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="LastName" not-null="false" />
+    </property>
+    <property name="Email" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Email" not-null="true" unique="true" />
+    </property>
+    <many-to-one cascade="all" class="Accounts.Domain.Location, Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Location">
+      <column name="LocationId" not-null="false" />
+    </many-to-one>
+  </class>
+</hibernate-mapping>

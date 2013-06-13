@@ -1,4 +1,4 @@
-﻿namespace Security.Domain
+﻿namespace Accounts.Domain
 {
     using System;
 
@@ -22,19 +22,7 @@
 
             Map(x => x.Email).Not.Nullable().Unique();
 
-            Map(x => x.Password).Nullable();
-
-            Map(x => x.Salt).Nullable();
-
-            Map(x => x.IsVerified).Nullable();
-
-            Map(x => x.VerificationCode);
-
-            HasManyToMany(x => x.Roles)
-                .Table("UsersInRoles")
-                .ParentKeyColumn("UserId")
-                .ChildKeyColumn("RoleId")
-                .Not.LazyLoad();
+            References(x => x.Location).Column("LocationId").Nullable().Cascade.All();
         }
     }
 }

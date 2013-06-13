@@ -31,11 +31,13 @@
     @Html.TextBoxFor(x => x.Country, new {@id = "country"})
     @Html.ValidationMessageFor(x => x.Country)
 
-    @Html.LabelFor(x => x.PostCode)
-    @Html.TextBoxFor(x => x.PostCode, new {@id = "postcode"})
-    @Html.ValidationMessageFor(x => x.PostCode)
+    @Html.LabelFor(x => x.Postcode)
+    @Html.TextBoxFor(x => x.Postcode, new {@id = "postcode"})
+    @Html.ValidationMessageFor(x => x.Postcode)
 
     <div id="googleMap" style="width:600px;height:450px;"></div>
+    
+    <input type ="submit" value="Submit"/>
 }
 
 @section PageScripts

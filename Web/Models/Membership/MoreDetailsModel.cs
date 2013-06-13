@@ -30,6 +30,6 @@
 
         [Required]
         [Display(Name = "Postcode")]
-        public string PostCode { get; set; }
+        public string Postcode { get; set; }
     }
 }

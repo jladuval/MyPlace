@@ -10,7 +10,7 @@
     using Security.Domain;
 
     [DomainRepositoryImplementation]
-    public class UserRepository : GenericRepositoryForBaseEntity<User>, IUserRepository
+    public class UserRepository : AggregateRepository<User>, IUserRepository
     {
         public UserRepository(ISession session, InjectorHelper injectorHelper)
             : base(session, injectorHelper)

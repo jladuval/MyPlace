@@ -22,6 +22,7 @@ namespace Base.DDD.Domain
         protected Entity()
         {
             CreatedDate = DateTime.UtcNow;
+            ModifiedDate = DateTime.UtcNow;
             Deleted = false;
         }
     }

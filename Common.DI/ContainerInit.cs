@@ -7,6 +7,8 @@ namespace Common.DI
     using System.Web;
     using System.Web.Mvc;
 
+    using Accounts.Handlers;
+
     using Base.CQRS.Commands.Decorator;
     using Base.CQRS.Commands.Handler;
     using Base.CQRS.Query.Attributes;
@@ -29,10 +31,9 @@ namespace Common.DI
     using Infrastructure.NHibernate.Conventions;
 
     using NHibernate;
+    using NHibernate.Cfg;
 
     using Security.Services;
-
-    using global::NHibernate.Cfg;
 
     public class ContainerInit
     {
@@ -99,7 +100,8 @@ namespace Common.DI
         {
             return new[]
                 {
-                    typeof(CryptoService).Assembly, 
+                    typeof(CryptoService).Assembly,
+                    typeof(MoreDetailsCommandHandler).Assembly,
                 };
         }
 

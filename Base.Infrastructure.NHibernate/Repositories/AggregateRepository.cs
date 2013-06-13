@@ -3,22 +3,24 @@ namespace Infrastructure.NHibernate.Repositories
     using System;
     using System.Linq;
 
-    using Infrastructure.NHibernate.Extensions;
-
     using Base.DDD.Domain;
+    using Base.DDD.Domain.Annotations;
     using Base.DDD.Domain.Support;
+
+    using Infrastructure.NHibernate.Extensions;
 
     using global::NHibernate;
 
-    public class GenericRepositoryForBaseEntity<TEntity> : GenericRepository<TEntity, Guid>
+    [DomainService]
+    public class AggregateRepository<TEntity> : Repository<TEntity, Guid>, IRepository<TEntity>
         where TEntity : Entity
     {
-        private readonly InjectorHelper injectorHelper;
+        private readonly InjectorHelper _injectorHelper;
 
-        public GenericRepositoryForBaseEntity(ISession session, InjectorHelper injectorHelper)
+        public AggregateRepository(ISession session, InjectorHelper injectorHelper)
             : base(session)
         {
-            this.injectorHelper = injectorHelper;
+            _injectorHelper = injectorHelper;
         }
 
         #region CRUD operations
@@ -37,7 +39,7 @@ namespace Infrastructure.NHibernate.Repositories
             if (aggregateRoot != null && !containsKey)
             {
                 // Inject aggregate root services
-                this.injectorHelper.InjectDependencies((AggregateRoot)(object)entity);
+                _injectorHelper.InjectDependencies((AggregateRoot)(object)entity);
             }
 
             return entity;

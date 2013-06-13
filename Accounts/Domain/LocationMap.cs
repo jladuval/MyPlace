@@ -1,14 +1,19 @@
-﻿namespace Security.Domain
+﻿namespace Accounts.Domain
 {
     using System;
 
     using FluentNHibernate.Mapping;
+
+    using Infrastructure.NHibernate.CustomTypes;
+
     using NHibernate.Spatial.Type;
 
     public class LocationMap : ClassMap<Location>
     {
         public LocationMap()
         {
+            Table("Locations");
+
             Id(x => x.Id).GeneratedBy.GuidComb().UnsavedValue(Guid.Empty);
 
             Map(x => x.CreatedDate).Not.Nullable();
@@ -30,7 +35,7 @@
             Map(c => c.Longitude).Not.Nullable();
 
             Map(x => x.GeoLoc)
-                .CustomType(typeof(MsSql2008GeographyType))
+                .CustomType(typeof(Wgs84GeographyType))
                 .Not.Nullable()
                 .CustomSqlType("GEOGRAPHY");
         }

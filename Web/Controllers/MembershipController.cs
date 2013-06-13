@@ -2,11 +2,14 @@
 {
     using System.Web.Mvc;
 
+    using Accounts.Interfaces.Commands;
+
     using Base.CQRS.Commands;
 
     using Security.Interfaces.Commands;
     using Security.Interfaces.Queries;
 
+    using Web.Core.Extensions;
     using Web.Core.Services;
     using Web.Models.Membership;
 
@@ -90,6 +93,17 @@
         [HttpPost]
         public ActionResult MoreDetails(MoreDetailsModel model)
         {
+            _gate.Dispatch(new MoreDetailsCommand(
+                    User.TryGetPrincipal().UserId,
+                    model.FirstName,
+                    model.LastName,
+                    model.Address,
+                    model.Suburb,
+                    model.City,
+                    model.Country,
+                    model.Postcode,
+                    1,
+                    2));
             return RedirectToAction("Index", "DinnerList");
         }
     }

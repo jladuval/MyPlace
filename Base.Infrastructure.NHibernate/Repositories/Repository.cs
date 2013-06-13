@@ -1,10 +1,13 @@
 ﻿namespace Infrastructure.NHibernate.Repositories
 {
-    using global::NHibernate;
+    using System.Linq;
 
-    public class GenericRepository<TEntity, TKey> where TEntity : class
+    using global::NHibernate;
+    using global::NHibernate.Linq;
+
+    public class Repository<TEntity, TKey> where TEntity : class
     {
-        public GenericRepository(ISession session)
+        public Repository(ISession session)
         {
             Session = session;
         }
@@ -33,6 +36,11 @@
         {
             Session.SaveOrUpdate(entity);
         }
+
+        public virtual IQueryable<TEntity> Find()
+        {
+            return Session.Query<TEntity>();
+        } 
 
         #endregion
     }

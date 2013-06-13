@@ -63,6 +63,10 @@
     <Reference Include="Castle.Windsor">
       <HintPath>..\packages\Castle.Windsor.3.2.0\lib\net40\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="GeoAPI, Version=1.7.1.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\GeoAPI.1.7.1\lib\net403-client\GeoAPI.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -245,6 +249,14 @@
     <Content Include="Views\Home\_UserForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Accounts.Interfaces\Accounts.Interfaces.csproj">
+      <Project>{F288EF35-17AD-4319-A5B3-27A348C6584C}</Project>
+      <Name>Accounts.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Accounts\Accounts.csproj">
+      <Project>{d072af01-3b02-43ac-87e9-5e12ac914238}</Project>
+      <Name>Accounts %28Bounded Contexts\Accounts\Accounts%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Base.StorageQueue\Base.StorageQueues.csproj">
       <Project>{cd07e9e5-d575-4c0c-b398-39c7d83c6ddf}</Project>
       <Name>Base.StorageQueues</Name>

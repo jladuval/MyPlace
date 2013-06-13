@@ -1,7 +1,9 @@
-﻿using Base.DDD.Domain.Annotations;
-
-namespace Security.Domain
+﻿namespace Security.Repositories
 {
+    using Base.DDD.Domain.Annotations;
+
+    using Security.Domain;
+
     [DomainRepository]
     public interface IUserRepository
     {

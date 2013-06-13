@@ -9,6 +9,7 @@
 
     using Security.Domain;
     using Security.Interfaces.Commands;
+    using Security.Repositories;
     using Security.Services;
 
     [CommandHandler]
