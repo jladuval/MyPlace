@@ -1,4 +1,4 @@
-﻿namespace Accounts.Domain
+﻿namespace Events.Domain
 {
     using System;
 

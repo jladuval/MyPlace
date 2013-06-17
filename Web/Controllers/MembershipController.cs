@@ -53,7 +53,7 @@
                 if (user != null)
                 {
                     _authenticationService.LogIn(email, rememberMe, user.UserId, user.Roles);
-                    return RedirectToAction("Index", "Home", null);
+                    return RedirectToAction("MoreDetails");
                 }
             }
             return View(model);
@@ -101,9 +101,7 @@
                     model.Suburb,
                     model.City,
                     model.Country,
-                    model.Postcode,
-                    1,
-                    2));
+                    model.Postcode));
             return RedirectToAction("Index", "DinnerList");
         }
     }
