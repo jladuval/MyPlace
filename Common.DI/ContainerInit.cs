@@ -26,6 +26,8 @@ namespace Common.DI
     using Castle.MicroKernel.Resolvers.SpecializedResolvers;
     using Castle.Windsor;
 
+    using Events.Handlers;
+
     using Infrastructure.Configuration;
     using Infrastructure.NHibernate.Configuration;
     using Infrastructure.NHibernate.Conventions;
@@ -102,6 +104,7 @@ namespace Common.DI
                 {
                     typeof(CryptoService).Assembly,
                     typeof(MoreDetailsCommandHandler).Assembly,
+                    typeof(CreateDinnerCommandHandler).Assembly
                 };
         }
 

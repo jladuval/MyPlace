@@ -1,7 +1,7 @@
-using Base.CQRS.Commands.Handler;
-
 namespace Base.CQRS.Commands.Decorator
 {
+    using Base.CQRS.Commands.Handler;
+
     public class ConatinerCommandHandlerDecorator<TCommand> : ICommandHandler<TCommand>
     {
         private readonly ICommandHandlerFactory _factory;

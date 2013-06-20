@@ -56,6 +56,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Events", "Events\Events.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Events.Interfaces", "Events.Interfaces\Events.Interfaces.csproj", "{608DA658-DA93-441C-9D11-F5242D5AD0DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Enums", "Common.Enums\Common.Enums.csproj", "{585ACF75-5396-4367-8DDC-28E9DB58C9BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -246,6 +248,16 @@ Global
 		{608DA658-DA93-441C-9D11-F5242D5AD0DD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{608DA658-DA93-441C-9D11-F5242D5AD0DD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{608DA658-DA93-441C-9D11-F5242D5AD0DD}.Release|x86.ActiveCfg = Release|Any CPU
+		{585ACF75-5396-4367-8DDC-28E9DB58C9BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{585ACF75-5396-4367-8DDC-28E9DB58C9BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{585ACF75-5396-4367-8DDC-28E9DB58C9BA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{585ACF75-5396-4367-8DDC-28E9DB58C9BA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{585ACF75-5396-4367-8DDC-28E9DB58C9BA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{585ACF75-5396-4367-8DDC-28E9DB58C9BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{585ACF75-5396-4367-8DDC-28E9DB58C9BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{585ACF75-5396-4367-8DDC-28E9DB58C9BA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{585ACF75-5396-4367-8DDC-28E9DB58C9BA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{585ACF75-5396-4367-8DDC-28E9DB58C9BA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

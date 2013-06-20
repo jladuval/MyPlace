@@ -50,7 +50,7 @@ namespace Base.DDD.Infrastructure.Events.Implementation
                 {
                     try
                     {
-                        ((IEventListener<T>) handler).Handle(eventObject);
+                        ((IEventListener<T>)handler).Handle(eventObject);
                     }
                     catch (Exception e)
                     {
