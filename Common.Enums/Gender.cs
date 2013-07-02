@@ -4,6 +4,5 @@
     {
         Male,
         Female,
-        Transgender
     }
 }

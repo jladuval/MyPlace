@@ -5,14 +5,9 @@
 
     public class ProfileController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(Guid? id)
         {
-            return View("PrivateProfile");
-        }
-
-        public ActionResult Index(Guid id)
-        {
-            return View("PublicProfile");
+            return View(id == null ? "PrivateProfile" : "PublicProfile");
         }
     }
 }

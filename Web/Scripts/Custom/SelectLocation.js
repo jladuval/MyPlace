@@ -2,9 +2,13 @@
     var map;
     var marker;
 
-    $(function () {
-        initialiseMap();
-    });
+    var _mapId;
+    
+    var _address;
+    var _suburb;
+    var _city;
+    var _country;
+    var _postcode;
 
     function initialiseMap() {
         if (navigator.geolocation) {
@@ -27,7 +31,7 @@
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             disableDefaultUI: true
         };
-        map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+        map = new google.maps.Map(document.getElementById(_mapId), mapOptions);
         setMarker(lat, lng);
         reverseLookup(lat, lng);
         google.maps.event.addListener(map, 'click', function (event) {
@@ -48,11 +52,11 @@
 
     function populateAddress(locationInfo) {
         var length = locationInfo.length;
-        $('#address').val(locationInfo[0].short_name + ' ' + locationInfo[1].short_name);
-        $('#suburb').val(locationInfo[2].short_name);
-        $('#city').val(locationInfo[3].short_name);
-        $('#country').val(locationInfo[length-2].short_name);
-        $('#postcode').val(locationInfo[length-1].short_name);
+        _address.val(locationInfo[0].short_name + ' ' + locationInfo[1].short_name);
+        _suburb.val(locationInfo[2].short_name);
+        _city.val(locationInfo[3].short_name);
+        _country.val(locationInfo[length-2].short_name);
+        _postcode.val(locationInfo[length-1].short_name);
     }
 
     function setMarker(lat, lng) {
@@ -76,5 +80,22 @@
         }
     }
 
+    var init = function(mapId, address, suburb, city, country, postcode) {
+        _mapId = mapId || 'googleMap';
 
+        _address = address || $('#address');
+        _suburb = suburb || $('#suburb');
+        _city = city || $('#city');
+        _country = country || $('#country');
+        _postcode = postcode || $('#postcode');
+        
+        $(function () {
+            initialiseMap();
+        });
+    };
+
+    return {
+        init : init
+    };
+    
 })(google);
