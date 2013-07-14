@@ -11,13 +11,11 @@ namespace Web.Controllers
         private const string TempPath = @"C:\Temp";
 
         [HttpPost]
-        public ActionResult Images(IEnumerable<HttpPostedFileBase> files)
+        public ActionResult Images(HttpPostedFileBase file)
         {
-            foreach (HttpPostedFileBase file in files)
-            {
-                var filePath = Path.Combine(TempPath, file.FileName);
-                System.IO.File.WriteAllBytes(filePath, ReadData(file.InputStream));
-            }
+
+            var filePath = Path.Combine(TempPath, file.FileName);
+            System.IO.File.WriteAllBytes(filePath, ReadData(file.InputStream));
 
             return Json("All files have been successfully stored.");
         }

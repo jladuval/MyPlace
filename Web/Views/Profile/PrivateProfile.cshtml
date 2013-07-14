@@ -5,11 +5,13 @@
     ViewBag.Title = "Your Profile";
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
+<link href="~/Content/dropzone.css" rel="stylesheet" />
 
 <h2>title</h2>
 
-<div id="dropZone">Drop your files here</div>
-
+<form action="@Url.Action("Images", "Upload")"
+      class="dropzone"
+      id="my-awesome-dropzone"></form>
 
 @using (Html.BeginForm("EditProfile", "Profile"))
 {
@@ -61,11 +63,11 @@
 @section PageScripts
 {
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCWDvzKRlIivJbwLUH-UJ1NgxySV99pH1s&sensor=true"></script>
-    <script src="~/Scripts/jquery.filedrop.js"></script>
+    <script src="~/Scripts/dropzone.js"></script>
     <script src="~/Scripts/Custom/SelectLocation.js"></script>
     <script src="~/Scripts/Custom/ImageUpload.js"></script>
     <script type="text/javascript">
         SelectLocation.init();
-        imageUpload("@Url.Action("Images", "Upload")" , "#dropZone", '#uploadResult');
+        //imageUpload("@Url.Action("Images", "Upload")" , "#dropZone", '#uploadResult');
     </script>
 }
