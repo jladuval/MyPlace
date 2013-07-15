@@ -23,8 +23,6 @@ namespace Infrastructure.NHibernate.Repositories
             _injectorHelper = injectorHelper;
         }
 
-        #region CRUD operations
-
         public override TEntity Load(Guid id)
         {
             var entity = base.Load(id);
@@ -39,7 +37,7 @@ namespace Infrastructure.NHibernate.Repositories
             if (aggregateRoot != null && !containsKey)
             {
                 // Inject aggregate root services
-                _injectorHelper.InjectDependencies((AggregateRoot)(object)entity);
+                _injectorHelper.InjectDependencies(aggregateRoot);
             }
 
             return entity;
@@ -50,7 +48,5 @@ namespace Infrastructure.NHibernate.Repositories
             entity.ModifiedDate = DateTime.UtcNow;
             base.Save(entity);
         }
-
-        #endregion
     }
 }

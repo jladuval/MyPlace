@@ -14,18 +14,12 @@
 
         protected ISession Session { get; private set; }
 
-        #region CRUD operations
-
         public virtual TEntity Load(TKey id)
         {
             var entity = Session.Get<TEntity>(id);
             return entity;
         }
 
-        /// <summary>
-        /// Deletes the entity from local storage
-        /// </summary>
-        /// <param name="id">Entity identifier</param>
         public virtual void Delete(TKey id)
         {
             var entity = Load(id);
@@ -41,7 +35,5 @@
         {
             return Session.Query<TEntity>();
         } 
-
-        #endregion
     }
 }

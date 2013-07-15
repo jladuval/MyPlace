@@ -1,33 +1,30 @@
-﻿namespace Security.Commands.Handlers
+﻿namespace Security.Handlers
 {
     using System.Collections.Generic;
-
+    using System.Linq;
     using Base.CQRS.Commands.Attributes;
     using Base.CQRS.Commands.Handler;
-
     using Infrastructure.NHibernate.Repositories;
-
-    using Security.Domain;
-    using Security.Interfaces.Commands;
-    using Security.Repositories;
-    using Security.Services;
+    using Domain;
+    using Interfaces.Commands;
+    using Services;
 
     [CommandHandler]
     public class SignUpUserCommandHandler : ICommandHandler<SignUpUserCommand>
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IRepository<User> _userRepository;
 
         private readonly ICryptoService _cryptoService;
 
         private readonly UserFactory _userFactory;
 
-        private readonly IRoleRepository _roleRepository;
+        private readonly IRepository<Role> _roleRepository;
 
         public SignUpUserCommandHandler(
-            IUserRepository userRepository,
+            IRepository<User> userRepository,
             ICryptoService cryptoService, 
             UserFactory userFactory,
-            IRoleRepository roleRepository)
+            IRepository<Role> roleRepository)
         {
             _userRepository = userRepository;
             _cryptoService = cryptoService;
@@ -41,7 +38,7 @@
             {
                 var salt = _cryptoService.GenerateSalt();
                 var user = _userFactory.CreateUser(command.Email, _cryptoService.Hash(command.Password, salt), salt);
-                user.Roles = new List<Role> { _roleRepository.LoadByName("User") };
+                user.Roles = new List<Role> { _roleRepository.Find().Single(x => x.Name == "User") };
                 user.VerificationCode = _cryptoService.GenerateRandomHash();
                 _userRepository.Save(user);
                 user.FinishedSignUp();

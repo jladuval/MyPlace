@@ -11,22 +11,22 @@ namespace Common.DI
 
         protected override void Init()
         {
-            this.Kernel.ComponentCreated += this.OnComponentCreated;
-            this.Kernel.ComponentDestroyed += this.OnComponentDestroyed;
+            Kernel.ComponentCreated += OnComponentCreated;
+            Kernel.ComponentDestroyed += OnComponentDestroyed;
             
-            this.EventSubscriber = this.Kernel.Resolve<IEventSubscriber>();
+            EventSubscriber = Kernel.Resolve<IEventSubscriber>();
         }
 
         void OnComponentDestroyed(ComponentModel model, object instance)
         {
             if (instance is IEventListener)
-                this.EventSubscriber.Unsubscribe((IEventListener)instance);
+                EventSubscriber.Unsubscribe((IEventListener)instance);
         }
 
         void OnComponentCreated(ComponentModel model, object instance)
         {
             if (instance is IEventListener)
-                this.EventSubscriber.Subscribe((IEventListener)instance);
+                EventSubscriber.Subscribe((IEventListener)instance);
         }
     }
 }

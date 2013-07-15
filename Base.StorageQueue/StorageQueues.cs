@@ -1,4 +1,5 @@
 ﻿using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.ServiceRuntime;
 using Microsoft.WindowsAzure.Storage;
 using Base.DDD.Domain.Annotations;
 
@@ -9,16 +10,19 @@ namespace Base.StorageQueue
     {
         public void InitializeAllQueues()
         {
-            var storageAccount = CloudStorageAccount.Parse(
-                CloudConfigurationManager.GetSetting("StorageConnectionString"));
+            if (RoleEnvironment.IsAvailable)
+            {
+                var storageAccount = CloudStorageAccount.Parse(
+                    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-            var mailQueueName = CloudConfigurationManager.GetSetting("MailQueue.Name");
+                var mailQueueName = CloudConfigurationManager.GetSetting("MailQueue.Name");
 
-            var queueClient = storageAccount.CreateCloudQueueClient();
+                var queueClient = storageAccount.CreateCloudQueueClient();
 
-            var queue = queueClient.GetQueueReference(mailQueueName);
+                var queue = queueClient.GetQueueReference(mailQueueName);
 
-            queue.CreateIfNotExists();
+                queue.CreateIfNotExists();
+            }
         }
     }
 }

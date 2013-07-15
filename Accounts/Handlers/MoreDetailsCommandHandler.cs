@@ -1,8 +1,7 @@
 ﻿namespace Accounts.Handlers
 {
-    using Accounts.Domain;
-    using Accounts.Interfaces.Commands;
-    using Accounts.Repositories;
+    using Domain;
+    using Interfaces.Commands;
 
     using Base.CQRS.Commands.Attributes;
     using Base.CQRS.Commands.Handler;
@@ -15,9 +14,9 @@
     [CommandHandler]
     public class MoreDetailsCommandHandler : ICommandHandler<MoreDetailsCommand>
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IRepository<User> _userRepository;
 
-        public MoreDetailsCommandHandler(IUserRepository userRepository)
+        public MoreDetailsCommandHandler(IRepository<User> userRepository)
         {
             _userRepository = userRepository;
         }

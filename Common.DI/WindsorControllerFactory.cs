@@ -13,12 +13,12 @@ namespace Common.DI
 
         public WindsorControllerFactory(IKernel kernel)
         {
-            this._kernel = kernel;
+            _kernel = kernel;
         }
 
         public override void ReleaseController(IController controller)
         {
-            this._kernel.ReleaseComponent(controller);
+            _kernel.ReleaseComponent(controller);
         }
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
