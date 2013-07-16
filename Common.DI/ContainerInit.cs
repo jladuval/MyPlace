@@ -1,4 +1,5 @@
 using System.Net.Configuration;
+using Base.AzureStorage;
 
 namespace Common.DI
 {
@@ -81,7 +82,7 @@ namespace Common.DI
                     typeof(CryptoService).Assembly,
                     typeof(MoreDetailsCommandHandler).Assembly,
                     typeof(CreateDinnerCommandHandler).Assembly,
-                    typeof(StorageQueues).Assembly,
+                    typeof(IAzureStorage).Assembly,
                     typeof(IGate).Assembly,
                     typeof(Mailer).Assembly,
                     typeof(IPersistenceSettings).Assembly,

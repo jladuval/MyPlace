@@ -5,6 +5,7 @@
     <ConfigurationSettings>
       <Setting name="MailQueue.Name" value="mailqueue" />
       <Setting name="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=queuestorage;AccountKey=" />
+      <Setting name="BlobStorage.ImagesName" value="images" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>

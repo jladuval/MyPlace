@@ -83,9 +83,9 @@
       <Project>{A6D4AA68-1DEC-49AD-A43F-EC1E9FA9AC51}</Project>
       <Name>Base.Mailing</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Base.StorageQueue\Base.StorageQueues.csproj">
+    <ProjectReference Include="..\Base.StorageQueue\Base.AzureStorage.csproj">
       <Project>{cd07e9e5-d575-4c0c-b398-39c7d83c6ddf}</Project>
-      <Name>Base.StorageQueues</Name>
+      <Name>Base.AzureStorage</Name>
     </ProjectReference>
     <ProjectReference Include="..\Base\Base.csproj">
       <Project>{093055ad-d153-497c-8573-0209748060f3}</Project>

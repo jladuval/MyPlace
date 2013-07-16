@@ -51,8 +51,8 @@
 
         private static void InitializeInfrastructure()
         {
-            var storageQueues = container.Resolve<IStorageQueues>();
-            storageQueues.InitializeAllQueues();
+            var storageQueues = container.Resolve<IAzureStorage>();
+            storageQueues.InitializeStorage();
         }
 
         private static void MigrateDatabaseSchema()

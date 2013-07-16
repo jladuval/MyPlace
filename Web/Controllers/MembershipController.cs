@@ -86,6 +86,7 @@
             return View("MoreDetails");
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult MoreDetails(MoreDetailsModel model)
         {

@@ -15,6 +15,7 @@
     <ConfigurationSettings>
       <Setting name="MailQueue.Name" />
       <Setting name="StorageConnectionString" />
+      <Setting name="BlobStorage.ImagesName" />
     </ConfigurationSettings>
   </WebRole>
 </ServiceDefinition>

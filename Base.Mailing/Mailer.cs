@@ -1,5 +1,5 @@
-﻿using Base.DDD.Domain.Annotations;
-using Base.StorageQueue;
+﻿using Base.AzureStorage;
+using Base.DDD.Domain.Annotations;
 
 namespace Base.Mailing
 {

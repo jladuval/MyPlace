@@ -9,12 +9,11 @@
 
 <h2>title</h2>
 
-<form action="@Url.Action("Image", "Upload")"
-      class="dropzone"
-      id="my-awesome-dropzone"></form>
+
 
 @using (Html.BeginForm("EditProfile", "Profile"))
 {
+    <div id="dropZone" class="dropzone"></div>
     @Html.LabelFor(x => x.FirstName)
     @Html.TextBoxFor(x => x.FirstName)
     @Html.ValidationMessageFor(x => x.FirstName)
@@ -68,6 +67,6 @@
     <script src="~/Scripts/Custom/ImageUpload.js"></script>
     <script type="text/javascript">
         SelectLocation.init();
-        //imageUpload("@Url.Action("Image", "Upload")" , "#dropZone", '#uploadResult');
+        imageUpload("@Url.Action("Image", "Upload")" , "#dropZone", '#uploadResult');
     </script>
 }

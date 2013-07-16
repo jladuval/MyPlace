@@ -316,9 +316,9 @@
       <Project>{F288EF35-17AD-4319-A5B3-27A348C6584C}</Project>
       <Name>Accounts.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Base.StorageQueue\Base.StorageQueues.csproj">
+    <ProjectReference Include="..\Base.StorageQueue\Base.AzureStorage.csproj">
       <Project>{cd07e9e5-d575-4c0c-b398-39c7d83c6ddf}</Project>
-      <Name>Base.StorageQueues</Name>
+      <Name>Base.AzureStorage</Name>
     </ProjectReference>
     <ProjectReference Include="..\Base\Base.csproj">
       <Project>{093055AD-D153-497C-8573-0209748060F3}</Project>

@@ -1,4 +1,4 @@
-﻿namespace Base.StorageQueue
+﻿namespace Base.AzureStorage
 {
     public interface IMailQueue
     {

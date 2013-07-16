@@ -1,11 +1,11 @@
 ﻿using System.Web.Script.Serialization;
+using Base.DDD.Domain.Annotations;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.ServiceRuntime;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
-using Base.DDD.Domain.Annotations;
 
-namespace Base.StorageQueue
+namespace Base.AzureStorage
 {
     [DomainService]
     public class MailQueue : IMailQueue
