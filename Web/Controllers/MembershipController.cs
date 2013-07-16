@@ -9,9 +9,9 @@
     using Security.Interfaces.Commands;
     using Security.Interfaces.Queries;
 
-    using Web.Core.Extensions;
-    using Web.Core.Services;
-    using Web.Models.Membership;
+    using Core.Extensions;
+    using Core.Services;
+    using Models.Membership;
 
     public class MembershipController : Controller
     {
@@ -69,16 +69,12 @@
         {
             if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    var email = model.Email;
-                    var password = model.Password;
+                var email = model.Email;
+                var password = model.Password;
 
-                    _gate.Dispatch(new SignUpUserCommand(email, password));
-                    var user = _securityUserReader.CheckUserCredentials(new CheckUserCredentialsQuery { Email = email, Password = password });
-                    _authenticationService.LogIn(email, true, user.UserId, user.Roles);
-                    return RedirectToAction("Index", "Home", null);
-                }
+                _gate.Dispatch(new SignUpUserCommand(email, password));
+                var user = _securityUserReader.CheckUserCredentials(new CheckUserCredentialsQuery { Email = email, Password = password });
+                _authenticationService.LogIn(email, true, user.UserId, user.Roles);
                 return RedirectToAction("MoreDetails");
             }
             return View("SignUp", model);

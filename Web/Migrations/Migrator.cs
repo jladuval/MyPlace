@@ -1,4 +1,6 @@
-﻿namespace Web.Migrations
+﻿using Castle.Components.DictionaryAdapter;
+
+namespace Web.Migrations
 {
     using Base.Infrastructure.Attributes;
 
@@ -22,7 +24,6 @@
             {
                 Connection = _settings.ConnectionString,
 
-                // For more information about Azure SQL Database Support see http://msdn.microsoft.com/en-us/library/windowsazure/hh987034.aspx
                 Database = "sqlserver2008",
                 MigrationsAssembly = typeof(MigratorContext).Assembly,
             };

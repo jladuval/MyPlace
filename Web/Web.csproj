@@ -63,23 +63,7 @@
     <Reference Include="Castle.Windsor">
       <HintPath>..\packages\Castle.Windsor.3.2.0\lib\net40\Castle.Windsor.dll</HintPath>
     </Reference>
-    <Reference Include="GeoAPI, Version=1.7.1.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\GeoAPI.1.7.1\lib\net403-client\GeoAPI.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Data.Edm, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Data.Edm.5.5.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.OData, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Data.OData.5.5.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ServiceBus, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WindowsAzure.ServiceBus.2.1.0.0\lib\net40-full\Microsoft.ServiceBus.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Web.Helpers">
       <HintPath>..\packages\microsoft-web-helpers.2.1.20710.2\lib\net40\Microsoft.Web.Helpers.dll</HintPath>
     </Reference>
@@ -87,14 +71,8 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.2.0.1.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAzure.Storage.2.0.6.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=2.0.1.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -108,10 +86,6 @@
     <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Spatial, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\System.Spatial.5.5.0\lib\net40\System.Spatial.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -342,16 +316,12 @@
       <Project>{F288EF35-17AD-4319-A5B3-27A348C6584C}</Project>
       <Name>Accounts.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Accounts\Accounts.csproj">
-      <Project>{d072af01-3b02-43ac-87e9-5e12ac914238}</Project>
-      <Name>Accounts %28Bounded Contexts\Accounts\Accounts%29</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Base.StorageQueue\Base.StorageQueues.csproj">
       <Project>{cd07e9e5-d575-4c0c-b398-39c7d83c6ddf}</Project>
       <Name>Base.StorageQueues</Name>
     </ProjectReference>
     <ProjectReference Include="..\Base\Base.csproj">
-      <Project>{093055ad-d153-497c-8573-0209748060f3}</Project>
+      <Project>{093055AD-D153-497C-8573-0209748060F3}</Project>
       <Name>Base %28Base\Base%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Common.DI\Common.DI.csproj">
@@ -366,25 +336,17 @@
       <Project>{608DA658-DA93-441C-9D11-F5242D5AD0DD}</Project>
       <Name>Events.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Events\Events.csproj">
-      <Project>{d40a98ce-c097-4f93-844a-41de0436e031}</Project>
-      <Name>Events %28Bounded Contexts\Events\Events%29</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Infrastructure.Configuration\Infrastructure.Configuration.csproj">
-      <Project>{56ED39CF-5511-43D9-91EA-D298E708F243}</Project>
+      <Project>{56ed39cf-5511-43d9-91ea-d298e708f243}</Project>
       <Name>Infrastructure.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure.Data\Infrastructure.Data.csproj">
-      <Project>{9F4E77BE-B535-4338-B2CE-462592D7E0EB}</Project>
+      <Project>{9f4e77be-b535-4338-b2ce-462592d7e0eb}</Project>
       <Name>Infrastructure.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Security.Interfaces\Security.Interfaces.csproj">
       <Project>{8ddafb9a-ff87-446e-bc29-08a14a8fe698}</Project>
       <Name>Security.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Security\Security.csproj">
-      <Project>{819bcb47-8aa8-46eb-8151-823986bed414}</Project>
-      <Name>Security %28Bounded Contexts\Security\Security%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Web.Core\Web.Core.csproj">
       <Project>{153130DD-102E-41DD-9CC0-822CAA434F4D}</Project>

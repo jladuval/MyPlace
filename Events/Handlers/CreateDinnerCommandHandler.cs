@@ -3,9 +3,9 @@
     using Base.CQRS.Commands.Attributes;
     using Base.CQRS.Commands.Handler;
 
-    using Events.Domain;
-    using Events.Interfaces.Commands;
-    using Events.Repositories;
+    using Domain;
+    using Interfaces.Commands;
+    using Repositories;
 
     using Infrastructure.NHibernate.Exceptions;
     using Infrastructure.NHibernate.Repositories;

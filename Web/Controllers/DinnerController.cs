@@ -8,8 +8,8 @@
 
     using Events.Interfaces.Commands;
 
-    using Web.Core.Extensions;
-    using Web.Models.Dinner;
+    using Core.Extensions;
+    using Models.Dinner;
 
     public class DinnerController : Controller
     {

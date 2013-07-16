@@ -3,7 +3,7 @@
     using Base.DDD.Domain.Annotations;
     using Base.DDD.Domain.Support;
 
-    using Events.Domain;
+    using Domain;
 
     using Infrastructure.NHibernate.Repositories;
 

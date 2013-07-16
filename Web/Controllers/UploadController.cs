@@ -2,7 +2,6 @@
 
 namespace Web.Controllers
 {
-    using System.Collections.Generic;
     using System.IO;
     using System.Web;
 
@@ -11,7 +10,7 @@ namespace Web.Controllers
         private const string TempPath = @"C:\Temp";
 
         [HttpPost]
-        public ActionResult Images(HttpPostedFileBase file)
+        public ActionResult Image(HttpPostedFileBase file)
         {
 
             var filePath = Path.Combine(TempPath, file.FileName);

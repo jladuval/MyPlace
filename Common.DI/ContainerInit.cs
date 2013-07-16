@@ -1,14 +1,14 @@
-using System.Runtime.InteropServices;
-using Base.CQRS.Commands;
-using Base.Mailing;
-using Base.StorageQueue;
-using FluentMigrator.InProc;
-using Infrastructure.NHibernate.Repositories;
-using NHibernate.Linq;
-using Web.Core;
+using System.Net.Configuration;
 
 namespace Common.DI
 {
+    using Base.CQRS.Commands;
+    using Base.Mailing;
+    using Base.StorageQueue;
+    using FluentMigrator.InProc;
+    using Infrastructure.NHibernate.Repositories;
+    using Web.Core;
+
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -300,8 +300,11 @@ namespace Common.DI
 
             public object Resolve(CreationContext context, ISubDependencyResolver contextHandlerResolver, ComponentModel model, DependencyModel dependency)
             {
-                var implementation = model.Implementation;
-                var assembly = implementation.Assembly;
+                var assembly = model.Implementation.GetInterfaces().Any(x =>
+                    x.IsGenericType &&
+                    x.GetGenericTypeDefinition() == typeof(IRepository<>)) 
+                        ? context.Handler.ComponentModel.Implementation.Assembly 
+                        : model.Implementation.Assembly;
 
                 return Resolve(assembly);
             }
