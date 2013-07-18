@@ -1,4 +1,7 @@
-﻿namespace Web
+﻿using System.Configuration;
+using FluentMigrator.InProc;
+
+namespace Web
 {
     using System;
     using System.Reflection;
@@ -11,8 +14,7 @@
 
     using Common.DI;
 
-    using Web.Core.Impersonation;
-    using Web.Migrations;
+    using Core.Impersonation;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -57,8 +59,12 @@
 
         private static void MigrateDatabaseSchema()
         {
-            var migrator = container.Resolve<Migrator>();
-            migrator.MigrateUp();
+            new Migrator(new MigratorContext
+            {
+                Connection = ConfigurationManager.ConnectionStrings["db"].ConnectionString,
+                Database = "sqlserver2008",
+                MigrationsAssembly = typeof(MigratorContext).Assembly,
+            }).MigrateUp();
         }
     }
 }

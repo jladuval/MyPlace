@@ -1,6 +1,3 @@
-using System.Net.Configuration;
-using Base.AzureStorage;
-
 namespace Common.DI
 {
     using Base.CQRS.Commands;
@@ -38,7 +35,6 @@ namespace Common.DI
 
     using Events.Handlers;
 
-    using Infrastructure.Configuration;
     using Infrastructure.NHibernate.Configuration;
     using Infrastructure.NHibernate.Conventions;
 
@@ -70,7 +66,6 @@ namespace Common.DI
             RegisterStatefullComponents(container, webAssembly);
             RegisterEventListeners(container);
             RegisterCommandHandlers(container);
-            RegisterConfiguration(container);
             SetMvcContainer(container);
             return container;
         }
@@ -85,7 +80,6 @@ namespace Common.DI
                     typeof(IAzureStorage).Assembly,
                     typeof(IGate).Assembly,
                     typeof(Mailer).Assembly,
-                    typeof(IPersistenceSettings).Assembly,
                     typeof(Migrator).Assembly,
                     typeof(Repository<,>).Assembly,
                     typeof(CustomPrincipal).Assembly,
@@ -180,13 +174,6 @@ namespace Common.DI
                     .Configure(x => x.Start())
                     .LifestyleSingleton());
             }
-        }
-
-        private static void RegisterConfiguration(IWindsorContainer container)
-        {
-            container.Register(Component
-                .For<IPersistenceSettings>()
-                .ImplementedBy<ApplicationSettings>());
         }
 
         private static void RegisterCommandHandlers(IWindsorContainer container)

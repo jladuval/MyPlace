@@ -157,7 +157,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Migrator.cs" />
     <Compile Include="Models\Dinner\CreateDinnerModel.cs" />
     <Compile Include="Models\Home\UserModel.cs" />
     <Compile Include="Models\Membership\LoginModel.cs" />
@@ -335,10 +334,6 @@
     <ProjectReference Include="..\Events.Interfaces\Events.Interfaces.csproj">
       <Project>{608DA658-DA93-441C-9D11-F5242D5AD0DD}</Project>
       <Name>Events.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Infrastructure.Configuration\Infrastructure.Configuration.csproj">
-      <Project>{56ed39cf-5511-43d9-91ea-d298e708f243}</Project>
-      <Name>Infrastructure.Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure.Data\Infrastructure.Data.csproj">
       <Project>{9f4e77be-b535-4338-b2ce-462592d7e0eb}</Project>

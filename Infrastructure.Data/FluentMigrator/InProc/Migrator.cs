@@ -2,9 +2,9 @@
 {
     using System.Reflection;
 
-    using FluentMigrator.Runner;
-    using FluentMigrator.Runner.Initialization;
-    using FluentMigrator.Runner.Processors;
+    using Runner;
+    using Runner.Initialization;
+    using Runner.Processors;
 
     public class Migrator
     {

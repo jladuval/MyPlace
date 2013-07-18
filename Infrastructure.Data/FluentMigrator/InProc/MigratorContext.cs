@@ -1,11 +1,9 @@
 ﻿namespace FluentMigrator.InProc
 {
-    using System;
-    using System.Diagnostics;
     using System.Reflection;
 
-    using FluentMigrator.Runner;
-    using FluentMigrator.Runner.Announcers;
+    using Runner;
+    using Runner.Announcers;
 
     public class MigratorContext
     {
