@@ -2,11 +2,14 @@
 
 namespace Base.AzureStorage
 {
-    using DDD.Domain.Annotations;
     using System;
     using System.IO;
     using System.Web;
+
+    using Base.DDD.Domain.Annotations;
+
     using Microsoft.WindowsAzure;
+    using Microsoft.WindowsAzure.ServiceRuntime;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -17,31 +20,43 @@ namespace Base.AzureStorage
 
         private readonly string _blobStorageImagesName;
 
+        private const string LocalPath = "C:/Temp";
+
         public BlobStorage()
         {
-            var storageAccount = CloudStorageAccount.Parse(
-                    CloudConfigurationManager.GetSetting("StorageConnectionString"));
+            if (RoleEnvironment.IsAvailable)
+            {
+                var storageAccount =
+                    CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-            _blobStorageImagesName = CloudConfigurationManager.GetSetting("BlobStorage.ImagesName");
+                _blobStorageImagesName = CloudConfigurationManager.GetSetting("BlobStorage.ImagesName");
 
-            _blobStorage = storageAccount.CreateCloudBlobClient();
+                _blobStorage = storageAccount.CreateCloudBlobClient();
+            }
         }
 
         public string SaveImage(HttpPostedFileBase image)
         {
-            var container = _blobStorage.GetContainerReference(_blobStorageImagesName);
+            if (RoleEnvironment.IsAvailable)
+            {
+                var container = _blobStorage.GetContainerReference(_blobStorageImagesName);
 
-            var uniqueBlobName = string.Format("{0}/{1}{2}",
-                _blobStorageImagesName,
-                Guid.NewGuid(), 
-                Path.GetExtension(image.FileName));
+                var uniqueBlobName = string.Format(
+                    "{0}/{1}{2}", _blobStorageImagesName, Guid.NewGuid(), Path.GetExtension(image.FileName));
 
-            var blob = container.GetBlockBlobReference(uniqueBlobName);
+                var blob = container.GetBlockBlobReference(uniqueBlobName);
 
-            blob.Properties.ContentType = image.ContentType;
-            blob.UploadFromStream(image.InputStream);
+                blob.Properties.ContentType = image.ContentType;
+                blob.UploadFromStream(image.InputStream);
 
-            return blob.Uri.ToString();
+                return blob.Uri.ToString();
+            }
+
+            var pic = Path.GetFileName(image.FileName) ?? Guid.NewGuid().ToString();
+            var path = Path.Combine(LocalPath, pic);
+            image.SaveAs(path);
+
+            return path;
         }
     }
 }
