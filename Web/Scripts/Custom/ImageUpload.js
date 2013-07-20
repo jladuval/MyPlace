@@ -1,4 +1,4 @@
-﻿var imageUpload = function(url, dropzoneId) {
+﻿var imageUpload = function(url, dropzoneId, removeUrl, onImageClick) {
     var _this = {};
     $(function() {
         $(dropzoneId).dropzone(
@@ -14,6 +14,7 @@
                     });
                 }
             });
+        $(document).on("click", ".dz-details", onImageClick)
     });
     return _this;
 }

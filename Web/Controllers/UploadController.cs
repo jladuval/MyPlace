@@ -21,5 +21,11 @@
 
             return Json(url);
         }
+
+        [HttpPost]
+        public ActionResult RemoveImage(string imagePath)
+        {
+            return Json("done");
+        }
     }
 }

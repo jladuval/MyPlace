@@ -13,7 +13,7 @@
 
 @using (Html.BeginForm("EditProfile", "Profile"))
 {
-    <div id="dropZone" class="dropzone"></div>
+    <div id="dropZone" class="imageDrop"></div>
     @Html.LabelFor(x => x.FirstName)
     @Html.TextBoxFor(x => x.FirstName)
     @Html.ValidationMessageFor(x => x.FirstName)
@@ -67,6 +67,6 @@
     <script src="~/Scripts/Custom/ImageUpload.js"></script>
     <script type="text/javascript">
         SelectLocation.init();
-        imageUpload("@Url.Action("Image", "Upload")" , "#dropZone", '#uploadResult');
+        imageUpload("@Url.Action("Image", "Upload")" , "#dropZone", "@Url.Action("RemoveImage", "Upload")", function (){ alert("face");});
     </script>
 }
