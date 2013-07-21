@@ -58,6 +58,10 @@
   padding: 5px;
   margin-bottom: 22px;
 }
+.imageDrop .dz-preview .dz-details .dz-dataUrl,
+.imageDrop-previews .dz-preview .dz-details .dz-dataUrl{
+    display: none;
+}
 .imageDrop .dz-preview .dz-details .dz-filename,
 .imageDrop-previews .dz-preview .dz-details .dz-filename {
   overflow: hidden;

@@ -7,10 +7,10 @@
                 addRemoveLinks: true,
                 init: function () {
                     this.on("removedfile", function(file) {
-                         alert(file);
+                        var dataUrl = $(file.previewElement).find('.dz-details .dz-dataUrl').html();
                     });
                     this.on("success", function (file, dataUrl) {
-                        alert(dataUrl);
+                        $(file.previewElement).find('.dz-details .dz-dataUrl').html(dataUrl);
                     });
                 }
             });
