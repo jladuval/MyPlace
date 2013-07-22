@@ -35,14 +35,14 @@ namespace Base.AzureStorage
             }
         }
 
-        public string SaveImage(HttpPostedFileBase image)
+        public string SaveImage(HttpPostedFileBase image, string folderName)
         {
             if (RoleEnvironment.IsAvailable)
             {
                 var container = _blobStorage.GetContainerReference(_blobStorageImagesName);
 
                 var uniqueBlobName = string.Format(
-                    "{0}/{1}{2}", _blobStorageImagesName, Guid.NewGuid(), Path.GetExtension(image.FileName));
+                    "{0}/{1}/{2}", _blobStorageImagesName, folderName, Path.GetExtension(image.FileName));
 
                 var blob = container.GetBlockBlobReference(uniqueBlobName);
 

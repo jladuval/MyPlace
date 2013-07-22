@@ -47,11 +47,12 @@
   <ItemGroup>
     <Compile Include="FluentMigrator\InProc\Migrator.cs" />
     <Compile Include="FluentMigrator\InProc\MigratorContext.cs" />
-    <Compile Include="Migrations\201305011300_CreateUsersTable.cs" />
-    <Compile Include="Migrations\201305021622_CreateRolesTable.cs" />
-    <Compile Include="Migrations\201305021645_CreateUsersInRolesTable.cs" />
-    <Compile Include="Migrations\201306121251_CreateLocationsTable.cs" />
-    <Compile Include="Migrations\201306172005_CreateDinnersTable.cs" />
+    <Compile Include="Migrations\1_CreateUsersTable.cs" />
+    <Compile Include="Migrations\2_CreateRolesTable.cs" />
+    <Compile Include="Migrations\3_CreateUsersInRolesTable.cs" />
+    <Compile Include="Migrations\4_CreateLocationsTable.cs" />
+    <Compile Include="Migrations\5_CreateDinnersTable.cs" />
+    <Compile Include="Migrations\6_AddImages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

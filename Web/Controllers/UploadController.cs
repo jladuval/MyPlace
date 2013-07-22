@@ -1,4 +1,6 @@
-﻿namespace Web.Controllers
+﻿using Web.Core.Extensions;
+
+namespace Web.Controllers
 {
     using System.Web;
     using Base.AzureStorage;
@@ -13,11 +15,11 @@
             _storage = storage;
         }
         
-
+        [Authorize]
         [HttpPost]
-        public ActionResult Image(HttpPostedFileBase file)
+        public ActionResult ProfileImage(HttpPostedFileBase file)
         {
-            var url = _storage.SaveImage(file);
+            var url = _storage.SaveImage(file, User.TryGetPrincipal().UserId + "/Profile");
 
             return Json(url);
         }

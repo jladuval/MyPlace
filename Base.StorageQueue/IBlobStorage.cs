@@ -4,6 +4,6 @@ namespace Base.AzureStorage
 {
     public interface IBlobStorage
     {
-        string SaveImage(HttpPostedFileBase image);
+        string SaveImage(HttpPostedFileBase image, string folderName);
     }
 }

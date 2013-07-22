@@ -1,4 +1,6 @@
-﻿namespace Accounts.Domain
+﻿using System.Collections.Generic;
+
+namespace Accounts.Domain
 {
     using Base.DDD.Domain;
 
@@ -11,5 +13,9 @@
         public string LastName { get; set; }
 
         public Location Location { get; set; }
+
+        public ICollection<Image> ProfileImages { get; set; }
+
+        public Image ProfileImage { get; set; }
     }
 }

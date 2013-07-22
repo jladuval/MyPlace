@@ -66,10 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Image.cs" />
     <Compile Include="Domain\Location.cs" />
-    <Compile Include="Domain\LocationMap.cs" />
+    <Compile Include="Domain\Mappings\ImageMap.cs" />
+    <Compile Include="Domain\Mappings\LocationMap.cs" />
     <Compile Include="Domain\User.cs" />
-    <Compile Include="Domain\UserMap.cs">
+    <Compile Include="Domain\Mappings\UserMap.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Handlers\MoreDetailsCommandHandler.cs" />
