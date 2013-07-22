@@ -10,6 +10,10 @@ namespace Accounts.Domain
 
         public string ImageName { get; set; }
 
+        private Image()
+        {
+        }
+
         public Image(string url, string folderPath = null, string imageName = null)
         {
             Url = url;

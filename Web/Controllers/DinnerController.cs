@@ -25,11 +25,13 @@
             return View();
         }
 
+        [Authorize]
         public ActionResult Create()
         {
             return View("Create", new CreateDinnerModel());
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Create(CreateDinnerModel model)
         {

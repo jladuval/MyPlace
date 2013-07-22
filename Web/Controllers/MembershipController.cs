@@ -1,5 +1,6 @@
 ﻿namespace Web.Controllers
 {
+    using System;
     using System.Web.Mvc;
 
     using Accounts.Interfaces.Commands;
@@ -35,7 +36,7 @@
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl = null)
         {
             return View("Login");
         }

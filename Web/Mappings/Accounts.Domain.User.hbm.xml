@@ -4,6 +4,12 @@
       <column name="Id" />
       <generator class="guid.comb" />
     </id>
+    <bag cascade="all" inverse="true" name="ProfileImages">
+      <key>
+        <column name="UserProfileId" />
+      </key>
+      <one-to-many class="Accounts.Domain.Image, Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
     <property access="backfield" name="CreatedDate" type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <column name="CreatedDate" not-null="true" />
     </property>
@@ -18,6 +24,9 @@
     </property>
     <property name="Email" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <column name="Email" not-null="true" unique="true" />
+    </property>
+    <property name="ProfileImageUrl" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="ProfileImageUrl" not-null="false" />
     </property>
     <many-to-one cascade="all" class="Accounts.Domain.Location, Accounts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Location">
       <column name="LocationId" not-null="false" />

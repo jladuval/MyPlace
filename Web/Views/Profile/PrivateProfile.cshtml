@@ -67,6 +67,11 @@
     <script src="~/Scripts/Custom/ImageUpload.js"></script>
     <script type="text/javascript">
         SelectLocation.init();
-        imageUpload("@Url.Action("Image", "Upload")" , "#dropZone", "@Url.Action("RemoveImage", "Upload")", function (){ alert("face");});
+        imageUpload("@Url.Action("ProfileImage", "Upload")",
+            "#dropZone",
+            "@Url.Action("RemoveImage", "Upload")",
+            function() {
+                 alert("face");
+            });
     </script>
 }

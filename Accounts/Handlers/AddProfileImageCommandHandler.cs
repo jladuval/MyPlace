@@ -1,11 +1,13 @@
-﻿using Accounts.Domain;
-using Accounts.Interfaces.Commands;
-using Base.CQRS.Commands.Handler;
-using Infrastructure.NHibernate.Exceptions;
-using Infrastructure.NHibernate.Repositories;
-
-namespace Accounts.Handlers
+﻿namespace Accounts.Handlers
 {
+    using Base.CQRS.Commands.Attributes;
+    using Base.CQRS.Commands.Handler;
+    using Domain;
+    using Infrastructure.NHibernate.Exceptions;
+    using Infrastructure.NHibernate.Repositories;
+    using Interfaces.Commands;
+
+    [CommandHandler]
     public class AddProfileImageCommandHandler : ICommandHandler<AddProfileImageCommand>
     {
         private readonly IRepository<User> _userRepository;
