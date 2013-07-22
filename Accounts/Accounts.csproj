@@ -74,6 +74,7 @@
     <Compile Include="Domain\Mappings\UserMap.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Handlers\AddProfileImageCommandHandler.cs" />
     <Compile Include="Handlers\MoreDetailsCommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

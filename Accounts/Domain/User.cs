@@ -16,6 +16,11 @@ namespace Accounts.Domain
 
         public ICollection<Image> ProfileImages { get; set; }
 
-        public Image ProfileImage { get; set; }
+        public string ProfileImageUrl { get; set; }
+
+        public void AddProfileImage(Image image)
+        {
+            ProfileImages.Add(image);
+        }
     }
 }

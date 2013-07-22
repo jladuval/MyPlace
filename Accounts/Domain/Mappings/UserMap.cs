@@ -22,6 +22,13 @@
 
             Map(x => x.Email).Not.Nullable().Unique();
 
+            Map(x => x.ProfileImageUrl).Nullable();
+
+            HasMany(x => x.ProfileImages)
+                .KeyColumn("UserProfileId")
+                .Cascade.All()
+                .Inverse();
+
             References(x => x.Location).Column("LocationId").Nullable().Cascade.All();
         }
     }
