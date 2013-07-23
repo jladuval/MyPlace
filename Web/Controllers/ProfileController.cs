@@ -9,5 +9,12 @@
         {
             return View(id == null ? "PrivateProfile" : "PublicProfile");
         }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult SelectImage(string fileName)
+        {
+            return Json("Done");
+        }
     }
 }

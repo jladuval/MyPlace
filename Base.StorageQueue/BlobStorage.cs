@@ -58,5 +58,29 @@ namespace Base.AzureStorage
 
             return path;
         }
+
+        public void DeleteImage(string folderPath, string fileName)
+        {
+           /* if (RoleEnvironment.IsAvailable)
+            {
+                var container = _blobStorage.GetContainerReference(_blobStorageImagesName);
+
+                var uniqueBlobName = string.Format(
+                    "{0}/{1}/{2}", _blobStorageImagesName, folderName, image.FileName);
+
+                var blob = container.GetBlockBlobReference(uniqueBlobName);
+
+                blob.Properties.ContentType = image.ContentType;
+                blob.UploadFromStream(image.InputStream);
+
+                return blob.Uri.ToString();
+            }
+
+            var pic = Path.GetFileName(image.FileName) ?? Guid.NewGuid().ToString();
+            var path = Path.Combine(LocalPath, pic);
+            image.SaveAs(path);
+
+            return path;*/
+        }
     }
 }

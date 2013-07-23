@@ -28,16 +28,23 @@ namespace Web.Controllers
 
             var folderPath = userId + "/Profile";
 
-            var url = _storage.SaveImage(file, userId + "/Profile");
+            var url = _storage.SaveImage(file, folderPath);
 
             _gate.Dispatch(new AddProfileImageCommand(userId, url, folderPath, file.FileName));
 
             return Json(url);
         }
 
+        [Authorize]
         [HttpPost]
-        public ActionResult RemoveImage(string imagePath)
+        public ActionResult RemoveProfileImage(string fileName)
         {
+            var userId = User.TryGetPrincipal().UserId;
+
+            var folderPath = userId + "/Profile";
+
+            _storage.DeleteImage(folderPath, fileName);
+
             return Json("done");
         }
     }

@@ -14,6 +14,7 @@
 @using (Html.BeginForm("EditProfile", "Profile"))
 {
     <div id="dropZone" class="imageDrop"></div>
+    <div id="profileImage"></div>
     @Html.LabelFor(x => x.FirstName)
     @Html.TextBoxFor(x => x.FirstName)
     @Html.ValidationMessageFor(x => x.FirstName)
@@ -69,10 +70,13 @@
         SelectLocation.init();
         imageUpload("@Url.Action("ProfileImage", "Upload")",
             "#dropZone",
-            "@Url.Action("RemoveImage", "Upload")",
+            "@Url.Action("RemoveProfileImage", "Upload")",
             function(element) {
                 var fileName = $(element.target).attr('alt');
-                alert(fileName)
+                $.post("@Url.Action("SelectImage", "Profile")", {fileName : fileName})
+                    .done(function(response) {
+                        $('#profileImage').html('<img src="' + response + '" alt=' + fileName + '/>')
+                    });
             });
     </script>
 }
