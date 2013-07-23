@@ -26,8 +26,7 @@
 
             HasMany(x => x.ProfileImages)
                 .KeyColumn("UserProfileId")
-                .Cascade.All()
-                .Inverse();
+                .Cascade.All();
 
             References(x => x.Location).Column("LocationId").Nullable().Cascade.All();
         }

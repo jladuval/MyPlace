@@ -42,7 +42,7 @@ namespace Base.AzureStorage
                 var container = _blobStorage.GetContainerReference(_blobStorageImagesName);
 
                 var uniqueBlobName = string.Format(
-                    "{0}/{1}/{2}", _blobStorageImagesName, folderName, Path.GetExtension(image.FileName));
+                    "{0}/{1}/{2}", _blobStorageImagesName, folderName, image.FileName);
 
                 var blob = container.GetBlockBlobReference(uniqueBlobName);
 
