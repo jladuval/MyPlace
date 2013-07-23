@@ -64,8 +64,7 @@
 }
 .imageDrop .dz-preview .dz-details .dz-filename,
 .imageDrop-previews .dz-preview .dz-details .dz-filename {
-  overflow: hidden;
-  height: 100%;
+    display: none;
 }
 .imageDrop .dz-preview .dz-details img,
 .imageDrop-previews .dz-preview .dz-details img {

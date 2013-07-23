@@ -70,8 +70,9 @@
         imageUpload("@Url.Action("ProfileImage", "Upload")",
             "#dropZone",
             "@Url.Action("RemoveImage", "Upload")",
-            function() {
-                 alert("face");
+            function(element) {
+                var fileName = $(element.target).attr('alt');
+                alert(fileName)
             });
     </script>
 }
