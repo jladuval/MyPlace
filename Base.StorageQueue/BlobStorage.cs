@@ -39,12 +39,7 @@ namespace Base.AzureStorage
         {
             if (RoleEnvironment.IsAvailable)
             {
-                var container = _blobStorage.GetContainerReference(_blobStorageImagesName);
-
-                var uniqueBlobName = string.Format(
-                    "{0}/{1}/{2}", _blobStorageImagesName, folderName, image.FileName);
-
-                var blob = container.GetBlockBlobReference(uniqueBlobName);
+               var blob = GetBlockBlob(folderName, image.FileName)
 
                 blob.Properties.ContentType = image.ContentType;
                 blob.UploadFromStream(image.InputStream);
@@ -61,26 +56,26 @@ namespace Base.AzureStorage
 
         public void DeleteImage(string folderPath, string fileName)
         {
-           /* if (RoleEnvironment.IsAvailable)
+            if (RoleEnvironment.IsAvailable)
             {
-                var container = _blobStorage.GetContainerReference(_blobStorageImagesName);
+                var blob = GetBlockBlob(folderPath, fileName)
 
-                var uniqueBlobName = string.Format(
-                    "{0}/{1}/{2}", _blobStorageImagesName, folderName, image.FileName);
-
-                var blob = container.GetBlockBlobReference(uniqueBlobName);
-
-                blob.Properties.ContentType = image.ContentType;
-                blob.UploadFromStream(image.InputStream);
-
-                return blob.Uri.ToString();
+                blob.DeleteIfExists();
             }
+            else
+            {
 
-            var pic = Path.GetFileName(image.FileName) ?? Guid.NewGuid().ToString();
-            var path = Path.Combine(LocalPath, pic);
-            image.SaveAs(path);
+                File.Delete(Path.Combine(LocalPath, fileName));
+            }
+        }
 
-            return path;*/
+        private CloudBlockBlob GetBlockBlob(string folderPath, string fileName)
+        {
+            var container = _blobStorage.GetContainerReference(_blobStorageImagesName);
+            var uniqueBlobName = string.Format(
+                "{0}/{1}/{2}", _blobStorageImagesName, folderPath, fileName);
+
+            return container.GetBlockBlobReference(uniqueBlobName);
         }
     }
 }
