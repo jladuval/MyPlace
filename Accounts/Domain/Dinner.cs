@@ -1,7 +1,6 @@
-﻿namespace Events.Domain
+﻿namespace Accounts.Domain
 {
     using System;
-
     using Base.DDD.Domain;
 
     public class Dinner : Entity

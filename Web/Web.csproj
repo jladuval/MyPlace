@@ -331,10 +331,6 @@
       <Project>{585ACF75-5396-4367-8DDC-28E9DB58C9BA}</Project>
       <Name>Common.Enums</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Events.Interfaces\Events.Interfaces.csproj">
-      <Project>{608DA658-DA93-441C-9D11-F5242D5AD0DD}</Project>
-      <Name>Events.Interfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Infrastructure.Data\Infrastructure.Data.csproj">
       <Project>{9f4e77be-b535-4338-b2ce-462592d7e0eb}</Project>
       <Name>Infrastructure.Data</Name>

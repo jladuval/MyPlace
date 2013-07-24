@@ -3,11 +3,8 @@
     using System;
     using System.Globalization;
     using System.Web.Mvc;
-
+    using Accounts.Interfaces.Commands;
     using Base.CQRS.Commands;
-
-    using Events.Interfaces.Commands;
-
     using Core.Extensions;
     using Models.Dinner;
 

@@ -1,4 +1,4 @@
-﻿namespace Events.Interfaces.Commands
+﻿namespace Accounts.Interfaces.Commands
 {
     using System;
 

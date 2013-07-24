@@ -1,7 +1,7 @@
-﻿namespace Events.Domain
+﻿namespace Accounts.Domain.Mappings
 {
     using System;
-
+    using Domain;
     using FluentNHibernate.Mapping;
 
     public class DinnerMap : ClassMap<Dinner>

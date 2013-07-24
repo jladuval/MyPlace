@@ -90,10 +90,6 @@
       <Project>{093055ad-d153-497c-8573-0209748060f3}</Project>
       <Name>Base %28Base\Base%29</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Events\Events.csproj">
-      <Project>{d40a98ce-c097-4f93-844a-41de0436e031}</Project>
-      <Name>Events %28Bounded Contexts\Events\Events%29</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Infrastructure.Data\Infrastructure.Data.csproj">
       <Project>{9F4E77BE-B535-4338-B2CE-462592D7E0EB}</Project>
       <Name>Infrastructure.Data</Name>

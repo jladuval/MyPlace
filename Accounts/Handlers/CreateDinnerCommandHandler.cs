@@ -1,23 +1,20 @@
 ﻿namespace Events.Handlers
 {
+    using Accounts.Domain;
+    using Accounts.Interfaces.Commands;
     using Base.CQRS.Commands.Attributes;
     using Base.CQRS.Commands.Handler;
-
-    using Domain;
-    using Interfaces.Commands;
-    using Repositories;
-
     using Infrastructure.NHibernate.Exceptions;
     using Infrastructure.NHibernate.Repositories;
 
     [CommandHandler]
     public class CreateDinnerCommandHandler : ICommandHandler<CreateDinnerCommand>
     {
-        private readonly IDinnerRepository _dinnerRepository;
+        private readonly IRepository<Dinner> _dinnerRepository;
 
-        private readonly IUserRepository _userRepository;
+        private readonly IRepository<User> _userRepository;
 
-        public CreateDinnerCommandHandler(IDinnerRepository dinnerRepository, IUserRepository userRepository)
+        public CreateDinnerCommandHandler(IRepository<Dinner> dinnerRepository, IRepository<User> userRepository)
         {
             _dinnerRepository = dinnerRepository;
             _userRepository = userRepository;
