@@ -10,6 +10,7 @@
 
     using Infrastructure.NHibernate.Exceptions;
     using Infrastructure.NHibernate.Repositories;
+    using Interfaces.Commands.Profile;
 
     [CommandHandler]
     public class MoreDetailsCommandHandler : ICommandHandler<MoreDetailsCommand>

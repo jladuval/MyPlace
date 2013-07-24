@@ -39,9 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\AddProfileImageCommand.cs" />
-    <Compile Include="Commands\CreateDinnerCommand.cs" />
-    <Compile Include="Commands\MoreDetailsCommand.cs" />
+    <Compile Include="Commands\Profile\AddProfileImageCommand.cs" />
+    <Compile Include="Commands\Dinner\CreateDinnerCommand.cs" />
+    <Compile Include="Commands\Profile\MoreDetailsCommand.cs" />
+    <Compile Include="Commands\Profile\SelectProfileImageCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

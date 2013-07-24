@@ -4,6 +4,7 @@
     using System.Globalization;
     using System.Web.Mvc;
     using Accounts.Interfaces.Commands;
+    using Accounts.Interfaces.Commands.Dinner;
     using Base.CQRS.Commands;
     using Core.Extensions;
     using Models.Dinner;

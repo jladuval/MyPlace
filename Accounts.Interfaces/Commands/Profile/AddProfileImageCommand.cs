@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Accounts.Interfaces.Commands
+﻿namespace Accounts.Interfaces.Commands.Profile
 {
+    using System;
+
     public class AddProfileImageCommand
     {
         public readonly Guid UserId;

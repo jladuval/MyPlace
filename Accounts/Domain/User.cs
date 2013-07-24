@@ -2,6 +2,7 @@
 
 namespace Accounts.Domain
 {
+    using System.Linq;
     using Base.DDD.Domain;
 
     public class User : AggregateRoot
@@ -21,6 +22,16 @@ namespace Accounts.Domain
         public void AddProfileImage(Image image)
         {
             ProfileImages.Add(image);
+        }
+
+        public void SetProfileImage(string imageName)
+        {
+            var profileImage = ProfileImages.FirstOrDefault(x => x.ImageName == imageName);
+
+            if (profileImage != null)
+            {
+                ProfileImageUrl = profileImage.Url;
+            }
         }
     }
 }

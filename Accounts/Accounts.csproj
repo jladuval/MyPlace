@@ -76,9 +76,10 @@
     <Compile Include="Domain\Mappings\UserMap.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Handlers\AddProfileImageCommandHandler.cs" />
-    <Compile Include="Handlers\CreateDinnerCommandHandler.cs" />
-    <Compile Include="Handlers\MoreDetailsCommandHandler.cs" />
+    <Compile Include="Handlers\Profile\AddProfileImageCommandHandler.cs" />
+    <Compile Include="Handlers\Dinner\CreateDinnerCommandHandler.cs" />
+    <Compile Include="Handlers\Profile\MoreDetailsCommandHandler.cs" />
+    <Compile Include="Handlers\Profile\SelectProfileImageCommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

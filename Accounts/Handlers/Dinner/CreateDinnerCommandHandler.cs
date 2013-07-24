@@ -2,6 +2,7 @@
 {
     using Accounts.Domain;
     using Accounts.Interfaces.Commands;
+    using Accounts.Interfaces.Commands.Dinner;
     using Base.CQRS.Commands.Attributes;
     using Base.CQRS.Commands.Handler;
     using Infrastructure.NHibernate.Exceptions;

@@ -4,7 +4,7 @@
     using System.Web.Mvc;
 
     using Accounts.Interfaces.Commands;
-
+    using Accounts.Interfaces.Commands.Profile;
     using Base.CQRS.Commands;
 
     using Security.Interfaces.Commands;

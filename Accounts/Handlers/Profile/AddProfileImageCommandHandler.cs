@@ -6,6 +6,7 @@
     using Infrastructure.NHibernate.Exceptions;
     using Infrastructure.NHibernate.Repositories;
     using Interfaces.Commands;
+    using Interfaces.Commands.Profile;
 
     [CommandHandler]
     public class AddProfileImageCommandHandler : ICommandHandler<AddProfileImageCommand>

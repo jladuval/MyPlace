@@ -1,4 +1,4 @@
-﻿namespace Accounts.Interfaces.Commands
+﻿namespace Accounts.Interfaces.Commands.Profile
 {
     using System;
     using System.Text;

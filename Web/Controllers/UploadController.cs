@@ -5,6 +5,7 @@ using Web.Core.Extensions;
 namespace Web.Controllers
 {
     using System.Web;
+    using Accounts.Interfaces.Commands.Profile;
     using Base.AzureStorage;
     using System.Web.Mvc;
 
@@ -44,6 +45,8 @@ namespace Web.Controllers
             var folderPath = userId + "/Profile";
 
             _storage.DeleteImage(folderPath, fileName);
+
+            //_gate.Dispatch(new DeleteImageCommand());
 
             return Json("done");
         }
