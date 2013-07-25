@@ -21,7 +21,12 @@ namespace Accounts.Domain
 
         public void AddProfileImage(Image image)
         {
-            ProfileImages.Add(image);
+            var profileImage =
+                ProfileImages.FirstOrDefault(x => x.ImageName == image.ImageName && x.FolderPath == x.FolderPath);
+            if (profileImage == null)
+                ProfileImages.Add(image);
+            else
+                profileImage.Url = image.Url;
         }
 
         public void SetProfileImage(string imageName)

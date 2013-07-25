@@ -39,7 +39,7 @@ namespace Base.AzureStorage
         {
             if (RoleEnvironment.IsAvailable)
             {
-               var blob = GetBlockBlob(folderName, image.FileName)
+                var blob = GetBlockBlob(folderName, image.FileName);
 
                 blob.Properties.ContentType = image.ContentType;
                 blob.UploadFromStream(image.InputStream);
@@ -58,7 +58,7 @@ namespace Base.AzureStorage
         {
             if (RoleEnvironment.IsAvailable)
             {
-                var blob = GetBlockBlob(folderPath, fileName)
+                var blob = GetBlockBlob(folderPath, fileName);
 
                 blob.DeleteIfExists();
             }

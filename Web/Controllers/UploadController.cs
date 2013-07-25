@@ -46,8 +46,6 @@ namespace Web.Controllers
 
             _storage.DeleteImage(folderPath, fileName);
 
-            //_gate.Dispatch(new DeleteImageCommand());
-
             return Json("done");
         }
     }
