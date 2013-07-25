@@ -43,8 +43,16 @@
     <Compile Include="Commands\Dinner\CreateDinnerCommand.cs" />
     <Compile Include="Commands\Profile\MoreDetailsCommand.cs" />
     <Compile Include="Commands\Profile\SelectProfileImageCommand.cs" />
+    <Compile Include="Presentation\ImageDto.cs" />
+    <Compile Include="Presentation\Profile\PrivateProfileDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readers\IProfileReader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Enums\Common.Enums.csproj">
+      <Project>{585ACF75-5396-4367-8DDC-28E9DB58C9BA}</Project>
+      <Name>Common.Enums</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -22,6 +22,16 @@
 
             Map(x => x.Email).Not.Nullable().Unique();
 
+            Map(x => x.Description);
+
+            Map(x => x.Orientation);
+
+            Map(x => x.Gender);
+
+            Map(x => x.Romance).Not.Nullable();
+
+            Map(x => x.Friendship).Not.Nullable();
+
             Map(x => x.ProfileImageUrl).Nullable();
 
             HasMany(x => x.ProfileImages)

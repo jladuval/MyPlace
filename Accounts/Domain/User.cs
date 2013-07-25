@@ -4,6 +4,8 @@ namespace Accounts.Domain
 {
     using System.Linq;
     using Base.DDD.Domain;
+    using Common.Enums;
+    using Orientation = Common.Enums.Orientation;
 
     public class User : AggregateRoot
     {
@@ -18,6 +20,16 @@ namespace Accounts.Domain
         public ICollection<Image> ProfileImages { get; set; }
 
         public string ProfileImageUrl { get; set; }
+
+        public string Description { get; set; }
+
+        public bool Romance { get; set; }
+
+        public bool Friendship { get; set; }
+
+        public Gender Gender { get; set; }
+
+        public Orientation Orientation { get; set; }
 
         public void AddProfileImage(Image image)
         {

@@ -4,8 +4,10 @@
     using System.Web.Mvc;
     using Accounts.Interfaces.Commands.Profile;
     using Accounts.Interfaces.Readers;
+    using AutoMapper;
     using Base.CQRS.Commands;
     using Core.Extensions;
+    using Models.Profile;
 
     public class ProfileController : Controller
     {
@@ -20,7 +22,13 @@
 
         public ActionResult Index(Guid? id)
         {
-            return View(id == null ? "PrivateProfile" : "PublicProfile");
+            if (id == null)
+            {
+                return View("PrivateProfile", 
+                    Mapper.Map<PrivateProfileModel>(_profileReader.GetPrivateProfile(
+                        User.TryGetPrincipal().UserId)));
+            }
+            return View("PublicProfile");
         }
 
         [HttpPost]

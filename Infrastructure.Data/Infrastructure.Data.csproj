@@ -53,6 +53,7 @@
     <Compile Include="Migrations\4_CreateLocationsTable.cs" />
     <Compile Include="Migrations\5_CreateDinnersTable.cs" />
     <Compile Include="Migrations\6_AddImages.cs" />
+    <Compile Include="Migrations\7_AddProfileFieldsToUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +61,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FluentMigrator\InProc\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Enums\Common.Enums.csproj">
+      <Project>{585ACF75-5396-4367-8DDC-28E9DB58C9BA}</Project>
+      <Name>Common.Enums</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

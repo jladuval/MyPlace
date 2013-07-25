@@ -99,6 +99,10 @@
       <Project>{093055AD-D153-497C-8573-0209748060F3}</Project>
       <Name>Base %28Base\Base%29</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Common.Enums\Common.Enums.csproj">
+      <Project>{585ACF75-5396-4367-8DDC-28E9DB58C9BA}</Project>
+      <Name>Common.Enums</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,12 +9,22 @@
 
 <h2>title</h2>
 
-
+<div id="dropZone" class="imageDrop">
+    @foreach (var image in Model.ProfileImageUrls)
+    {
+        <div class="dz-preview dz-processing dz-image-preview">
+            <div class="dz-details">
+                <img data-dz-thumbnail="" alt="@image.Filename" src="@image.Url" />
+            </div>
+            <a class="dz-remove" href="javascript:undefined;">Remove</a>
+        </div>
+    }
+</div>
+<div id="profileImage"></div>
 
 @using (Html.BeginForm("EditProfile", "Profile"))
 {
-    <div id="dropZone" class="imageDrop"></div>
-    <div id="profileImage"></div>
+
     @Html.LabelFor(x => x.FirstName)
     @Html.TextBoxFor(x => x.FirstName)
     @Html.ValidationMessageFor(x => x.FirstName)

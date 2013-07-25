@@ -7,7 +7,7 @@ namespace Web
     using System.Reflection;
     using System.Web.Mvc;
     using System.Web.Routing;
-
+    using App_Start;
     using Base.StorageQueue;
 
     using Castle.Windsor;
@@ -49,6 +49,7 @@ namespace Web
             RegisterRoutes(RouteTable.Routes);
             InitializeInfrastructure();
             MigrateDatabaseSchema();
+            AutoMapping.CreateMappings();
         }
 
         private static void InitializeInfrastructure()
