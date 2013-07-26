@@ -2,6 +2,8 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    using Common.Enums;
+
     public class MoreDetailsModel
     {
         [Required]
@@ -31,5 +33,15 @@
         [Required]
         [Display(Name = "Postcode")]
         public string Postcode { get; set; }
+
+        [Required]
+        public Gender Gender { get; set; }
+
+        [Required]
+        public Orientation Orientation { get; set; }
+
+        public bool Friendship { get; set; }
+
+        public bool Romance { get; set; }
     }
 }

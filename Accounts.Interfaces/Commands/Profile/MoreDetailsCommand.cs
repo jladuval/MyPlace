@@ -3,6 +3,8 @@
     using System;
     using System.Text;
 
+    using Common.Enums;
+
     public class MoreDetailsCommand
     {
         public Guid UserId { get; set; }
@@ -21,6 +23,16 @@
 
         public string LastName { get; set; }
 
+        public string Description { get; set; }
+
+        public Gender Gender { get; set; }
+
+        public Orientation Orientation { get; set; }
+
+        public bool Romance { get; set; }
+
+        public bool Friendship { get; set; }
+
         public MoreDetailsCommand(
             Guid userId,
             string firstName,
@@ -29,7 +41,11 @@
             string suburb,
             string city,
             string country,
-            string postcode)
+            string postcode,
+            Gender gender,
+            Orientation orientation,
+            bool romance,
+            bool friendship)
         {
             UserId = userId;
             FirstName = firstName;
@@ -39,6 +55,10 @@
             City = city;
             Country = country;
             Postcode = postcode;
+            Gender = gender;
+            Orientation = orientation;
+            Romance = romance;
+            Friendship = friendship;
         }
 
         public string LocationToString()

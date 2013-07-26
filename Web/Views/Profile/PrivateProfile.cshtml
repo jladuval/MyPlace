@@ -20,7 +20,12 @@
         </div>
     }
 </div>
-<div id="profileImage"></div>
+<div id="profileImage">
+    @if (Model.ProfileImage != null)
+    {
+        <img src ="@Model.ProfileImage" alt="Profile Image"/>
+    }
+</div>
 
 @using (Html.BeginForm("EditProfile", "Profile"))
 {
@@ -44,6 +49,14 @@
     @Html.LabelFor(x => x.Gender)
     @Html.DropDownListFor(x => x.Gender, Enum.GetNames(typeof(Gender)).Select(c => new SelectListItem { Text = c, Value = c }).ToArray())
     @Html.ValidationMessageFor(x => x.Gender)
+
+    @Html.LabelFor(x => x.Friendship)
+    @Html.CheckBoxFor(x => x.Friendship)
+    @Html.ValidationMessageFor(x => x.Friendship)
+
+    @Html.LabelFor(x => x.Romance)
+    @Html.CheckBoxFor(x => x.Romance)
+    @Html.ValidationMessageFor(x => x.Romance)
 
     @Html.LabelFor(x => x.Address)
     @Html.TextBoxFor(x => x.Address, new { @id = "address" })

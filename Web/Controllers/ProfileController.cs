@@ -33,6 +33,30 @@
 
         [HttpPost]
         [Authorize]
+        public ActionResult EditProfile(PrivateProfileModel model)
+        {
+            _gate.Dispatch(
+                new MoreDetailsCommand(
+                    User.TryGetPrincipal().UserId,
+                    model.FirstName,
+                    model.LastName,
+                    model.Address,
+                    model.Suburb,
+                    model.City,
+                    model.Country,
+                    model.Postcode,
+                    model.Gender,
+                    model.Orientation,
+                    model.Romance,
+                    model.Friendship) 
+                    {
+                        Description = model.Description 
+                    });
+            return RedirectToAction("Index", new { id = User.TryGetPrincipal().UserId });
+        }
+
+        [HttpPost]
+        [Authorize]
         public ActionResult SelectImage(string fileName)
         {
             _gate.Dispatch(new SelectProfileImageCommand(User.TryGetPrincipal().UserId, fileName));

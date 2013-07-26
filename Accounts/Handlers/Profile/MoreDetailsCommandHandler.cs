@@ -33,6 +33,11 @@
             {
                 user.FirstName = command.FirstName;
                 user.LastName = command.LastName;
+                user.Description = command.Description ?? user.Description;
+                user.Orientation = command.Orientation;
+                user.Gender = command.Gender;
+                user.Friendship = command.Friendship;
+                user.Romance = command.Romance;
                 var latlng = GetLatLong(command.LocationToString());
                 user.Location = new Location(
                     command.Address,

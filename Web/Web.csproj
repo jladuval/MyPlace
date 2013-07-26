@@ -301,6 +301,7 @@
     <Content Include="Views\DinnerList\DinnerList.cshtml" />
     <Content Include="Views\Dinner\Create.cshtml" />
     <Content Include="Views\Profile\PrivateProfile.cshtml" />
+    <Content Include="Views\Profile\PublicProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -99,7 +99,11 @@
                     model.Suburb,
                     model.City,
                     model.Country,
-                    model.Postcode));
+                    model.Postcode,
+                    model.Gender,
+                    model.Orientation,
+                    model.Romance,
+                    model.Friendship));
             return RedirectToAction("Index", "DinnerList");
         }
     }
