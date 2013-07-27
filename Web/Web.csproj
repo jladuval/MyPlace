@@ -161,6 +161,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DinnerList\DinnerListItemModel.cs" />
+    <Compile Include="Models\DinnerList\DinnerListModel.cs" />
     <Compile Include="Models\Dinner\CreateDinnerModel.cs" />
     <Compile Include="Models\Home\UserModel.cs" />
     <Compile Include="Models\Membership\LoginModel.cs" />

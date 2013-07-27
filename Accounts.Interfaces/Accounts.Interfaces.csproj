@@ -43,9 +43,12 @@
     <Compile Include="Commands\Dinner\CreateDinnerCommand.cs" />
     <Compile Include="Commands\Profile\MoreDetailsCommand.cs" />
     <Compile Include="Commands\Profile\SelectProfileImageCommand.cs" />
+    <Compile Include="Presentation\Dinner\DinnerListDto.cs" />
+    <Compile Include="Presentation\Dinner\DinnerListItemDto.cs" />
     <Compile Include="Presentation\ImageDto.cs" />
     <Compile Include="Presentation\Profile\PrivateProfileDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Readers\IDinnerReader.cs" />
     <Compile Include="Readers\IProfileReader.cs" />
   </ItemGroup>
   <ItemGroup>
