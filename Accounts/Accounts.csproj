@@ -81,6 +81,7 @@
     <Compile Include="Handlers\Profile\MoreDetailsCommandHandler.cs" />
     <Compile Include="Handlers\Profile\SelectProfileImageCommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Readers\DinnerReader.cs" />
     <Compile Include="Readers\ProfileReader.cs" />
   </ItemGroup>
   <ItemGroup>
