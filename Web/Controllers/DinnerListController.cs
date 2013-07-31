@@ -15,7 +15,7 @@
 
         public ActionResult Index()
         {
-
+            _dinnerReader.GetDinnerList(-122.34900, 47.65100, 0 , 10);
             return View("DinnerList");
         }
 

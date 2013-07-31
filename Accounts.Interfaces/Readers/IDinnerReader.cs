@@ -4,6 +4,6 @@
 
     public interface IDinnerReader
     {
-        DinnerListDto GetDinnerList(double lat, double lng);
+        DinnerListDto GetDinnerList(double lat, double lng, int skip, int take);
     }
 }
