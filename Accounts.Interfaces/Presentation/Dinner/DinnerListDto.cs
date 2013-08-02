@@ -8,12 +8,6 @@
 
         public int TotalPages { get; set; }
 
-        public int CurrentPage { get; set; }
-
         public IList<DinnerListItemDto> Dinners { get; set; }
-
-        public double Lat { get; set; }
-
-        public double Long { get; set; }
     }
 }

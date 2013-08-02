@@ -1,9 +1,15 @@
 ﻿namespace Accounts.Readers
 {
+    using System;
+    using System.Linq;
+
+    using Accounts.Domain;
+
     using Base.CQRS.Query.Attributes;
     using Interfaces.Presentation.Dinner;
     using Interfaces.Readers;
     using NHibernate;
+    using NHibernate.Linq;
     using NHibernate.Transform;
 
     [Reader]
@@ -33,13 +39,24 @@
                     join Users u on u.Id = d.UserId
                     Order by Distance asc
                     OFFSET {2} ROWS
-                    FETCH NEXT {3} ROWS ONLY"
-                , lat, lng, skip, take);
-            var output = _session
-                .CreateSQLQuery(selectDinnerByDistance)
+                    FETCH NEXT {3} ROWS ONLY", 
+                lat, 
+                lng, 
+                skip, 
+                take);
+
+            var dinnerListByDistance = _session.CreateSQLQuery(selectDinnerByDistance)
                 .SetResultTransformer(Transformers.AliasToBean<DinnerListItemDto>())
                 .List<DinnerListItemDto>();
-            return new DinnerListDto();
+
+            var total = _session.Query<Dinner>().Count(x => x.Date < DateTime.UtcNow);
+
+            return new DinnerListDto
+                       {
+                           TotalPages = total / take,
+                           TotalResults = total,
+                           Dinners = dinnerListByDistance
+                       };
         }
     }
 }
