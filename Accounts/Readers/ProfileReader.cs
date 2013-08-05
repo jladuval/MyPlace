@@ -63,5 +63,17 @@
                 }).ToList();
             return profileDto;
         }
+
+        public LatLngDto GetLatLong(Guid userId)
+        {
+            var user = _session.Query<User>()
+                .Fetch(x => x.Location)
+                .Single(x => x.Id == userId);
+            return new LatLngDto
+            {
+                Lat = user.Location.Latitude,
+                Lng = user.Location.Longitude
+            };
+        }
     }
 }

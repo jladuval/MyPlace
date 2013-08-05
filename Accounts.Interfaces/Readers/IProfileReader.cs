@@ -1,6 +1,7 @@
 ﻿namespace Accounts.Interfaces.Readers
 {
     using System;
+    using Presentation;
     using Presentation.Profile;
 
     public interface IProfileReader

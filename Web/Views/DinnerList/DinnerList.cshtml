@@ -1,18 +1,13 @@
-﻿@model dynamic
-
+﻿@using Common.Enums
+@model Web.Models.DinnerList.DinnerListModel
 @{
-    Layout = null;
+    ViewBag.Title = "DinnerList";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
 
-<!DOCTYPE html>
+<h2>Dinner List</h2>
 
-<html>
-    <head>
-        <title>DinnerList</title>
-    </head>
-    <body>
-        <div>
-              
-        </div>
-    </body>
-</html>
+
+@section PageScripts
+{
+}

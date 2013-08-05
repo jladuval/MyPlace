@@ -2,8 +2,11 @@
 {
     using System;
     using System.Web.Mvc;
+    using Accounts.Interfaces.Presentation.Dinner;
     using Accounts.Interfaces.Readers;
+    using AutoMapper;
     using Core.Extensions;
+    using Models.DinnerList;
 
     public class DinnerListController : Controller
     {
@@ -20,10 +23,10 @@
 
         public ActionResult Index(int? page)
         {
-            var skip = page == null ? 0 : page*PageSize;
+            var skip = page == null ? 0 : page.Value * PageSize;
             var latlng = _profileReader.GetLatLong(User.TryGetPrincipal().UserId);
-            _dinnerReader.GetDinnerList(-122.34900, 47.65100, skip , PageSize);
-            return View("DinnerList");
+            var model = Mapper.Map<DinnerListDto, DinnerListModel>(_dinnerReader.GetDinnerList(latlng.Lat, latlng.Lng, skip , PageSize));
+            return View("DinnerList", model);
         }
 
         public ActionResult Host(Guid id)
