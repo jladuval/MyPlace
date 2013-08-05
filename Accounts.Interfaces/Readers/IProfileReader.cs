@@ -7,5 +7,6 @@
     {
         string GetImageUrl(Guid userId, string fileName);
         PrivateProfileDto GetPrivateProfile(Guid userId);
+        LatLngDto GetLatLong(Guid userId);
     }
 }

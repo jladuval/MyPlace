@@ -3,19 +3,26 @@
     using System;
     using System.Web.Mvc;
     using Accounts.Interfaces.Readers;
+    using Core.Extensions;
 
     public class DinnerListController : Controller
     {
         private readonly IDinnerReader _dinnerReader;
+        private readonly IProfileReader _profileReader;
 
-        public DinnerListController(IDinnerReader dinnerReader)
+        private const int PageSize = 20;
+
+        public DinnerListController(IDinnerReader dinnerReader, IProfileReader profileReader)
         {
             _dinnerReader = dinnerReader;
+            _profileReader = profileReader;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            _dinnerReader.GetDinnerList(-122.34900, 47.65100, 0 , 10);
+            var skip = page == null ? 0 : page*PageSize;
+            var latlng = _profileReader.GetLatLong(User.TryGetPrincipal().UserId);
+            _dinnerReader.GetDinnerList(-122.34900, 47.65100, skip , PageSize);
             return View("DinnerList");
         }
 
