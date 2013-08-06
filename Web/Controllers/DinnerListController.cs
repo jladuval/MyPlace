@@ -8,6 +8,7 @@
     using Core.Extensions;
     using Models.DinnerList;
 
+    [Authorize]
     public class DinnerListController : Controller
     {
         private readonly IDinnerReader _dinnerReader;
@@ -23,9 +24,11 @@
 
         public ActionResult Index(int? page)
         {
-            var skip = page == null ? 0 : page.Value * PageSize;
+            var skip = page == null ? 1 : page.Value * PageSize;
             var latlng = _profileReader.GetLatLong(User.TryGetPrincipal().UserId);
             var model = Mapper.Map<DinnerListDto, DinnerListModel>(_dinnerReader.GetDinnerList(latlng.Lat, latlng.Lng, skip , PageSize));
+            model.Lat = latlng.Lat;
+            model.Long = latlng.Lng;
             return View("DinnerList", model);
         }
 

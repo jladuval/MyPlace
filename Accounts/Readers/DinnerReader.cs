@@ -40,8 +40,8 @@
                     Order by Distance asc
                     OFFSET {2} ROWS
                     FETCH NEXT {3} ROWS ONLY", 
+                lng,
                 lat, 
-                lng, 
                 skip, 
                 take);
 

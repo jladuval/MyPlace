@@ -7,6 +7,19 @@
 
 <h2>Dinner List</h2>
 
+<ul>
+@foreach (var dinner in Model.Dinners)
+{
+    <li>
+        <img src ="@dinner.ProfileImageUrl" alt="profile image"/>
+        <span>@dinner.Starter</span>
+        <span>@dinner.Main</span>
+        <span>@dinner.Dessert</span>
+        <span>@dinner.Distance</span>
+        <span>@dinner.Date</span>
+    </li>
+}
+</ul>
 
 @section PageScripts
 {
