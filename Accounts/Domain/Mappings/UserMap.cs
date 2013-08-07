@@ -39,6 +39,12 @@
                 .Cascade.All();
 
             References(x => x.Location).Column("LocationId").Nullable().Cascade.All();
+
+            HasManyToMany(x => x.AppliedDinners)
+                .Table("DinnerApplicants")
+                .ParentKeyColumn("UserId")
+                .ChildKeyColumn("DinnerId")
+                .Cascade.SaveUpdate();
         }
     }
 }

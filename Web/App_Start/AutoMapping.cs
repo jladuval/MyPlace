@@ -4,6 +4,7 @@
     using Accounts.Interfaces.Presentation.Dinner;
     using Accounts.Interfaces.Presentation.Profile;
     using AutoMapper;
+    using Models.Dinner;
     using Models.DinnerList;
     using Models.Profile;
     using Models.Shared;
@@ -16,6 +17,7 @@
             Mapper.CreateMap<ImageDto, ImageModel>();
             Mapper.CreateMap<DinnerListDto, DinnerListModel>();
             Mapper.CreateMap<DinnerListItemDto, DinnerListItemModel>();
+            Mapper.CreateMap<DinnerDto, ViewDinnerModel>();
         }
     }
 }

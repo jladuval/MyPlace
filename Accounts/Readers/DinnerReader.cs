@@ -31,6 +31,7 @@
                     u.ProfileImageUrl as ProfileImageUrl, 
                     d.Starter as Starter,
                     d.Main as Main,
+                    d.Id as Id,
                     d.Dessert as Dessert,
                     d.Dry as DryDinner,
                     d.[Date] as EventDate,

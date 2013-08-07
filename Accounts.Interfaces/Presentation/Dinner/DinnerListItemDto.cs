@@ -4,6 +4,8 @@
 
     public class DinnerListItemDto
     {
+        public Guid Id { get; set; }
+
         public string ProfileImageUrl { get; set; }
 
         public string Starter { get; set; }

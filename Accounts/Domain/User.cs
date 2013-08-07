@@ -31,6 +31,8 @@ namespace Accounts.Domain
 
         public Orientation Orientation { get; set; }
 
+        public ICollection<Dinner> AppliedDinners { get; set; } 
+
         public void AddProfileImage(Image image)
         {
             var profileImage =

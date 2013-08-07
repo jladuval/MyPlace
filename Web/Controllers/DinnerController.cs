@@ -6,6 +6,7 @@
     using Accounts.Interfaces.Commands;
     using Accounts.Interfaces.Commands.Dinner;
     using Accounts.Interfaces.Readers;
+    using AutoMapper;
     using Base.CQRS.Commands;
     using Core.Extensions;
     using Models.Dinner;
@@ -23,8 +24,15 @@
 
         public ActionResult Index(Guid id)
         {
-            _dinnerReader.GetDinner(id);
-            return View("Dinner");
+            var model = Mapper.Map<ViewDinnerModel>(_dinnerReader.GetDinner(id));
+            return View("ViewDinner", model);
+        }
+
+        public ActionResult Apply(Guid id)
+        {
+            _gate.Dispatch(new ApplyForDinnerCommand(User.TryGetPrincipal().UserId, id));
+            var model = Mapper.Map<ViewDinnerModel>(_dinnerReader.GetDinner(id));
+            return View("ViewDinner", model);
         }
 
         [Authorize]

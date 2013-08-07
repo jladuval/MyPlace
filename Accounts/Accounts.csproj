@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="FluentNHibernate">
       <HintPath>..\packages\FluentNHibernate.1.3.0.733\lib\FluentNHibernate.dll</HintPath>
     </Reference>
@@ -76,6 +79,7 @@
     <Compile Include="Domain\Mappings\UserMap.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Handlers\Dinner\ApplyForDinnerCommandHandler.cs" />
     <Compile Include="Handlers\Profile\AddProfileImageCommandHandler.cs" />
     <Compile Include="Handlers\Dinner\CreateDinnerCommandHandler.cs" />
     <Compile Include="Handlers\Profile\MoreDetailsCommandHandler.cs" />

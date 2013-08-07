@@ -33,6 +33,13 @@
             Map(x => x.Date).Not.Nullable();
 
             Map(x => x.ClosedDate).Nullable();
+
+            HasManyToMany(x => x.Applicants)
+                .Table("DinnerApplicants")
+                .ParentKeyColumn("DinnerId")
+                .ChildKeyColumn("UserId")
+                .Inverse()
+                .Cascade.SaveUpdate();
         }
     }
 }

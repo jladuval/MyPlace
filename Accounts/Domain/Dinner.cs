@@ -1,6 +1,9 @@
 ﻿namespace Accounts.Domain
 {
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Configuration;
     using Base.DDD.Domain;
 
     public class Dinner : Entity
@@ -23,6 +26,8 @@
 
         public DateTime Date { get; set; }
 
+        public ICollection<User> Applicants { get; set; }
+
         public Dinner() { }
 
         public Dinner(
@@ -36,11 +41,17 @@
             Dry = dry;
             Description = description;
             Date = date;
+            Applicants = new List<User>();
         }
 
         public void Close()
         {
             ClosedDate = DateTime.UtcNow;
+        }
+
+        public void UserApplied(User user)
+        {
+            Applicants.Add(user);
         }
     }
 }

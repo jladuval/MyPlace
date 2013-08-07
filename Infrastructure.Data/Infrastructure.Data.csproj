@@ -54,6 +54,7 @@
     <Compile Include="Migrations\5_CreateDinnersTable.cs" />
     <Compile Include="Migrations\6_AddImages.cs" />
     <Compile Include="Migrations\7_AddProfileFieldsToUser.cs" />
+    <Compile Include="Migrations\8_AddDinnerApplicationJunctionTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

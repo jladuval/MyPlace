@@ -1,8 +1,8 @@
-﻿namespace Web.Models.DinnerList
+﻿namespace Web.Models.Dinner
 {
     using System;
 
-    public class DinnerListItemModel
+    public class ViewDinnerModel
     {
         public Guid Id { get; set; }
 
@@ -16,8 +16,10 @@
 
         public bool DryDinner { get; set; }
 
-        public string Date { get; set; }
+        public DateTime EventDate { get; set; }
 
-        public int Distance { get; set; }
+        public double Distance { get; set; }
+
+        public string Description { get; set; }
     }
 }

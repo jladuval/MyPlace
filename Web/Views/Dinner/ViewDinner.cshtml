@@ -1,0 +1,16 @@
+﻿@model Web.Models.Dinner.ViewDinnerModel
+@{
+    ViewBag.Title = "Dinner";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+<h2>Dinner</h2>
+<img src ="@Model.ProfileImageUrl" alt="profile image"/>
+<span>@Model.Description</span>
+<span>@Model.Starter</span>
+<span>@Model.Main</span>
+<span>@Model.Dessert</span>
+<span>@Model.Distance</span>
+<span>@Model.DryDinner</span>
+<span>@Model.EventDate</span>
+<a class = "btn" href="@Url.Action("Apply", "Dinner", new { id = @Model.Id})"></a>
