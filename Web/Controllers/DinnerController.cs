@@ -5,6 +5,7 @@
     using System.Web.Mvc;
     using Accounts.Interfaces.Commands;
     using Accounts.Interfaces.Commands.Dinner;
+    using Accounts.Interfaces.Readers;
     using Base.CQRS.Commands;
     using Core.Extensions;
     using Models.Dinner;
@@ -12,15 +13,18 @@
     public class DinnerController : Controller
     {
         private readonly IGate _gate;
+        private readonly IDinnerReader _dinnerReader;
 
-        public DinnerController(IGate gate)
+        public DinnerController(IGate gate, IDinnerReader dinnerReader)
         {
             _gate = gate;
+            _dinnerReader = dinnerReader;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(Guid id)
         {
-            return View();
+            _dinnerReader.GetDinner(id);
+            return View("Dinner");
         }
 
         [Authorize]

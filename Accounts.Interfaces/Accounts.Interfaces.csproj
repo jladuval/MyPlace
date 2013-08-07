@@ -43,6 +43,7 @@
     <Compile Include="Commands\Dinner\CreateDinnerCommand.cs" />
     <Compile Include="Commands\Profile\MoreDetailsCommand.cs" />
     <Compile Include="Commands\Profile\SelectProfileImageCommand.cs" />
+    <Compile Include="Presentation\Dinner\DinnerDto.cs" />
     <Compile Include="Presentation\Dinner\DinnerListDto.cs" />
     <Compile Include="Presentation\Dinner\DinnerListItemDto.cs" />
     <Compile Include="Presentation\ImageDto.cs" />

@@ -4,9 +4,10 @@
     using System.Linq;
 
     using Accounts.Domain;
-
+    using AutoMapper;
     using Base.CQRS.Query.Attributes;
     using Interfaces.Presentation.Dinner;
+    using Interfaces.Presentation.Profile;
     using Interfaces.Readers;
     using NHibernate;
     using NHibernate.Linq;
@@ -57,6 +58,12 @@
                            TotalResults = total,
                            Dinners = dinnerListByDistance
                        };
+        }
+
+        public DinnerDto GetDinner(Guid id)
+        {
+            Mapper.CreateMap<Dinner, DinnerDto>();
+            return Mapper.Map<DinnerDto>(_session.Query<Dinner>().Single(x => x.Id == id));
         }
     }
 }
