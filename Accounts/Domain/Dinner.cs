@@ -26,7 +26,7 @@
 
         public DateTime Date { get; set; }
 
-        public ICollection<User> Applicants { get; set; }
+        public virtual ICollection<User> Applicants { get; set; }
 
         public Dinner() { }
 

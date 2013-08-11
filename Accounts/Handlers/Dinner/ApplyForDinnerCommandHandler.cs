@@ -1,10 +1,14 @@
 ﻿namespace Accounts.Handlers.Dinner
 {
+    using System.Linq;
+
     using Domain;
     using Base.CQRS.Commands.Attributes;
     using Base.CQRS.Commands.Handler;
     using Infrastructure.NHibernate.Repositories;
     using Interfaces.Commands.Dinner;
+
+    using NHibernate.Linq;
 
     [CommandHandler]
     public class ApplyForDinnerCommandHandler : ICommandHandler<ApplyForDinnerCommand>
@@ -20,10 +24,12 @@
 
         public void Handle(ApplyForDinnerCommand command)
         {
-            var dinner = _dinnerRepository.Load(command.DinnerId);
-            var user = _userRepository.Load(command.UserId);
-            if (dinner != null && user != null)
-                dinner.UserApplied(user);
+            var dinner = _dinnerRepository.Find().Where(x => x.Id == command.DinnerId).Fetch(x => x.Applicants).Single();
+            var user = _userRepository.Find().Where(x => x.Id == command.UserId).Fetch(x => x.AppliedDinners).Single();
+            /*if (dinner != null && user != null)
+                dinner.UserApplied(user);*/
+            dinner.Applicants.Add(user);
+            user.AppliedDinners.Add(dinner);
         }
     }
 }
