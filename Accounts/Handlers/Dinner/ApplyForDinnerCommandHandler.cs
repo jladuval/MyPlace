@@ -30,7 +30,11 @@
                 var dinner = _dinnerRepository.Load(command.DinnerId);
                 var user = _userRepository.Load(command.UserId);
                 if (dinner != null && user != null)
-                    dinner.UserApplied(user);
+                {
+                    var application = new DinnerApplicant(user, dinner);
+                    dinner.Applicants.Add(application);
+                    user.AppliedDinners.Add(application);
+                }
             }
         }
     }

@@ -48,12 +48,5 @@
         {
             ClosedDate = DateTime.UtcNow;
         }
-
-        public void UserApplied(User user)
-        {
-            var application = new DinnerApplicant(user, this);
-            Applicants.Add(application);
-            user.AppliedDinners.Add(application);
-        }
     }
 }
