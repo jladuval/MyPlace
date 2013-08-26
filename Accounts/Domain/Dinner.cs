@@ -26,7 +26,7 @@
 
         public DateTime Date { get; set; }
 
-        public ICollection<User> Applicants { get; set; }
+        public ICollection<DinnerApplicant> Applicants { get; set; }
 
         public Dinner() { }
 
@@ -41,7 +41,7 @@
             Dry = dry;
             Description = description;
             Date = date;
-            Applicants = new List<User>();
+            Applicants = new List<DinnerApplicant>();
         }
 
         public void Close()
@@ -51,7 +51,9 @@
 
         public void UserApplied(User user)
         {
-            Applicants.Add(user);
+            var application = new DinnerApplicant(user, this);
+            Applicants.Add(application);
+            user.AppliedDinners.Add(application);
         }
     }
 }

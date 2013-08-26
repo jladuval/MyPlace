@@ -70,8 +70,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Dinner.cs" />
+    <Compile Include="Domain\DinnerApplicant.cs" />
     <Compile Include="Domain\Image.cs" />
     <Compile Include="Domain\Location.cs" />
+    <Compile Include="Domain\Mappings\DinnerApplicantMap.cs" />
     <Compile Include="Domain\Mappings\DinnerMap.cs" />
     <Compile Include="Domain\Mappings\ImageMap.cs" />
     <Compile Include="Domain\Mappings\LocationMap.cs" />

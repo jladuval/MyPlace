@@ -34,12 +34,9 @@
 
             Map(x => x.ClosedDate).Nullable();
 
-            HasManyToMany(x => x.Applicants)
-                .Table("DinnerApplicants")
-                .ParentKeyColumn("DinnerId")
-                .ChildKeyColumn("UserId")
-                .Inverse()
-                .Cascade.SaveUpdate();
+            HasMany(x => x.Applicants)
+                .KeyColumn("DinnerId")
+                .Cascade.All();
         }
     }
 }

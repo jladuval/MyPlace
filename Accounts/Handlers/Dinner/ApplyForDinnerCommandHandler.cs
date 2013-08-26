@@ -5,6 +5,7 @@
     using Base.CQRS.Commands.Handler;
     using Infrastructure.NHibernate.Repositories;
     using Interfaces.Commands.Dinner;
+    using NHibernate.Dialect.Function;
 
     [CommandHandler]
     public class ApplyForDinnerCommandHandler : ICommandHandler<ApplyForDinnerCommand>
@@ -20,10 +21,13 @@
 
         public void Handle(ApplyForDinnerCommand command)
         {
-            var dinner = _dinnerRepository.Load(command.DinnerId);
-            var user = _userRepository.Load(command.UserId);
-            if (dinner != null && user != null)
-                dinner.UserApplied(user);
+            using (new UnitOfWork())
+            {
+                var dinner = _dinnerRepository.Load(command.DinnerId);
+                var user = _userRepository.Load(command.UserId);
+                if (dinner != null && user != null)
+                    dinner.UserApplied(user);
+            }
         }
     }
 }

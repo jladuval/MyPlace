@@ -1,7 +1,7 @@
 ﻿namespace Accounts.Domain
 {
     using System;
-
+    using System.Security.Cryptography.X509Certificates;
     using FluentNHibernate.Mapping;
 
     public class UserMap : ClassMap<User>
@@ -40,11 +40,9 @@
 
             References(x => x.Location).Column("LocationId").Nullable().Cascade.All();
 
-            HasManyToMany(x => x.AppliedDinners)
-                .Table("DinnerApplicants")
-                .ParentKeyColumn("UserId")
-                .ChildKeyColumn("DinnerId")
-                .Cascade.SaveUpdate();
+            HasMany(x => x.AppliedDinners)
+                .KeyColumn("UserId")
+                .Cascade.All();
         }
     }
 }
