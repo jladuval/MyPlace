@@ -176,9 +176,6 @@
     <Compile Include="WindsorControllerFactory.asax.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-responsive.css" />
-    <Content Include="Content\bootstrap-responsive.min.css" />
-    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap\bootstrap-theme.css" />
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
@@ -186,9 +183,12 @@
     <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\dropzone.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\marker.png" />
+    <Content Include="Content\images\preload.gif" />
     <Content Include="Content\images\spritemap%402x.png" />
     <Content Include="Content\images\spritemap.png" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -253,12 +253,28 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-2.0.1.intellisense.js" />
+    <Content Include="Scripts\Bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\Bootstrap\custom.js" />
+    <Content Include="Scripts\Bootstrap\guideline.main.js" />
+    <Content Include="Scripts\Bootstrap\html5shiv.js" />
+    <Content Include="Scripts\Bootstrap\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\Bootstrap\jquery.easing.js" />
+    <Content Include="Scripts\Bootstrap\jquery.fitvids.min.js" />
+    <Content Include="Scripts\Bootstrap\jquery.form.js" />
+    <Content Include="Scripts\Bootstrap\jquery.gmap.min.js" />
+    <Content Include="Scripts\Bootstrap\jquery.nicescroll.min.js" />
+    <Content Include="Scripts\Bootstrap\jquery.touchwipe.min.js" />
+    <Content Include="Scripts\Bootstrap\modals.js" />
+    <Content Include="Scripts\Bootstrap\modernizr.js" />
+    <Content Include="Scripts\Bootstrap\respond.min.js" />
+    <Content Include="Scripts\Bootstrap\retina.js" />
+    <Content Include="Scripts\Bootstrap\skrollr.ie.min.js" />
+    <Content Include="Scripts\Bootstrap\skrollr.js" />
+    <Content Include="Scripts\Bootstrap\toucheffects.js" />
     <Content Include="Scripts\Custom\DinnerSetup.js" />
     <Content Include="Scripts\Custom\ImageUpload.js" />
     <Content Include="Scripts\Custom\SelectLocation.js" />

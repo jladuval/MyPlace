@@ -1,51 +1,43 @@
-﻿
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js ie7"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js ie8"> <![endif]-->
-<!--[if IE 9]>         <html class="no-js ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>@ViewBag.Title</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-
-        <!-- Leave out responsive for now will need proper design-->
-        <!--<link rel="stylesheet" href="css/bootstrap-responsive.min.css">-->
-        <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap.css")">
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>@ViewBag.Title</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<!--Set the descritpion of you site-->
+		<meta name="description" content="MyPlace - host dinners">
+		<!--Set author of your site-->
+		<meta name="author" content="Jacob Duval">
+		<!--Modernizr-->
+        <script src="~/Scripts/Bootstrap/modernizr.js"></script>
+		<!--Main Bootstrap styling-->
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+	    <!--Custom styling-->
         <link href="~/Content/main.css" rel="stylesheet" />
-        @RenderSection("Styles", required: false)
-                
-        <script src="@Url.Content("~/Scripts/modernizr-2.6.2.js")"></script>
-    </head>
-
-    <body class="@ViewBag.BodyClass">
-        <div id="wrap">
-            <div class="container">
-                <!--[if lt IE 7]>
-                    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-                <![endif]-->
-                
-                <header>
-                    @Html.Partial("_Header")
-                    @RenderSection("HeaderNavigation", false)
-                </header>
-                
-                <!-- Content -->
-                <div class="container">
-                    @RenderBody()
-                </div>
-            </div>
+        <link href="~/Content/style.css" rel="stylesheet" />
+		<!--Iconic font - FontAwesome-->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+		<!--Google font-->
+		<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700'>
+		<!--Site thumbnail-->
+		<!--Browser tab icon aka Favicon-->
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+		<!--[if lt IE 9]>
+			<script src="~/Scripts/Bootstrap/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+    <body data-spy="scroll" data-target=".navbar" data-offset='61'>
+        <div id="preloader">
+            <div id="status">&nbsp;</div>
         </div>
+        @Html.Partial("_Header")
+       
+        @RenderBody()
 
-        <footer id="footer">
-            @Html.Partial("_Footer")              
-        </footer>
-        
+        @Html.Partial("_Footer")  
+
         @Html.Partial("_PageScripts")
 
         @RenderSection("PageScripts", required: false)
+
     </body>
 </html>
