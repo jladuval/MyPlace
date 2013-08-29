@@ -1715,3 +1715,7 @@ form .btn {
 	border-left-color: #fff;
 	border-right-width: 0;
 }
+
+.offset-top {
+    margin-top: 20px !important;
+}
