@@ -1,4 +1,5 @@
-﻿@*<div class="container">
+﻿@using Web.Extensions
+@*<div class="container">
     <div class="navbar navbar-top">
         <div class="navbar-inner">
             <div class="container">
@@ -37,13 +38,10 @@
             <a href="/" class="navbar-brand"><img class="img-responsive" src="http://placehold.it/166x40" alt=""></a>
             <div class="nav-collapse collapse navbar-responsive-collapse">
                 <ul class="nav navbar-nav pull-right">
-                    <li class="active"><a href="#intro">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="features.html">Features</a></li>
-                    <li><a href="work.html">Work</a></li>
-                    <li><a href="team.html">Team</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    @Html.MenuItem("Home", "Index", "Home", "#intro")
+                    @Html.MenuItem("About", "Index", "Home", "#services", true)
+                    @Html.MenuItem("Sign Up", "Index", "Membership")
+                    @Html.MenuItem("Login", "Login", "Membership")
                 </ul>
             </div>
         </div>
