@@ -25,25 +25,31 @@
                             @Html.TextBoxFor(x => x.LastName, new { @class="form-control" })
                             @Html.ValidationMessageFor(x => x.LastName)
                         </div>
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-3">
                             @Html.LabelFor(x => x.Orientation)
                             @Html.DropDownListFor(x => x.Orientation, Enum.GetNames(typeof(Orientation)).Select(c => new SelectListItem { Text = c, Value = c }).ToArray(), new { @class="form-control" })
                             @Html.ValidationMessageFor(x => x.Orientation)
                         </div>
-                        <div class="form-group col-sm-6">
+                        <div class="form-group col-sm-3">
                             @Html.LabelFor(x => x.Gender)
                             @Html.DropDownListFor(x => x.Gender, Enum.GetNames(typeof(Gender)).Select(c => new SelectListItem { Text = c, Value = c }).ToArray(), new { @class="form-control" })
                             @Html.ValidationMessageFor(x => x.Gender)
                         </div>
-                        <div class="form-group col-sm-6">
-                            @Html.LabelFor(x => x.Friendship)
-                            @Html.CheckBoxFor(x => x.Friendship, new { @class="form-control" })
-                            @Html.ValidationMessageFor(x => x.Friendship)
+                         <div class="form-group col-xs-6 col-sm-3 offset-top">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                @Html.CheckBoxFor(x => x.Friendship)
+                              </span>
+                              @Html.LabelFor(x => x.Friendship, new{@class="form-control"})
+                            </div>
                         </div>
-                        <div class="form-group  col-sm-6">
-                            @Html.LabelFor(x => x.Romance)
-                            @Html.CheckBoxFor(x => x.Romance, new { @class="form-control" })
-                            @Html.ValidationMessageFor(x => x.Romance)
+                        <div class="form-group col-xs-6 col-sm-3 offset-top">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                @Html.CheckBoxFor(x => x.Romance)
+                              </span>
+                              @Html.LabelFor(x => x.Romance, new{@class="form-control"})
+                            </div>
                         </div>
                         <div class="form-group col-sm-12">
                             <label>Click where you live</label>
