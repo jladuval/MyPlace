@@ -34,30 +34,29 @@
         public PrivateProfileDto GetPrivateProfile(Guid userId)
         {
             var user = _session.Query<User>()
-                .Fetch(x => x.ProfileImages)
-                .Fetch(x => x.Location)
-                .Where(x => x.Id == userId);
+                               .Fetch(x => x.ProfileImages)
+                               .Fetch(x => x.Location).Single(x => x.Id == userId);
             var profileDto = 
-                user.Select(x => new PrivateProfileDto
+                new PrivateProfileDto
                 {
-                    Address = x.Location.Address,
-                    City = x.Location.City,
-                    Country = x.Location.Country,
-                    Postcode = x.Location.Postcode,
-                    Suburb = x.Location.Suburb,
-                    Lat = x.Location.Latitude,
-                    Long = x.Location.Longitude,
-                    FirstName = x.FirstName,
-                    LastName = x.LastName,
-                    Description = x.Description,
-                    Friendship = x.Friendship,
-                    Orientation = x.Orientation,
-                    Gender = x.Gender,
-                    Romance = x.Romance,
-                    ProfileImage = x.ProfileImageUrl
-                }).First();
+                    Address = user.Location.Address,
+                    City = user.Location.City,
+                    Country = user.Location.Country,
+                    Postcode = user.Location.Postcode,
+                    Suburb = user.Location.Suburb,
+                    Lat = user.Location.Latitude,
+                    Long = user.Location.Longitude,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Description = user.Description,
+                    Friendship = user.Friendship,
+                    Orientation = user.Orientation,
+                    Gender = user.Gender,
+                    Romance = user.Romance,
+                    ProfileImage = user.ProfileImageUrl
+                };
             profileDto.ProfileImageUrls = 
-                user.First().ProfileImages.Select(i => new ImageDto
+                user.ProfileImages.Select(i => new ImageDto
                 {
                     Url = i.Url,
                     FileName = i.ImageName
@@ -87,23 +86,22 @@
         public PublicProfileDto GetPublicProfile(Guid id)
         {
             var user = _session.Query<User>()
-               .Fetch(x => x.ProfileImages)
-               .Fetch(x => x.Location)
-               .Where(x => x.Id == id);
+                              .Fetch(x => x.ProfileImages)
+                              .Fetch(x => x.Location).Single(x => x.Id == id);
             var profileDto =
-                user.Select(x => new PublicProfileDto()
+                new PublicProfileDto
                 {
-                    FirstName = x.FirstName,
-                    LastName = x.LastName,
-                    Description = x.Description,
-                    Friendship = x.Friendship,
-                    Orientation = x.Orientation,
-                    Gender = x.Gender,
-                    Romance = x.Romance,
-                    ProfileImage = x.ProfileImageUrl
-                }).First();
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Description = user.Description,
+                    Friendship = user.Friendship,
+                    Orientation = user.Orientation,
+                    Gender = user.Gender,
+                    Romance = user.Romance,
+                    ProfileImage = user.ProfileImageUrl
+                };
             profileDto.ProfileImageUrls =
-                user.First().ProfileImages.Select(i => new ImageDto
+                user.ProfileImages.Select(i => new ImageDto
                 {
                     Url = i.Url,
                     FileName = i.ImageName

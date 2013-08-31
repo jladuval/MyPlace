@@ -21,13 +21,13 @@
                         <div class="dz-details">
                             <img data-dz-thumbnail="" alt="@image.Filename" src="@image.Url" />
                         </div>
-                        <a class="dz-remove" href="javascript:undefined;">Remove</a>
+                        <a class="dz-remove-razor" data-filename="@image.Filename" href="javascript:undefined;">Remove</a>
                     </div>
                 }
             </div>
             
 
-            <div class="col-lg-12">
+            <div class="col-lg-12 offset-top">
                 <div class="row">
                     @using (Html.BeginForm("EditProfile", "Profile", FormMethod.Post, new { @role = "form", @id = "contactForm", @class = "form-inline" }))
                     {
@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group col-sm-6">
                             @Html.LabelFor(x => x.Description)
-                            @Html.TextAreaFor(x => x.Description, new { @class="form-control" })
+                            @Html.TextAreaFor(x => x.Description, new { @class="form-control tall" })
                             @Html.ValidationMessageFor(x => x.Description)
                         </div>
                         <div class="form-group col-sm-6">
@@ -137,8 +137,14 @@
                 var fileName = $(element.target).attr('alt');
                 $.post("@Url.Action("SelectImage", "Profile")", {fileName : fileName})
                     .done(function(response) {
-                        $('#profileImage').html('<img src="' + response + '" alt=' + fileName + '/>')
+                        $('#profileImage').html('<img src="' + response + '" alt=' + fileName + '/>');
                     });
             });
+        $('.dz-remove-razor').click(function(e) {
+            $.post("@Url.Action("RemoveProfileImage", "Upload")", { fileName: $(e.target).data('filename') })
+                   .done(function () {
+                       $(e.target).parent().remove();
+                   });
+        });
     </script>
 }

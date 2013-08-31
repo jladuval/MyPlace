@@ -56,7 +56,7 @@
                     {
                         Description = model.Description 
                     });
-            return RedirectToAction("Index", new { id = User.TryGetPrincipal().UserId });
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

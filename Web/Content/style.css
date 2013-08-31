@@ -1740,3 +1740,7 @@ form .btn {
  .row img {
      width: 100%;
  }
+
+ .tall {
+     height: 160px;
+ }
