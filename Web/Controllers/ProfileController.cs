@@ -23,7 +23,9 @@
         public ActionResult Index(Guid? id)
         {
             id = id ?? User.TryGetPrincipal().UserId;
-            return View("PublicProfile", Mapper.Map<PublicProfileModel>(_profileReader.GetPublicProfile(id.Value)));
+            var model = Mapper.Map<PublicProfileModel>(_profileReader.GetPublicProfile(id.Value));
+            model.CanEdit = id == User.TryGetPrincipal().UserId;
+            return View("PublicProfile", model);
         }
 
         public ActionResult Edit()

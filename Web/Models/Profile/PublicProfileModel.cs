@@ -25,5 +25,7 @@
         public bool Friendship { get; set; }
 
         public bool Romance { get; set; }
+
+        public bool CanEdit { get; set; }
     }
 }

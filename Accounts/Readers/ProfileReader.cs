@@ -1,6 +1,7 @@
 ﻿namespace Accounts.Readers
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using Base.CQRS.Query.Attributes;
     using Domain;
@@ -55,7 +56,7 @@
                     Romance = x.Romance,
                     ProfileImage = x.ProfileImageUrl
                 }).First();
-            profileDto.ProfileImageUrls =
+            profileDto.ProfileImageUrls = 
                 user.First().ProfileImages.Select(i => new ImageDto
                 {
                     Url = i.Url,

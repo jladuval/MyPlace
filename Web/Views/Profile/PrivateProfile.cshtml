@@ -7,81 +7,120 @@
 }
 <link href="~/Content/dropzone.css" rel="stylesheet" />
 
-<h2>title</h2>
-
-<div id="dropZone" class="imageDrop">
-    @foreach (var image in Model.ProfileImageUrls)
-    {
-        <div class="dz-preview dz-processing dz-image-preview">
-            <div class="dz-details">
-                <img data-dz-thumbnail="" alt="@image.Filename" src="@image.Url" />
+<section id="intro" class="content no-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-offset-2">
+                <h1 class="text-center">Profile</h1>
+                <p class="text-center">Your face to the world</p>
             </div>
-            <a class="dz-remove" href="javascript:undefined;">Remove</a>
+            <div id="dropZone" class="imageDrop col-lg-12">
+                @foreach (var image in Model.ProfileImageUrls)
+                {
+                    <div class="dz-preview dz-processing dz-image-preview">
+                        <div class="dz-details">
+                            <img data-dz-thumbnail="" alt="@image.Filename" src="@image.Url" />
+                        </div>
+                        <a class="dz-remove" href="javascript:undefined;">Remove</a>
+                    </div>
+                }
+            </div>
+            
+
+            <div class="col-lg-12">
+                <div class="row">
+                    @using (Html.BeginForm("EditProfile", "Profile", FormMethod.Post, new { @role = "form", @id = "contactForm", @class = "form-inline" }))
+                    {
+                        <div class="col-lg-6 col-sm-6">
+                            <div class="row guter">
+                                <div id="profileImage" class="col-lg-12 col-sm-12 text-center">
+                                    <img class="img-responsive" src="@Model.ProfileImage" alt="Profile Image">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            @Html.LabelFor(x => x.Description)
+                            @Html.TextAreaFor(x => x.Description, new { @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.Description)
+                        </div>
+                        <div class="form-group col-sm-6">
+                            @Html.LabelFor(x => x.FirstName)
+                            @Html.TextBoxFor(x => x.FirstName, new { @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.FirstName)
+                        </div>
+                        <div class="form-group col-sm-6">
+                            @Html.LabelFor(x => x.LastName)
+                            @Html.TextBoxFor(x => x.LastName, new { @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.LastName)
+                        </div>
+                        <div class="form-group col-sm-3">
+                            @Html.LabelFor(x => x.Orientation)
+                            @Html.DropDownListFor(x => x.Orientation, Enum.GetNames(typeof(Orientation)).Select(c => new SelectListItem { Text = c, Value = c }).ToArray(), new { @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.Orientation)
+                        </div>
+                        <div class="form-group col-sm-3">
+                            @Html.LabelFor(x => x.Gender)
+                            @Html.DropDownListFor(x => x.Gender, Enum.GetNames(typeof(Gender)).Select(c => new SelectListItem { Text = c, Value = c }).ToArray(), new { @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.Gender)
+                        </div>
+                         <div class="form-group col-xs-6 col-sm-3 offset-top">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                @Html.CheckBoxFor(x => x.Friendship)
+                              </span>
+                              @Html.LabelFor(x => x.Friendship, new{@class="form-control"})
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-3 offset-top">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                @Html.CheckBoxFor(x => x.Romance)
+                              </span>
+                              @Html.LabelFor(x => x.Romance, new{@class="form-control"})
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label>Click where you live</label>
+                        </div>
+                        <div class="form-group col-sm-12" id="googleMap">
+                        </div>
+                        <div class="form-group col-lg-4 col-sm-6">
+                            @Html.LabelFor(x => x.Address)
+                            @Html.TextBoxFor(x => x.Address, new { @id = "address", @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.Address)
+                        </div>
+                        <div class="form-group col-lg-4 col-sm-6">
+                            @Html.LabelFor(x => x.Suburb)
+                            @Html.TextBoxFor(x => x.Suburb, new {  @id = "suburb", @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.Suburb)
+                        </div>
+                        <div class="form-group col-lg-4 col-sm-6">
+                            @Html.LabelFor(x => x.City)
+                            @Html.TextBoxFor(x => x.City, new { @id = "city",  @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.City)
+                        </div>
+                        <div class="form-group col-lg-4 col-sm-6">
+                            @Html.LabelFor(x => x.Country)
+                            @Html.TextBoxFor(x => x.Country, new { @id = "country", @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.Country)
+                        </div>
+                         <div class="form-group col-lg-4 col-sm-6">
+                            @Html.LabelFor(x => x.Postcode)
+                            @Html.TextBoxFor(x => x.Postcode, new { @id = "postcode", @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.Postcode)
+                        </div>
+                        <div class="form-group col-lg-4 col-sm-12">
+                            <div class="message">
+                                <div class="alert"></div>
+                            </div>
+                            <button type="submit" value="Done" id="submit" class="btn btn-fancy btn-block offset-top">Done</button>
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
-    }
-</div>
-<div id="profileImage">
-    @if (Model.ProfileImage != null)
-    {
-        <img src ="@Model.ProfileImage" alt="Profile Image"/>
-    }
-</div>
-
-@using (Html.BeginForm("EditProfile", "Profile"))
-{
-
-    @Html.LabelFor(x => x.FirstName)
-    @Html.TextBoxFor(x => x.FirstName)
-    @Html.ValidationMessageFor(x => x.FirstName)
-
-    @Html.LabelFor(x => x.LastName)
-    @Html.TextBoxFor(x => x.LastName)
-    @Html.ValidationMessageFor(x => x.LastName)
-
-    @Html.LabelFor(x => x.Description)
-    @Html.TextAreaFor(x => x.Description)
-    @Html.ValidationMessageFor(x => x.Description)
-    
-    @Html.LabelFor(x => x.Orientation)
-    @Html.DropDownListFor(x => x.Orientation, Enum.GetNames(typeof(Orientation)).Select(c => new SelectListItem { Text = c, Value = c }).ToArray())
-    @Html.ValidationMessageFor(x => x.Orientation)
-
-    @Html.LabelFor(x => x.Gender)
-    @Html.DropDownListFor(x => x.Gender, Enum.GetNames(typeof(Gender)).Select(c => new SelectListItem { Text = c, Value = c }).ToArray())
-    @Html.ValidationMessageFor(x => x.Gender)
-
-    @Html.LabelFor(x => x.Friendship)
-    @Html.CheckBoxFor(x => x.Friendship)
-    @Html.ValidationMessageFor(x => x.Friendship)
-
-    @Html.LabelFor(x => x.Romance)
-    @Html.CheckBoxFor(x => x.Romance)
-    @Html.ValidationMessageFor(x => x.Romance)
-
-    @Html.LabelFor(x => x.Address)
-    @Html.TextBoxFor(x => x.Address, new { @id = "address" })
-    @Html.ValidationMessageFor(x => x.Address)
-
-    @Html.LabelFor(x => x.Suburb)
-    @Html.TextBoxFor(x => x.Suburb, new { @id = "suburb" })
-    @Html.ValidationMessageFor(x => x.Suburb)
-
-    @Html.LabelFor(x => x.City)
-    @Html.TextBoxFor(x => x.City, new { @id = "city" })
-    @Html.ValidationMessageFor(x => x.City)
-
-    @Html.LabelFor(x => x.Country)
-    @Html.TextBoxFor(x => x.Country, new { @id = "country" })
-    @Html.ValidationMessageFor(x => x.Country)
-
-    @Html.LabelFor(x => x.Postcode)
-    @Html.TextBoxFor(x => x.Postcode, new { @id = "postcode" })
-    @Html.ValidationMessageFor(x => x.Postcode)
-
-    <div id="googleMap" style="width:600px;height:450px;"></div>
-    
-    <input type ="submit" value="Submit"/>
-}
+    </div>
+</section>
 
 @section PageScripts
 {
