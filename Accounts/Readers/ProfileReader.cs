@@ -14,7 +14,7 @@
     [Reader]
     public class ProfileReader : IProfileReader
     {
-        private const string PlaceholderImage = "~/Content/images/placeholder.jpg";
+        private const string PlaceholderImage = "/Content/images/placeholder.jpg";
 
         private readonly ISession _session;
 

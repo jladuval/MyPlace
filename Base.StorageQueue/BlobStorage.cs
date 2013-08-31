@@ -37,6 +37,7 @@ namespace Base.AzureStorage
 
         public string SaveImage(HttpPostedFileBase image, string folderName)
         {
+            if (image == null) return null;
             if (RoleEnvironment.IsAvailable)
             {
                 var blob = GetBlockBlob(folderName, image.FileName);
@@ -56,19 +57,21 @@ namespace Base.AzureStorage
 
         public string DeleteImage(string folderPath, string fileName)
         {
+            string url;
             if (RoleEnvironment.IsAvailable)
             {
                 var blob = GetBlockBlob(folderPath, fileName);
-
+                url = blob.Uri.ToString();
                 blob.DeleteIfExists();
+
             }
             else
             {
-
-                File.Delete(Path.Combine(LocalPath, fileName));
+                url = Path.Combine(LocalPath, fileName);
+                File.Delete(url);
             }
 
-            return string.Empty;
+            return url;
         }
 
         private CloudBlockBlob GetBlockBlob(string folderPath, string fileName)

@@ -31,7 +31,7 @@ namespace Web.Controllers
 
             var url = _storage.SaveImage(file, folderPath);
 
-            _gate.Dispatch(new AddProfileImageCommand(userId, url, folderPath, file.FileName));
+            if (url != null) _gate.Dispatch(new AddProfileImageCommand(userId, url, folderPath, file.FileName));
 
             return Json(url);
         }
@@ -45,6 +45,8 @@ namespace Web.Controllers
             var folderPath = userId + "/Profile";
 
             var url = _storage.DeleteImage(folderPath, fileName);
+
+            if(url != null) _gate.Dispatch(new DeleteProfileImageCommand(userId, url, folderPath, fileName));
 
             return Json("done");
         }

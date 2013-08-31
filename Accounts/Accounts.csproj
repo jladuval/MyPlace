@@ -84,6 +84,7 @@
     <Compile Include="Handlers\Dinner\ApplyForDinnerCommandHandler.cs" />
     <Compile Include="Handlers\Profile\AddProfileImageCommandHandler.cs" />
     <Compile Include="Handlers\Dinner\CreateDinnerCommandHandler.cs" />
+    <Compile Include="Handlers\Profile\DeleteProfileImageCommandHandler.cs" />
     <Compile Include="Handlers\Profile\MoreDetailsCommandHandler.cs" />
     <Compile Include="Handlers\Profile\SelectProfileImageCommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
