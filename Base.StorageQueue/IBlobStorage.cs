@@ -6,6 +6,6 @@ namespace Base.AzureStorage
     {
         string SaveImage(HttpPostedFileBase image, string folderName);
 
-        void DeleteImage(string folderPath, string fileName);
+        string DeleteImage(string folderPath, string fileName);
     }
 }

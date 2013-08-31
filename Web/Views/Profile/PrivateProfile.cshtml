@@ -21,7 +21,7 @@
                         <div class="dz-details">
                             <img data-dz-thumbnail="" alt="@image.Filename" src="@image.Url" />
                         </div>
-                        <a class="dz-remove-razor" data-filename="@image.Filename" href="javascript:undefined;">Remove</a>
+                        <a class="dz-remove" data-filename="@image.Filename" href="javascript:undefined;">Remove</a>
                     </div>
                 }
             </div>
@@ -129,22 +129,30 @@
     <script src="~/Scripts/Custom/SelectLocation.js"></script>
     <script src="~/Scripts/Custom/ImageUpload.js"></script>
     <script type="text/javascript">
-        SelectLocation.init();
-        imageUpload("@Url.Action("ProfileImage", "Upload")",
-            "#dropZone",
-            "@Url.Action("RemoveProfileImage", "Upload")",
-            function(element) {
-                var fileName = $(element.target).attr('alt');
-                $.post("@Url.Action("SelectImage", "Profile")", {fileName : fileName})
-                    .done(function(response) {
-                        $('#profileImage').html('<img src="' + response + '" alt=' + fileName + '/>');
+        $(function() {
+            var onDelete = function(filename, onSuccess) {
+                $.post("@Url.Action("RemoveProfileImage", "Upload")", { fileName: filename })
+                    .done(function() {
+                        if (onSuccess)
+                            onSuccess();
                     });
+            };
+            SelectLocation.init();
+            imageUpload("@Url.Action("ProfileImage", "Upload")",
+                "#dropZone",
+                "@Url.Action("RemoveProfileImage", "Upload")",
+                function(element) {
+                    var fileName = $(element.target).attr('alt');
+                    $.post("@Url.Action("SelectImage", "Profile")", { fileName: fileName })
+                        .done(function(response) {
+                            $('#profileImage').html('<img src="' + response + '" alt=' + fileName + '/>');
+                        });
+                },
+            onDelete);
+            $('#dropZone').on('click', '.dz-remove', function(e) {
+                onDelete($(e.target).data('filename'), function() { $(e.target).parent().remove(); });
             });
-        $('.dz-remove-razor').click(function(e) {
-            $.post("@Url.Action("RemoveProfileImage", "Upload")", { fileName: $(e.target).data('filename') })
-                   .done(function () {
-                       $(e.target).parent().remove();
-                   });
-        });
+        })
+
     </script>
 }

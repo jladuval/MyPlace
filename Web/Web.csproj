@@ -192,6 +192,7 @@
     <Content Include="Content\dropzone.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\images\marker.png" />
+    <Content Include="Content\images\placeholder.jpg" />
     <Content Include="Content\images\preload.gif" />
     <Content Include="Content\images\spritemap%402x.png" />
     <Content Include="Content\images\spritemap.png" />
@@ -284,11 +285,9 @@
     <Content Include="Scripts\Bootstrap\toucheffects.js" />
     <Content Include="Scripts\Custom\DinnerSetup.js" />
     <Content Include="Scripts\Custom\ImageUpload.js" />
-    <Content Include="Scripts\Custom\PrivateProfile.js" />
     <Content Include="Scripts\Custom\SelectLocation.js" />
     <Content Include="Scripts\dropzone.js" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
-    <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

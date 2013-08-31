@@ -44,7 +44,7 @@ namespace Web.Controllers
 
             var folderPath = userId + "/Profile";
 
-            _storage.DeleteImage(folderPath, fileName);
+            var url = _storage.DeleteImage(folderPath, fileName);
 
             return Json("done");
         }

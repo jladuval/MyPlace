@@ -535,7 +535,7 @@
                         //file.previewElement.querySelector("[data-dz-name]").textContent = file.name;
                         //file.previewElement.querySelector("[data-dz-size]").innerHTML = this.filesize(file.size);
                         if (this.options.addRemoveLinks) {
-                            file._removeLink = Dropzone.createElement("<a class=\"dz-remove\" href=\"javascript:undefined;\">" + this.options.dictRemoveFile + "</a>");
+                            file._removeLink = Dropzone.createElement("<a class=\"dz-remove\"  data-filename=\""+ file.name +"\" href=\"javascript:undefined;\">" + this.options.dictRemoveFile + "</a>");
                             file._removeLink.addEventListener("click", function (e) {
                                 e.preventDefault();
                                 e.stopPropagation();
@@ -1111,8 +1111,9 @@
                     if (file.status === Dropzone.UPLOADING) {
                         this.cancelUpload(file);
                     }
-                    this.files = without(this.files, file);
                     this.emit("removedfile", file);
+                    this.files = without(this.files, file);
+                    
                     if (this.files.length === 0) {
                         return this.emit("reset");
                     }

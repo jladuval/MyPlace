@@ -14,6 +14,8 @@
     [Reader]
     public class ProfileReader : IProfileReader
     {
+        private const string PlaceholderImage = "~/Content/images/placeholder.jpg";
+
         private readonly ISession _session;
 
         public ProfileReader(ISession session)
@@ -53,7 +55,7 @@
                     Orientation = user.Orientation,
                     Gender = user.Gender,
                     Romance = user.Romance,
-                    ProfileImage = user.ProfileImageUrl
+                    ProfileImage = user.ProfileImageUrl ?? PlaceholderImage
                 };
             profileDto.ProfileImageUrls = 
                 user.ProfileImages.Select(i => new ImageDto
@@ -98,7 +100,7 @@
                     Orientation = user.Orientation,
                     Gender = user.Gender,
                     Romance = user.Romance,
-                    ProfileImage = user.ProfileImageUrl
+                    ProfileImage = user.ProfileImageUrl ?? PlaceholderImage
                 };
             profileDto.ProfileImageUrls =
                 user.ProfileImages.Select(i => new ImageDto

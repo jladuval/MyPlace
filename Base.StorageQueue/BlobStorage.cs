@@ -54,7 +54,7 @@ namespace Base.AzureStorage
             return path;
         }
 
-        public void DeleteImage(string folderPath, string fileName)
+        public string DeleteImage(string folderPath, string fileName)
         {
             if (RoleEnvironment.IsAvailable)
             {
@@ -67,6 +67,8 @@ namespace Base.AzureStorage
 
                 File.Delete(Path.Combine(LocalPath, fileName));
             }
+
+            return string.Empty;
         }
 
         private CloudBlockBlob GetBlockBlob(string folderPath, string fileName)
