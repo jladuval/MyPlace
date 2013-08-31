@@ -26,7 +26,7 @@
         {
             var skip = page == null ? 1 : page.Value * PageSize;
             var latlng = _profileReader.GetLatLong(User.TryGetPrincipal().UserId);
-            var model = Mapper.Map<DinnerListDto, DinnerListModel>(_dinnerReader.GetDinnerList(latlng.Lat, latlng.Lng, skip , PageSize));
+            var model = Mapper.Map<DinnerListDto, DinnerListModel>(_dinnerReader.GetDinnerList(latlng.Lat, latlng.Lng, skip, PageSize));
             model.Lat = latlng.Lat;
             model.Long = latlng.Lng;
             return View("DinnerList", model);

@@ -27,5 +27,7 @@
         [Required]
         [Display(Name = "Date and Time")]
         public string Date { get; set; }
+
+        public string CurrentLocation { get; set; }
     }
 }

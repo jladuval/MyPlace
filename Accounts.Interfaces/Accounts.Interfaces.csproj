@@ -50,6 +50,7 @@
     <Compile Include="Presentation\ImageDto.cs" />
     <Compile Include="Presentation\LatLngDto.cs" />
     <Compile Include="Presentation\Profile\PrivateProfileDto.cs" />
+    <Compile Include="Presentation\Profile\PublicProfileDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readers\IDinnerReader.cs" />
     <Compile Include="Readers\IProfileReader.cs" />

@@ -68,6 +68,9 @@
         [HttpPost]
         public ActionResult SignUp(SignupModel model)
         {
+            if (_securityUserReader.UserExists(model.Email))
+                ModelState.AddModelError("Email", "This Email Address is in use");
+
             if (ModelState.IsValid)
             {
                 var email = model.Email;

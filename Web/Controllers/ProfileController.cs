@@ -22,13 +22,15 @@
 
         public ActionResult Index(Guid? id)
         {
-            if (id == null)
-            {
-                return View("PrivateProfile", 
-                    Mapper.Map<PrivateProfileModel>(_profileReader.GetPrivateProfile(
-                        User.TryGetPrincipal().UserId)));
-            }
-            return View("PublicProfile");
+            id = id ?? User.TryGetPrincipal().UserId;
+            return View("PublicProfile", Mapper.Map<PublicProfileModel>(_profileReader.GetPublicProfile(id.Value)));
+        }
+
+        public ActionResult Edit()
+        {
+            return View(
+                "PrivateProfile",
+                Mapper.Map<PrivateProfileModel>(_profileReader.GetPrivateProfile(User.TryGetPrincipal().UserId)));
         }
 
         [HttpPost]

@@ -763,7 +763,24 @@ audio {
 	margin-left: 25px;
 }
 
-.form-control, .form-control:focus {
+textarea.form-control{
+    height: 60px;
+	color: #25272B;
+	border: 0;
+	outline: none;
+	resize: none;
+	background: #eeeff2;
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-ms-box-shadow: none;
+	-o-box-shadow: none;
+}
+
+input.form-control, input.form-control:focus, label.form-control{
 	color: #25272B;
 	text-align: center;
 	border: 0;
@@ -779,6 +796,7 @@ audio {
 	-ms-box-shadow: none;
 	-o-box-shadow: none;
 }
+
 
 .sr-only {
 	position: absolute;

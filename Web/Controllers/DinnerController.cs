@@ -3,7 +3,6 @@
     using System;
     using System.Globalization;
     using System.Web.Mvc;
-    using Accounts.Interfaces.Commands;
     using Accounts.Interfaces.Commands.Dinner;
     using Accounts.Interfaces.Readers;
     using AutoMapper;
@@ -11,15 +10,19 @@
     using Core.Extensions;
     using Models.Dinner;
 
+    [Authorize]
     public class DinnerController : Controller
     {
         private readonly IGate _gate;
         private readonly IDinnerReader _dinnerReader;
 
-        public DinnerController(IGate gate, IDinnerReader dinnerReader)
+        private readonly IProfileReader _profileReader;
+
+        public DinnerController(IGate gate, IDinnerReader dinnerReader, IProfileReader profileReader)
         {
             _gate = gate;
             _dinnerReader = dinnerReader;
+            _profileReader = profileReader;
         }
 
         public ActionResult Index(Guid id)
@@ -38,7 +41,12 @@
         [Authorize]
         public ActionResult Create()
         {
-            return View("Create", new CreateDinnerModel());
+            return View(
+                "Create",
+                new CreateDinnerModel
+                    {
+                        CurrentLocation = _profileReader.GetLocationString(User.TryGetPrincipal().UserId)
+                    });
         }
 
         [Authorize]
@@ -62,7 +70,7 @@
                             Description = model.Description,
                             Date = date
                         });
-                return RedirectToAction("Host", "DinnerList", new { Id = User.TryGetPrincipal().UserId });
+                return RedirectToAction("Index", "DinnerList");
             }
             return View("Create", model);
         }

@@ -5,22 +5,41 @@
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
 
-<h2>Dinner List</h2>
-
-<ul>
-@foreach (var dinner in Model.Dinners)
-{
-    <li>
-        <img src ="@dinner.ProfileImageUrl" alt="profile image"/>
-        <span>@dinner.Starter</span>
-        <span>@dinner.Main</span>
-        <span>@dinner.Dessert</span>
-        <span>@dinner.Distance</span>
-        <span>@dinner.Date</span>
-        <a href ="@Url.Action("Index", "Dinner", new { id = dinner.Id })" class="btn"></a>
-    </li>
-}
-</ul>
+<section id="intro" class="content no-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-offset-2">
+                <h1 class="text-center">Dinners Near You</h1>
+                <p class="text-center">Did we mention to you that we like onepage websites? Sure we did! 
+                    But now we are extending modals with more options, check it out by clicking on one of the blog items:</p>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    @foreach (var dinner in Model.Dinners)
+                    {
+                        <div class="col-lg-4 col-sm-4">
+                        <div class="thumbnail">
+                            <ul>
+                                <li class="readtime"><i class="icon-time"></i><p>@dinner.Distance Away</p></li>
+                                <li class="love"><i class="icon-picture"></i><p>Gallery</p></li>
+                                <li class="date"><i class="icon-calendar-empty"></i><p>@dinner.Date</p></li>
+                            </ul>
+                            <a href="@Url.Action("Index", "Dinner", new { id = dinner.Id })" role="button" data-toggle="modal">
+                                <img class="img-responsive" src="@dinner.ProfileImageUrl" alt="">
+                                <div class="info">
+                                    <h4>@dinner.Main</h4>
+                                    <p><span>@dinner.Starter</span></p>
+                                    <p><small>@dinner.Dessert</small></p>
+                                </div>
+                            </a>
+                        </div>
+                        </div>
+                    }
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 @section PageScripts
 {

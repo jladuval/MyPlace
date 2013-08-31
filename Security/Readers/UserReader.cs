@@ -38,9 +38,9 @@
                        : null;
         }
         
-        public bool UserExists(UserExistsQuery query) 
+        public bool UserExists(string email) 
         {
-            return _session.Query<User>().FirstOrDefault(x => x.Email == query.Email) != null;
+            return _session.Query<User>().FirstOrDefault(x => x.Email == email) != null;
         }
     }
 }

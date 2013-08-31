@@ -1,9 +1,7 @@
 ﻿namespace Accounts.Domain
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Configuration;
     using Base.DDD.Domain;
 
     public class Dinner : Entity

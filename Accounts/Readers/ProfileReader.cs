@@ -75,5 +75,39 @@
                 Lng = user.Location.Longitude
             };
         }
+
+        public string GetLocationString(Guid userId)
+        {
+            var location = _session.Query<User>().Fetch(x => x.Location).Single(x => x.Id == userId).Location;
+            return string.Format(
+                "{0}, {1}, {2}, {3}", location.Address, location.Suburb, location.City, location.Postcode);
+        }
+
+        public PublicProfileDto GetPublicProfile(Guid id)
+        {
+            var user = _session.Query<User>()
+               .Fetch(x => x.ProfileImages)
+               .Fetch(x => x.Location)
+               .Where(x => x.Id == id);
+            var profileDto =
+                user.Select(x => new PublicProfileDto()
+                {
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    Description = x.Description,
+                    Friendship = x.Friendship,
+                    Orientation = x.Orientation,
+                    Gender = x.Gender,
+                    Romance = x.Romance,
+                    ProfileImage = x.ProfileImageUrl
+                }).First();
+            profileDto.ProfileImageUrls =
+                user.First().ProfileImages.Select(i => new ImageDto
+                {
+                    Url = i.Url,
+                    FileName = i.ImageName
+                }).ToList();
+            return profileDto;
+        }
     }
 }

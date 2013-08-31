@@ -38,10 +38,21 @@
             <a href="/" class="navbar-brand"><img class="img-responsive" src="http://placehold.it/166x40" alt=""></a>
             <div class="nav-collapse collapse navbar-responsive-collapse">
                 <ul class="nav navbar-nav pull-right">
-                    @Html.MenuItem("Home", "Index", "Home", "#intro")
-                    @Html.MenuItem("About", "Index", "Home", "#services", true)
-                    @Html.MenuItem("Sign Up", "Index", "Membership")
-                    @Html.MenuItem("Login", "Login", "Membership")
+                     @if (Request.IsAuthenticated)
+                    {
+                        @Html.MenuItem("Home", "Index", "Home", "#intro", true)
+                        @Html.MenuItem("About", "Index", "Home", "#services", true)
+                        @Html.MenuItem("Dinners", "Index", "DinnerList")
+                        @Html.MenuItem("Profile", "Index", "Profile")
+                        @Html.MenuItem("Log Out", "LogOff", "Membership")
+                    }
+                    else
+                    {
+                        @Html.MenuItem("Home", "Index", "Home", "#intro")
+                        @Html.MenuItem("About", "Index", "Home", "#services", true)
+                        @Html.MenuItem("Sign Up", "Index", "Membership")
+                        @Html.MenuItem("Login", "Login", "Membership")
+                    }
                 </ul>
             </div>
         </div>

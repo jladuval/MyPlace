@@ -3,35 +3,65 @@
     ViewBag.Title = "Create a dinner";
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
-<h2>Create A Dinner</h2>
-@using (Html.BeginForm("Create", "Dinner"))
-{
-    @Html.LabelFor(x => x.Starter)
-    @Html.TextBoxFor(x => x.Starter)
-    @Html.ValidationMessageFor(x => x.Starter)
-    
-    @Html.LabelFor(x => x.Main)
-    @Html.TextBoxFor(x => x.Main)
-    @Html.ValidationMessageFor(x => x.Main)
-
-    @Html.LabelFor(x => x.Dessert)
-    @Html.TextBoxFor(x => x.Dessert)
-    @Html.ValidationMessageFor(x => x.Dessert)
-    
-    @Html.LabelFor(x => x.DryDinner)
-    @Html.CheckBoxFor(x => x.DryDinner)
-    @Html.ValidationMessageFor(x => x.DryDinner)
-
-    @Html.LabelFor(x => x.Description)
-    @Html.TextAreaFor(x => x.Description)
-    @Html.ValidationMessageFor(x => x.Description)
-
-    @Html.LabelFor(x => x.Date)
-    @Html.TextBoxFor(x => x.Date, new { @id = "datetimepicker" })
-    @Html.ValidationMessageFor(x => x.Date)
-
-    <input type="submit" value="Submit!"/>
-}
+<section id="intro" class="content no-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-offset-2">
+                <h1 class="text-center">Host a Dinner</h1>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    @using (Html.BeginForm("Create", "Dinner", FormMethod.Post, new { @role = "form", @id = "contactForm", @class = "form-inline" }))
+                    {
+                        <div class="form-group col-sm-6 col-offset-3">
+                            <label>Location</label>
+                            <label class="form-control">@Model.CurrentLocation</label>
+                        </div>
+                        <div class="form-group col-sm-6 col-offset-3">
+                            @Html.LabelFor(x => x.Description)
+                            @Html.TextAreaFor(x => x.Description, new { @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.Description)
+                        </div>
+                        <div class="form-group col-sm-6 col-offset-3">
+                            @Html.LabelFor(x => x.Starter)
+                            @Html.TextBoxFor(x => x.Starter, new { @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.Starter)
+                        </div>
+                        <div class="form-group col-sm-6 col-offset-3">
+                            @Html.LabelFor(x => x.Main)
+                            @Html.TextBoxFor(x => x.Main, new { @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.Main)
+                        </div>
+                        <div class="form-group col-sm-6 col-offset-3">
+                            @Html.LabelFor(x => x.Dessert)
+                            @Html.TextBoxFor(x => x.Dessert, new { @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.Dessert)
+                        </div>
+                        <div class="form-group col-sm-6 col-offset-3">
+                            @Html.LabelFor(x => x.Date)
+                            @Html.TextBoxFor(x => x.Date, new { @id="datetimepicker",  @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.Date)
+                        </div>
+                         <div class="form-group col-sm-6 col-offset-3 offset-top">
+                            <div class="input-group">
+                              <span class="input-group-addon">
+                                @Html.CheckBoxFor(x => x.DryDinner)
+                              </span>
+                              @Html.LabelFor(x => x.DryDinner, new{@class="form-control"})
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 col-offset-3">
+                            <div class="message">
+                                <div class="alert"></div>
+                            </div>
+                            <button type="submit" value="Done" id="submit" class="btn btn-fancy btn-block offset-top">Done</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 @section PageScripts
 {

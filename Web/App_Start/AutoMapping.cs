@@ -14,9 +14,11 @@
         public static void CreateMappings()
         {
             Mapper.CreateMap<PrivateProfileDto, PrivateProfileModel>();
+            Mapper.CreateMap<PublicProfileDto, PublicProfileModel>();
             Mapper.CreateMap<ImageDto, ImageModel>();
             Mapper.CreateMap<DinnerListDto, DinnerListModel>();
-            Mapper.CreateMap<DinnerListItemDto, DinnerListItemModel>();
+            Mapper.CreateMap<DinnerListItemDto, DinnerListItemModel>()
+                .ForMember(x => x.Date, opt => opt.MapFrom(x => x.EventDate));
             Mapper.CreateMap<DinnerDto, ViewDinnerModel>();
         }
     }
