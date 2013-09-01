@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\MigratorExtensions.cs" />
     <Compile Include="FluentMigrator\InProc\Migrator.cs" />
     <Compile Include="FluentMigrator\InProc\MigratorContext.cs" />
     <Compile Include="Migrations\1_CreateUsersTable.cs" />

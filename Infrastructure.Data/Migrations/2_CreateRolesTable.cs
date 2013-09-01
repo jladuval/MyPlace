@@ -4,6 +4,8 @@
 
     using FluentMigrator;
 
+    using Infrastructure.Data.Extensions;
+
     [Migration(201305021622)]
     public class CreateRolesTable : Migration
     {
@@ -21,7 +23,7 @@
                     .AsCustom("datetime2(7)")
                     .NotNullable()
                 .WithColumn("Name")
-                    .AsString(255)
+                    .AsString(400)
                     .NotNullable()
                     .Unique("IX_Roles_Name");
 

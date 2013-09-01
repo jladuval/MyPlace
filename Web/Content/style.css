@@ -524,6 +524,7 @@ blockquote.pull-right:hover {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	position: relative;
+    background-color: #f9f9f9;
 }
 
 .thumbnail h4 {
@@ -1737,8 +1738,8 @@ form .btn {
 .offset-top {
     margin-top: 20px !important;
 }
- .row img {
-     width: 100%;
+ .row .imageListItem {
+     max-height: 400px;
  }
 
  .tall {

@@ -2,6 +2,8 @@
 
 namespace Infrastructure.Data.Migrations
 {
+    using Infrastructure.Data.Extensions;
+
     [Migration(201307220850)]
     public class AddImages : Migration
     {
@@ -18,13 +20,13 @@ namespace Infrastructure.Data.Migrations
                     .AsCustom("datetime2(7)")
                     .NotNullable()
                 .WithColumn("Url")
-                    .AsString()
+                    .AsMaxString()
                     .NotNullable()
                 .WithColumn("FolderPath")
-                    .AsString()
+                    .AsMaxString()
                     .Nullable()
                 .WithColumn("ImageName")
-                    .AsString()
+                    .AsMaxString()
                     .Nullable()
                 .WithColumn("Selected")
                     .AsBoolean()
@@ -41,12 +43,12 @@ namespace Infrastructure.Data.Migrations
 
             Alter.Table("Users").InSchema("dbo")
                 .AddColumn("ProfileImageUrl")
-                .AsString()
+                .AsString(int.MaxValue)
                 .Nullable();
 
             Alter.Table("Dinners").InSchema("dbo")
                 .AddColumn("ImageUrl")
-                .AsString()
+                .AsString(int.MaxValue)
                 .Nullable();
 
             Create.ForeignKey("FK_dbo.Images_Profile_dbo.User_Id")

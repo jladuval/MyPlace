@@ -11,6 +11,7 @@
 
     public static class AutoMapping
     {
+        private const string placeholder = "/Content/images/placeholder.jpg";
         public static void CreateMappings()
         {
             Mapper.CreateMap<PrivateProfileDto, PrivateProfileModel>();
@@ -18,7 +19,8 @@
             Mapper.CreateMap<ImageDto, ImageModel>();
             Mapper.CreateMap<DinnerListDto, DinnerListModel>();
             Mapper.CreateMap<DinnerListItemDto, DinnerListItemModel>()
-                .ForMember(x => x.Date, opt => opt.MapFrom(x => x.EventDate));
+                .ForMember(x => x.Date, opt => opt.MapFrom(x => x.EventDate))
+                .AfterMap((src, dest) => { if (dest.ProfileImageUrl == null) dest.ProfileImageUrl = placeholder; });
             Mapper.CreateMap<DinnerDto, ViewDinnerModel>();
         }
     }

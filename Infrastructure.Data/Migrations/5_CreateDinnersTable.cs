@@ -2,6 +2,8 @@
 {
     using FluentMigrator;
 
+    using Infrastructure.Data.Extensions;
+
     [Migration(201306172005)]
     public class CreateDinnersTable : Migration
     {
@@ -18,19 +20,19 @@
                     .AsCustom("datetime2(7)")
                     .Nullable()
                 .WithColumn("Starter")
-                    .AsString()
+                    .AsMaxString()
                     .NotNullable()
                 .WithColumn("Main")
-                    .AsString()
+                    .AsMaxString()
                     .NotNullable()
                 .WithColumn("Dessert")
-                    .AsString()
+                    .AsMaxString()
                     .NotNullable()
                 .WithColumn("Dry")
                     .AsBoolean()
                     .NotNullable()
                 .WithColumn("Description")
-                    .AsString()
+                    .AsMaxString()
                     .NotNullable()
                 .WithColumn("ClosedDate")
                     .AsCustom("datetime2(7)")

@@ -21,7 +21,7 @@
 
         [Required]
         [Display(Name = "Description")]
-        [MaxLength(160, ErrorMessage = "Please enter less than 160 characters")]
+        [MaxLength(1000, ErrorMessage = "Please enter less than 1000 characters")]
         public string Description { get; set; }
 
         [Required]

@@ -30,7 +30,7 @@
 
             if (profileImage == null) return;
 
-            if (user.ProfileImageUrl == profileImage.FolderPath) user.ProfileImageUrl = null;
+            if (user.ProfileImageUrl == profileImage.Url) user.ProfileImageUrl = null;
 
             user.ProfileImages.Remove(profileImage);
         }

@@ -2,6 +2,8 @@
 {
     using FluentMigrator;
 
+    using Infrastructure.Data.Extensions;
+
     [Migration(201306121251)]
     public class CreateLocationsTable : Migration
     {
@@ -18,19 +20,19 @@
                     .AsCustom("datetime2(7)")
                     .Nullable()
                 .WithColumn("Address")
-                    .AsString(255)
+                    .AsMaxString()
                     .NotNullable()
                 .WithColumn("Suburb")
-                    .AsString(255)
+                    .AsMaxString()
                     .NotNullable()
                 .WithColumn("City")
-                    .AsString(255)
+                    .AsMaxString()
                     .NotNullable()
                 .WithColumn("Country")
-                    .AsString(255)
+                    .AsMaxString()
                     .NotNullable()
                 .WithColumn("Postcode")
-                    .AsString(255)
+                    .AsMaxString()
                     .NotNullable()
                 .WithColumn("Latitude")
                     .AsDouble()

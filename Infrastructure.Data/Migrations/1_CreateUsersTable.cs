@@ -2,6 +2,8 @@
 {
     using FluentMigrator;
 
+    using Infrastructure.Data.Extensions;
+
     [Migration(201305011300)]
     public class CreateUsersTable : Migration
     {
@@ -19,32 +21,32 @@
                       .AsCustom("datetime2(7)")
                       .NotNullable()
                   .WithColumn("FirstName")
-                      .AsString(255)
+                      .AsMaxString()
                       .Nullable()
                   .WithColumn("LastName")
-                      .AsString(255)
+                      .AsMaxString()
                       .Nullable()
                   .WithColumn("Email")
-                      .AsString(255)
+                      .AsString(400)
                       .NotNullable()
                       .Unique("IX_Users_Email")
                   .WithColumn("Country")
-                      .AsString(255)
+                      .AsMaxString()
                       .Nullable()
                   .WithColumn("Timezone")
-                      .AsString(255)
+                      .AsMaxString()
                       .Nullable()
                   .WithColumn("Culture")
-                      .AsString(255)
+                      .AsMaxString()
                       .Nullable()
                   .WithColumn("Password")
-                      .AsString(255)
+                      .AsMaxString()
                       .Nullable()
                   .WithColumn("Salt")
-                      .AsString(255)
+                      .AsMaxString()
                       .Nullable()
                   .WithColumn("VerificationCode")
-                      .AsString(255)
+                      .AsMaxString()
                       .Nullable()
                   .WithColumn("IsVerified")
                       .AsBoolean()
