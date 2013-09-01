@@ -139,12 +139,14 @@
                             onSuccess();
                     });
             };
-            SelectLocation.init();
+            SelectLocation.init("@Model.Lat", "@Model.Long");
             imageUpload("@Url.Action("ProfileImage", "Upload")",
                 "#dropZone",
                 "@Url.Action("RemoveProfileImage", "Upload")",
                 function(element) {
                     var fileName = $(element.target).attr('alt');
+                    if (!fileName)
+                        fileName = $(element.target).find('img').first().attr('alt');
                     $.post("@Url.Action("SelectImage", "Profile")", { fileName: fileName })
                         .done(function(response) {
                             $('#profileImage').html('<img class="img-responsive" src="' + response + '" alt=' + fileName + '/>');

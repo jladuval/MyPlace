@@ -51,12 +51,14 @@
 }
 .imageDrop .dz-preview .dz-details,
 .imageDrop-previews .dz-preview .dz-details {
-  width: 100px;
-  height: 100px;
-  position: relative;
-  background: #ebebeb;
-  padding: 5px;
-  margin-bottom: 22px;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    background: #ebebeb;
+    padding: 5px;
+    margin-bottom: 22px;
+    overflow: hidden;
+    text-align: center;
 }
 .imageDrop .dz-preview .dz-details .dz-dataUrl,
 .imageDrop-previews .dz-preview .dz-details .dz-dataUrl{
@@ -71,7 +73,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100px;
   height: 100px;
 }
 .imageDrop .dz-preview .dz-details .dz-size,

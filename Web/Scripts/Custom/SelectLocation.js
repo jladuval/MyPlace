@@ -10,16 +10,20 @@
     var _country;
     var _postcode;
 
-    function initialiseMap() {
-        if (navigator.geolocation) {
-            var success = function (position) {
-                createMap(position.coords.latitude, position.coords.longitude);
-            };
-            var error = function () { createMap(12.659493, 79.415412); };
-
-            navigator.geolocation.getCurrentPosition(success, error);
+    function initialiseMap(lat, lng) {
+        if (lat && lng) {
+            createMap(lat, lng);
         } else {
-            createMap(12.659493, 79.415412);
+            if (navigator.geolocation) {
+                var success = function(position) {
+                    createMap(position.coords.latitude, position.coords.longitude);
+                };
+                var error = function() { createMap(12.659493, 79.415412); };
+
+                navigator.geolocation.getCurrentPosition(success, error);
+            } else {
+                createMap(12.659493, 79.415412);
+            }
         }
     }
 
@@ -80,7 +84,7 @@
         }
     }
 
-    var init = function(mapId, address, suburb, city, country, postcode) {
+    var init = function(lat, lng, mapId, address, suburb, city, country, postcode) {
         _mapId = mapId || 'googleMap';
 
         _address = address || $('#address');
@@ -90,7 +94,7 @@
         _postcode = postcode || $('#postcode');
         
         $(function () {
-            initialiseMap();
+            initialiseMap(lat, lng);
         });
     };
 
