@@ -34,8 +34,7 @@
         public ActionResult Apply(Guid id)
         {
             _gate.Dispatch(new ApplyForDinnerCommand(User.TryGetPrincipal().UserId, id));
-            var model = Mapper.Map<ViewDinnerModel>(_dinnerReader.GetDinner(id));
-            return View("ViewDinner", model);
+            return RedirectToAction("Index", new { id = id });
         }
 
         [Authorize]
