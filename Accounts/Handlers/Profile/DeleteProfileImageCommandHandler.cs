@@ -26,7 +26,7 @@
 
             if (user == null) return;
 
-            var profileImage = user.ProfileImages.FirstOrDefault(x => x.FolderPath == command.FolderPath);
+            var profileImage = user.ProfileImages.FirstOrDefault(x => x.Url == command.ImageUrl);
 
             if (profileImage == null) return;
 
