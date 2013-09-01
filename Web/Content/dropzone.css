@@ -70,7 +70,6 @@
 }
 .imageDrop .dz-preview .dz-details img,
 .imageDrop-previews .dz-preview .dz-details img {
-  position: absolute;
   top: 0;
   left: 0;
   height: 100px;

@@ -63,8 +63,12 @@
 
         public DinnerDto GetDinner(Guid id)
         {
-            Mapper.CreateMap<Dinner, DinnerDto>();
-            return Mapper.Map<DinnerDto>(_session.Query<Dinner>().Single(x => x.Id == id));
+            Mapper.CreateMap<Dinner, DinnerDto>()
+                .ForMember(x => x.ProfileImageUrl, opt => opt.MapFrom(x => x.User.ProfileImageUrl))
+                .ForMember(x => x.FirstName, opt => opt.MapFrom(x => x.User.FirstName))
+                .ForMember(x => x.LastName, opt => opt.MapFrom(x => x.User.LastName))
+                .ForMember(x => x.UserId, opt => opt.MapFrom(x => x.User.Id));
+            return Mapper.Map<DinnerDto>(_session.Query<Dinner>().Fetch(x => x.User).Single(x => x.Id == id));
         }
     }
 }
