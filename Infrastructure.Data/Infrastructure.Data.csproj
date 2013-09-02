@@ -48,15 +48,16 @@
     <Compile Include="Extensions\MigratorExtensions.cs" />
     <Compile Include="FluentMigrator\InProc\Migrator.cs" />
     <Compile Include="FluentMigrator\InProc\MigratorContext.cs" />
-    <Compile Include="Migrations\1_CreateUsersTable.cs" />
-    <Compile Include="Migrations\2_CreateRolesTable.cs" />
-    <Compile Include="Migrations\3_CreateUsersInRolesTable.cs" />
-    <Compile Include="Migrations\4_CreateLocationsTable.cs" />
-    <Compile Include="Migrations\5_CreateDinnersTable.cs" />
-    <Compile Include="Migrations\6_AddImages.cs" />
-    <Compile Include="Migrations\7_AddProfileFieldsToUser.cs" />
-    <Compile Include="Migrations\8_AddDinnerApplicationJunctionTable.cs" />
-    <Compile Include="Migrations\9_AddAcceptedRejectedToDinnerApplicants.cs" />
+    <Compile Include="Migrations\010_AddAgeToUser.cs" />
+    <Compile Include="Migrations\001_CreateUsersTable.cs" />
+    <Compile Include="Migrations\002_CreateRolesTable.cs" />
+    <Compile Include="Migrations\003_CreateUsersInRolesTable.cs" />
+    <Compile Include="Migrations\004_CreateLocationsTable.cs" />
+    <Compile Include="Migrations\005_CreateDinnersTable.cs" />
+    <Compile Include="Migrations\006_AddImages.cs" />
+    <Compile Include="Migrations\007_AddProfileFieldsToUser.cs" />
+    <Compile Include="Migrations\008_AddDinnerApplicationJunctionTable.cs" />
+    <Compile Include="Migrations\009_AddAcceptedRejectedToDinnerApplicants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
