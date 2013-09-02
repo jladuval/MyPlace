@@ -29,6 +29,8 @@
 
         public string Description { get; set; }
 
+        public string Age { get; set; }
+
         public Gender Gender { get; set; }
 
         public Orientation Orientation { get; set; }

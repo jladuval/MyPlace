@@ -55,6 +55,7 @@
                     Orientation = user.Orientation,
                     Gender = user.Gender,
                     Romance = user.Romance,
+                    Age = user.Age,
                     ProfileImage = user.ProfileImageUrl ?? PlaceholderImage
                 };
             profileDto.ProfileImageUrls = 
@@ -100,6 +101,7 @@
                     Orientation = user.Orientation,
                     Gender = user.Gender,
                     Romance = user.Romance,
+                    Age = user.Age,
                     ProfileImage = user.ProfileImageUrl ?? PlaceholderImage
                 };
             profileDto.ProfileImageUrls =

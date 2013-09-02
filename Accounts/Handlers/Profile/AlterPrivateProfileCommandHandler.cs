@@ -1,31 +1,26 @@
-﻿namespace Accounts.Handlers
+﻿namespace Accounts.Handlers.Profile
 {
-    using Domain;
-    using Interfaces.Commands;
-
     using Base.CQRS.Commands.Attributes;
     using Base.CQRS.Commands.Handler;
-
-    using GoogleMaps.LocationServices;
-
+    using Domain;
     using Infrastructure.NHibernate.Exceptions;
     using Infrastructure.NHibernate.Repositories;
     using Interfaces.Commands.Profile;
     using Services;
 
     [CommandHandler]
-    public class MoreDetailsCommandHandler : ICommandHandler<MoreDetailsCommand>
+    public class AlterPrivateProfileCommandHandler : ICommandHandler<AlterPrivateProfileCommand>
     {
         private readonly IRepository<User> _userRepository;
         private readonly ILocationParsingService _locationParsingService;
 
-        public MoreDetailsCommandHandler(IRepository<User> userRepository, ILocationParsingService locationParsingService)
+        public AlterPrivateProfileCommandHandler(IRepository<User> userRepository, ILocationParsingService locationParsingService)
         {
             _userRepository = userRepository;
             _locationParsingService = locationParsingService;
         }
 
-        public void Handle(MoreDetailsCommand command)
+        public void Handle(AlterPrivateProfileCommand command)
         {
             var user = _userRepository.Load(command.UserId);
 
@@ -36,8 +31,8 @@
             {
                 user.FirstName = command.FirstName;
                 user.LastName = command.LastName;
-                user.Description = command.Description ?? user.Description;
-                user.Age = command.Age ?? user.Age;
+                user.Description = command.Description;
+                user.Age = command.Age;
                 user.Orientation = command.Orientation;
                 user.Gender = command.Gender;
                 user.Friendship = command.Friendship;

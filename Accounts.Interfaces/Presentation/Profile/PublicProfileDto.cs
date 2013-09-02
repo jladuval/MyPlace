@@ -20,6 +20,8 @@
 
         public Orientation Orientation { get; set; }
 
+        public string Age { get; set; }
+
         public bool Friendship { get; set; }
 
         public bool Romance { get; set; }

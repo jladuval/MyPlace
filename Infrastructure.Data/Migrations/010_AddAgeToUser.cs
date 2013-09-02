@@ -9,7 +9,7 @@
         {
             Alter.Table("Users")
                 .AddColumn("Age")
-                    .AsInt32()
+                    .AsString(int.MaxValue)
                     .Nullable();
         }
 

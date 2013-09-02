@@ -40,7 +40,7 @@
         public ActionResult EditProfile(PrivateProfileModel model)
         {
             _gate.Dispatch(
-                new MoreDetailsCommand(
+                new AlterPrivateProfileCommand(
                     User.TryGetPrincipal().UserId,
                     model.FirstName,
                     model.LastName,
@@ -54,7 +54,8 @@
                     model.Romance,
                     model.Friendship) 
                     {
-                        Description = model.Description 
+                        Description = model.Description,
+                        Age = model.Age,
                     });
             return RedirectToAction("Index");
         }

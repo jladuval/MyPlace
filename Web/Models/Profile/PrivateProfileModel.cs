@@ -4,6 +4,7 @@
     using System.ComponentModel.DataAnnotations;
 
     using Common.Enums;
+    using DataAnnotationsExtensions;
     using Shared;
 
     public class PrivateProfileModel
@@ -51,6 +52,8 @@
 
         [Required]
         public Orientation Orientation { get; set; }
+
+        public string Age { get; set; }
 
         public bool Friendship { get; set; }
 

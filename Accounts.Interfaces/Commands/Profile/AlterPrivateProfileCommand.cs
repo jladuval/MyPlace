@@ -2,10 +2,9 @@
 {
     using System;
     using System.Text;
-
     using Common.Enums;
 
-    public class MoreDetailsCommand
+    public class AlterPrivateProfileCommand
     {
         public Guid UserId { get; set; }
 
@@ -35,7 +34,7 @@
 
         public string Age { get; set; }
 
-        public MoreDetailsCommand(
+        public AlterPrivateProfileCommand(
             Guid userId,
             string firstName,
             string lastName,

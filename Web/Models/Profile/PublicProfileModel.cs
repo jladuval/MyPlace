@@ -4,7 +4,7 @@
 
     using Common.Enums;
 
-    using Web.Models.Shared;
+    using Shared;
 
     public class PublicProfileModel
     {
@@ -21,6 +21,8 @@
         public Gender Gender { get; set; }
 
         public Orientation Orientation { get; set; }
+
+        public string Age { get; set; }
 
         public bool Friendship { get; set; }
 

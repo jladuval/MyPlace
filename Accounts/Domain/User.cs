@@ -27,6 +27,8 @@ namespace Accounts.Domain
 
         public bool Friendship { get; set; }
 
+        public string Age { get; set; }
+
         public Gender Gender { get; set; }
 
         public Orientation Orientation { get; set; }

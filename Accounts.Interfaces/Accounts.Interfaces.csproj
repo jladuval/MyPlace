@@ -42,6 +42,7 @@
     <Compile Include="Commands\Dinner\ApplyForDinnerCommand.cs" />
     <Compile Include="Commands\Profile\AddProfileImageCommand.cs" />
     <Compile Include="Commands\Dinner\CreateDinnerCommand.cs" />
+    <Compile Include="Commands\Profile\AlterPrivateProfileCommand.cs" />
     <Compile Include="Commands\Profile\DeleteProfileImageCommand.cs" />
     <Compile Include="Commands\Profile\MoreDetailsCommand.cs" />
     <Compile Include="Commands\Profile\SelectProfileImageCommand.cs" />

@@ -40,7 +40,11 @@
                 </div>
             }
             <div class="col-lg-10">
-                    <h1>@Model.FirstName @Model.LastName</h1>
+                <h1>@Model.FirstName @Model.LastName</h1>
+                @if (Model.Age != null)
+                {
+                    <small>Age: @Model.Age</small>
+                }
             </div>
            
             

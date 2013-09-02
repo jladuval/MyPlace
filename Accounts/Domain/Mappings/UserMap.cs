@@ -28,6 +28,8 @@
 
             Map(x => x.Gender);
 
+            Map(x => x.Age);
+
             Map(x => x.Romance).Not.Nullable();
 
             Map(x => x.Friendship).Not.Nullable();
