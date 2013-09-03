@@ -1,5 +1,8 @@
 ﻿namespace Events.Handlers
 {
+    using System;
+    using System.Linq;
+
     using Accounts.Domain;
     using Accounts.Interfaces.Commands;
     using Accounts.Interfaces.Commands.Dinner;
@@ -28,16 +31,24 @@
                 var user = _userRepository.Load(command.UserId);
                 if (user == null) throw new EntityNotFoundException();
 
-                _dinnerRepository.Save(
-                    new Dinner(
-                        user,
-                        user.Location,
-                        command.Starter,
-                        command.Main,
-                        command.Dessert,
-                        command.Dry,
-                        command.Description,
-                        command.Date));
+                var dinner = new Dinner(
+                    user,
+                    user.Location,
+                    command.Starter,
+                    command.Main,
+                    command.Dessert,
+                    command.Dry,
+                    command.Description,
+                    command.Date);
+
+                if (command.PartnerEmail != null)
+                {
+                    var partner = _userRepository.Find().Single(x => x.Email == command.PartnerEmail);
+                    dinner.VerificationCode = Guid.NewGuid();
+                    dinner.Partner = partner;
+                }
+
+                _dinnerRepository.Save(dinner);
             }
         }
     }

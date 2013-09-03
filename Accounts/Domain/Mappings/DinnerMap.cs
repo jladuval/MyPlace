@@ -20,6 +20,10 @@
 
             References(x => x.Location).Column("LocationId").Not.Nullable().Cascade.All();
 
+            References(x => x.Partner).Column("PartnerId").Nullable().Cascade.SaveUpdate();
+
+            Map(x => x.VerificationCode).Nullable();
+
             Map(x => x.Starter).Not.Nullable();
 
             Map(x => x.Main).Not.Nullable();

@@ -13,6 +13,7 @@
                 <div class="row">
                     @using (Html.BeginForm("Create", "Dinner", FormMethod.Post, new { @role = "form", @id = "contactForm", @class = "form-inline" }))
                     {
+                        @Html.HiddenFor(x => x.CurrentLocation)
                         <div class="form-group col-sm-6 col-offset-3">
                             <label>Location</label>
                             <label class="form-control">@Model.CurrentLocation</label>
@@ -41,6 +42,11 @@
                             @Html.LabelFor(x => x.Date)
                             @Html.TextBoxFor(x => x.Date, new { @id="datetimepicker",  @class="form-control" })
                             @Html.ValidationMessageFor(x => x.Date)
+                        </div>
+                        <div class="form-group col-sm-6 col-offset-3">
+                            @Html.LabelFor(x => x.PartnerEmail)
+                            @Html.TextBoxFor(x => x.PartnerEmail, new { @placeholder="Enter their email address here", @class="form-control" })
+                            @Html.ValidationMessageFor(x => x.PartnerEmail)
                         </div>
                          <div class="form-group col-sm-6 col-offset-3 offset-top">
                             <div class="input-group">

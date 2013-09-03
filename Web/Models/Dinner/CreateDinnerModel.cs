@@ -28,6 +28,10 @@
         [Display(Name = "Date and Time")]
         public string Date { get; set; }
 
+        [EmailAddress]
+        [Display(Name = "Host with a friend")]
+        public string PartnerEmail { get; set; }
+
         public string CurrentLocation { get; set; }
     }
 }

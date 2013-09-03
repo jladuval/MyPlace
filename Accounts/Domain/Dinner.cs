@@ -24,7 +24,11 @@
 
         public DateTime Date { get; set; }
 
-        public ICollection<DinnerApplicant> Applicants { get; set; }
+        public virtual ICollection<DinnerApplicant> Applicants { get; set; }
+
+        public Guid? VerificationCode { get; set; }
+
+        public User Partner { get; set; }
 
         public Dinner() { }
 

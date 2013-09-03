@@ -10,6 +10,8 @@
     using Core.Extensions;
     using Models.Dinner;
 
+    using Security.Interfaces.Queries;
+
     [Authorize]
     public class DinnerController : Controller
     {
@@ -18,11 +20,14 @@
 
         private readonly IProfileReader _profileReader;
 
-        public DinnerController(IGate gate, IDinnerReader dinnerReader, IProfileReader profileReader)
+        private readonly ISecurityUserReader _securityUserReader;
+
+        public DinnerController(IGate gate, IDinnerReader dinnerReader, IProfileReader profileReader, ISecurityUserReader securityUserReader)
         {
             _gate = gate;
             _dinnerReader = dinnerReader;
             _profileReader = profileReader;
+            _securityUserReader = securityUserReader;
         }
 
         public ActionResult Index(Guid id)
@@ -53,8 +58,11 @@
         public ActionResult Create(CreateDinnerModel model)
         {
             DateTime date;
-            if (!DateTime.TryParseExact(model.Date, "MM/dd/yyyy HH:mm", null, DateTimeStyles.None, out date))
+            if (!DateTime.TryParseExact(model.Date, "MM/dd/yyyy HH:mm", null, DateTimeStyles.None, out date)) 
                 ModelState.AddModelError("Date", "The date entered was invalid");
+
+            if (model.PartnerEmail != null && !_securityUserReader.UserExists(model.PartnerEmail)) 
+                ModelState.AddModelError("PartnerEmail", "This person does not have a registered account");
 
             if (ModelState.IsValid)
             {
@@ -67,7 +75,8 @@
                             Dessert = model.Dessert,
                             Dry = model.DryDinner,
                             Description = model.Description,
-                            Date = date
+                            Date = date,
+                            PartnerEmail = model.PartnerEmail
                         });
                 return RedirectToAction("Index", "DinnerList");
             }
