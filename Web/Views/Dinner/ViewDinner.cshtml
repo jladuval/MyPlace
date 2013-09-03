@@ -34,8 +34,9 @@
                         <h5>Information</h5>
                         <p class="lead">@Model.Description<br><br>
                     </div>
-                    <div class="col-lg-8">
-                            <a class="btn btn-syndicate btn-large squared" href="/Dinner/Apply/@Model.Id">I'd love to come</a>
+                    <div class="col-sm-12">
+                        <!-- Will not display on one line unless formatted this way :S -->
+                        <a class="btn btn-syndicate btn-large squared" id="apply" href="/Dinner/Apply/@Model.Id">I'd love to come</a><input id="partnerEmail" class="form-control-inline soft-hidden" placeholder="Enter your friends email"><a class="btn btn-info btn-large squared" id="togglePartner" href="#">+ 1</a>
                     </div>
                 </div>
             </div>
@@ -43,3 +44,16 @@
     </div>
 							
 </section>
+
+@section PageScripts
+{
+    <script type="text/javascript">
+        $(function () {
+            var togglePartner = $('#togglePartner');
+            togglePartner.click(function () {
+                togglePartner
+                $('#partnerEmail').toggle('fast');
+            });
+        })
+    </script>
+}

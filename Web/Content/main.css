@@ -14,3 +14,27 @@
 #googleMap {
     height: 450px;
 }
+
+.form-control-inline {
+    display: inline-block;
+    width: 200px;
+    height: 55px;
+    color: #25272B;
+	text-align: center;
+	border: 0;
+	outline: none;
+	resize: none;
+	background: #eeeff2;
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-ms-box-shadow: none;
+	-o-box-shadow: none;
+}
+
+.soft-hidden {
+    display: none;
+}
