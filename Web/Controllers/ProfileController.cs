@@ -9,6 +9,9 @@
     using Core.Extensions;
     using Models.Profile;
 
+    using Web.Attributes;
+
+    [RequiresDetails]
     public class ProfileController : Controller
     {
         private readonly IGate _gate;

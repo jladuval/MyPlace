@@ -53,7 +53,7 @@
                 var user = _securityUserReader.CheckUserCredentials(new CheckUserCredentialsQuery { Email = email, Password = pass });
                 if (user != null)
                 {
-                    _authenticationService.LogIn(email, rememberMe, user.UserId, user.Roles);
+                    _authenticationService.LogIn(email, rememberMe, user.UserId, user.Roles, user.HasDetails);
                     return RedirectToAction("MoreDetails");
                 }
             }
@@ -78,7 +78,7 @@
 
                 _gate.Dispatch(new SignUpUserCommand(email, password));
                 var user = _securityUserReader.CheckUserCredentials(new CheckUserCredentialsQuery { Email = email, Password = password });
-                _authenticationService.LogIn(email, true, user.UserId, user.Roles);
+                _authenticationService.LogIn(email, true, user.UserId, user.Roles, false);
                 return RedirectToAction("MoreDetails");
             }
             return View("SignUp", model);
@@ -94,6 +94,7 @@
         [HttpPost]
         public ActionResult MoreDetails(MoreDetailsModel model)
         {
+            _authenticationService.AddedDetails(User.TryGetPrincipal());
             _gate.Dispatch(new MoreDetailsCommand(
                     User.TryGetPrincipal().UserId,
                     model.FirstName,

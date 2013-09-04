@@ -13,10 +13,14 @@
 
     using Security.Interfaces.Queries;
 
+    using Web.Attributes;
+
+    [RequiresDetails]
     [Authorize]
     public class DinnerController : Controller
     {
         private readonly IGate _gate;
+
         private readonly IDinnerReader _dinnerReader;
 
         private readonly IProfileReader _profileReader;

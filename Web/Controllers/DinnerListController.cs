@@ -8,6 +8,9 @@
     using Core.Extensions;
     using Models.DinnerList;
 
+    using Web.Attributes;
+
+    [RequiresDetails]
     [Authorize]
     public class DinnerListController : Controller
     {

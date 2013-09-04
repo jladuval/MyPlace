@@ -8,5 +8,7 @@
         public Guid UserId { get; set; }
 
         public IList<string> Roles { get; set; }
+
+        public bool HasDetails { get; set; }
     }
 }

@@ -11,5 +11,7 @@
         string Email { get; set; }
 
         IList<string> Roles { get; set; }
+
+        bool HasDetails { get; set; }
     }
 }

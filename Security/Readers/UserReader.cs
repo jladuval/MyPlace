@@ -33,7 +33,8 @@
                        ? new CheckUserCredentialsDto
                            {
                                UserId = user.Id,
-                               Roles = user.Roles.Select(x => x.Name).ToList()
+                               Roles = user.Roles.Select(x => x.Name).ToList(),
+                               HasDetails = user.FirstName != null
                            }
                        : null;
         }

@@ -11,6 +11,8 @@
 
         public IList<string> Roles { get; set; }
 
+        public bool HasDetails { get; set; }
+
         public static explicit operator CustomPrincipal(CustomPrincipalInfo info)
         {
             if (null == info) return null;
@@ -19,7 +21,8 @@
             {
                 UserId = info.UserId,
                 Email = info.Email,
-                Roles = info.Roles
+                Roles = info.Roles,
+                HasDetails = info.HasDetails
             };
             return user;
         }
@@ -35,7 +38,8 @@
             {
                 UserId = info.UserId,
                 Email = info.Identity.Name,
-                Roles = info.Roles
+                Roles = info.Roles,
+                HasDetails = info.HasDetails
             };
 
             return user;

@@ -20,6 +20,8 @@
 
         public IList<string> Roles { get; set; }
 
+        public bool HasDetails { get; set; }
+
         public bool IsInRole(string role)
         {
             return Roles.Any(x => x == role);

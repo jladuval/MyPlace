@@ -172,6 +172,7 @@
     <Compile Include="App_Start\AutoMapping.cs" />
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
+    <Compile Include="Attributes\RequiresDetails.cs" />
     <Compile Include="Controllers\DinnerController.cs" />
     <Compile Include="Controllers\DinnerListController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
