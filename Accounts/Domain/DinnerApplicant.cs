@@ -4,9 +4,9 @@
 
     public class DinnerApplicant
     {
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
-        public Dinner Dinner { get; set; }
+        public virtual Dinner Dinner { get; set; }
 
         public bool Accepted { get; set; }
 

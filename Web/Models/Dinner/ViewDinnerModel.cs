@@ -1,6 +1,7 @@
 ﻿namespace Web.Models.Dinner
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
 
     public class ViewDinnerModel
     {
@@ -27,5 +28,10 @@
         public string LastName { get; set; }
 
         public Guid UserId { get; set; }
+
+        public bool HasApplied { get; set; }
+
+        [EmailAddress]
+        public string PartnerEmail { get; set; }
     }
 }

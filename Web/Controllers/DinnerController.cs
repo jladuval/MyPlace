@@ -2,6 +2,7 @@
 {
     using System;
     using System.Globalization;
+    using System.Net;
     using System.Web.Mvc;
     using Accounts.Interfaces.Commands.Dinner;
     using Accounts.Interfaces.Readers;
@@ -32,13 +33,21 @@
 
         public ActionResult Index(Guid id)
         {
-            var model = Mapper.Map<ViewDinnerModel>(_dinnerReader.GetDinner(id));
+            var model = Mapper.Map<ViewDinnerModel>(_dinnerReader.GetDinner(id, User.TryGetPrincipal().UserId));
             return View("ViewDinner", model);
         }
 
-        public ActionResult Apply(Guid id)
+        [HttpPost]
+        public ActionResult Apply(Guid id, string partnerEmail)
         {
-            _gate.Dispatch(new ApplyForDinnerCommand(User.TryGetPrincipal().UserId, id));
+            if(!string.IsNullOrEmpty(partnerEmail) && !_securityUserReader.UserExists(partnerEmail))
+                return new HttpStatusCodeResult(HttpStatusCode.NotAcceptable);
+
+            _gate.Dispatch(
+                new ApplyForDinnerCommand(User.TryGetPrincipal().UserId, id)
+                {
+                    PartnerEmail = partnerEmail
+                });
             return RedirectToAction("Index", new { id = id });
         }
 

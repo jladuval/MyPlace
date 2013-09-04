@@ -61,14 +61,15 @@
                        };
         }
 
-        public DinnerDto GetDinner(Guid id)
+        public DinnerDto GetDinner(Guid id, Guid userId)
         {
             Mapper.CreateMap<Dinner, DinnerDto>()
                 .ForMember(x => x.ProfileImageUrl, opt => opt.MapFrom(x => x.User.ProfileImageUrl))
                 .ForMember(x => x.FirstName, opt => opt.MapFrom(x => x.User.FirstName))
                 .ForMember(x => x.LastName, opt => opt.MapFrom(x => x.User.LastName))
-                .ForMember(x => x.UserId, opt => opt.MapFrom(x => x.User.Id));
-            return Mapper.Map<DinnerDto>(_session.Query<Dinner>().Fetch(x => x.User).Single(x => x.Id == id));
+                .ForMember(x => x.UserId, opt => opt.MapFrom(x => x.User.Id))
+                .ForMember(x => x.HasApplied, opt => opt.MapFrom(x => x.Applicants.Select(y => y.User.Id).Contains(userId)));
+            return Mapper.Map<DinnerDto>(_session.Query<Dinner>().Fetch(x => x.User).Fetch(x => x.Applicants).Single(x => x.Id == id));
         }
     }
 }

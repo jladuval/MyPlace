@@ -8,6 +8,8 @@
 
         public readonly Guid DinnerId;
 
+        public string PartnerEmail { get; set; }
+
         public ApplyForDinnerCommand(Guid userId, Guid dinnerId)
         {
             UserId = userId;
