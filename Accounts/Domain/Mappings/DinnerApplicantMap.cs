@@ -1,5 +1,7 @@
 ﻿namespace Accounts.Domain.Mappings
 {
+    using System;
+
     using FluentNHibernate.Mapping;
 
     public class DinnerApplicantMap : ClassMap<DinnerApplicant>
@@ -8,13 +10,11 @@
         {
             Table("DinnerApplicants");
 
-            CompositeId()
-                .KeyReference(x => x.Dinner, "DinnerId")
-                .KeyReference(x => x.User, "UserId");
+            Id(x => x.Id).GeneratedBy.GuidComb().UnsavedValue(Guid.Empty);
 
-/*            References(x => x.User).Column("UserId").Not.Nullable().LazyLoad(Laziness.False);
+            References(x => x.User).Column("UserId").Not.Nullable().LazyLoad(Laziness.False);
 
-            References(x => x.Dinner).Column("DinnerId").Not.Nullable().LazyLoad(Laziness.False);*/
+            References(x => x.Dinner).Column("DinnerId").Not.Nullable().LazyLoad(Laziness.False);
 
             References(x => x.Partner).Column("PartnerId").Nullable().Cascade.SaveUpdate();
 

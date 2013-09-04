@@ -1,4 +1,5 @@
-﻿@model Web.Models.Dinner.ViewDinnerModel
+﻿@using Web.Core.Extensions
+@model Web.Models.Dinner.ViewDinnerModel
 @{
     ViewBag.Title = "Dinner";
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
@@ -36,23 +37,26 @@
                         <p class="lead">@Model.Description<br><br>
                     </div>
                     <div class="col-sm-12">
-                        @if (!Model.HasApplied)
+                        @if (Model.UserId != User.TryGetPrincipal().UserId)
                         {
-                            <!-- Will not display on one line unless formatted this way :S -->
-                            <div id="applyButtons">
-                                <a class="btn btn-syndicate btn-large squared" data-bind="text: ApplyText, click: ApplyClick" id="apply" href="#"></a>@Html.TextBoxFor(x => x.PartnerEmail, new { @id = "partnerEmail", @class = "form-control-inline soft-hidden", @data_bind = "value: PartnerEmail, valueUpdate: 'afterkeydown'", @placeholder = "Enter your friends email" })<a class="btn btn-info btn-large squared" data-bind="text: TogglePartnerText, click: TogglePartner" id="togglePartner" href="#">+ 1</a>
-                                <div class="has-error" data-bind="text: ApplyError"></div>
-                            </div>
+                            if (!Model.HasApplied)
+                             {
+                                 <!-- Will not display on one line unless formatted this way :S -->
+                                 <div id="applyButtons">
+                                     <a class="btn btn-syndicate btn-large squared" data-bind="text: ApplyText, click: ApplyClick" id="apply" href="#"></a>@Html.TextBoxFor(x => x.PartnerEmail, new { @id = "partnerEmail", @class = "form-control-inline soft-hidden", @data_bind = "value: PartnerEmail, valueUpdate: 'afterkeydown'", @placeholder = "Enter your friends email" })<a class="btn btn-info btn-large squared" data-bind="text: TogglePartnerText, click: TogglePartner" id="togglePartner" href="#">+ 1</a>
+                                     <div class="has-error" data-bind="text: ApplyError"></div>
+                                 </div>
 
-                            <div class="alert alert-success squared soft-hidden" id="applied">
-							    <strong>Application Sent!</strong> The host should get back to you shortly
-						    </div>
-                        }
-                        else
-                        {
-                            <div class="alert alert-success squared" id="applied">
-							    <strong>Application Sent!</strong> The host should get back to you shortly
-						    </div>
+                                 <div class="alert alert-success squared soft-hidden" id="applied">
+                                     <strong>Application Sent!</strong> The host should get back to you shortly
+                                 </div>
+                             }
+                             else
+                             {
+                                 <div class="alert alert-success squared" id="applied">
+                                     <strong>Application Sent!</strong> The host should get back to you shortly
+                                 </div>
+                             }
                         }
                     </div>
                 </div>

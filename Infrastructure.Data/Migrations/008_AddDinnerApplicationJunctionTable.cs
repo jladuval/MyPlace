@@ -8,15 +8,15 @@
         public override void Up()
         {
             Create.Table("DinnerApplicants").InSchema("dbo")
+                .WithColumn("Id")
+                    .AsGuid()
+                    .PrimaryKey()
                 .WithColumn("UserId")
                     .AsGuid()
                     .NotNullable()
                 .WithColumn("DinnerId")
                     .AsGuid()
                     .NotNullable();
-
-            var compKey = new[] { "UserId", "DinnerId" };
-            Create.PrimaryKey("PK_DinnerApplicants").OnTable("DinnerApplicants").Columns(compKey);
 
             Create.ForeignKey("FK_DinnerApplicants_User")
                 .FromTable("DinnerApplicants")

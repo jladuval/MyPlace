@@ -21,7 +21,8 @@
             Mapper.CreateMap<DinnerListItemDto, DinnerListItemModel>()
                 .ForMember(x => x.Date, opt => opt.MapFrom(x => x.EventDate))
                 .AfterMap((src, dest) => { if (dest.ProfileImageUrl == null) dest.ProfileImageUrl = placeholder; });
-            Mapper.CreateMap<DinnerDto, ViewDinnerModel>();
+            Mapper.CreateMap<DinnerDto, ViewDinnerModel>()
+                .AfterMap((src, dest) => { if (dest.ProfileImageUrl == null) dest.ProfileImageUrl = placeholder; });
         }
     }
 }

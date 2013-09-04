@@ -2,7 +2,9 @@
 {
     using System;
 
-    public class DinnerApplicant
+    using Base.DDD.Domain;
+
+    public class DinnerApplicant : Entity
     {
         public virtual User User { get; set; }
 
