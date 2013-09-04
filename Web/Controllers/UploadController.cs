@@ -1,13 +1,14 @@
-﻿using Accounts.Interfaces.Commands;
-using Base.CQRS.Commands;
-using Web.Core.Extensions;
-
-namespace Web.Controllers
+﻿namespace Web.Controllers
 {
     using System.Web;
-    using Accounts.Interfaces.Commands.Profile;
-    using Base.AzureStorage;
     using System.Web.Mvc;
+
+    using Accounts.Interfaces.Commands.Profile;
+
+    using Base.AzureStorage;
+    using Base.CQRS.Commands;
+
+    using Web.Core.Extensions;
 
     public class UploadController : Controller
     {

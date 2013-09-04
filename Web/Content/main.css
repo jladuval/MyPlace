@@ -38,3 +38,7 @@
 .soft-hidden {
     display: none;
 }
+
+.heading-inline {
+    display: inline-block;
+}

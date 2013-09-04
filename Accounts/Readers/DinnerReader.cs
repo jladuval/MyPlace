@@ -64,16 +64,24 @@
 
         public DinnerDto GetDinner(Guid id, Guid userId)
         {
-            var dinner = _session.Query<Dinner>().Fetch(x => x.User).Single(x => x.Id == id);
+            var dinner = _session.Query<Dinner>().Fetch(x => x.User).Fetch(x => x.Partner).Single(x => x.Id == id);
             Mapper.CreateMap<Dinner, DinnerDto>()
                 .ForMember(x => x.ProfileImageUrl, opt => opt.MapFrom(x => x.User.ProfileImageUrl))
                 .ForMember(x => x.FirstName, opt => opt.MapFrom(x => x.User.FirstName))
                 .ForMember(x => x.LastName, opt => opt.MapFrom(x => x.User.LastName))
                 .ForMember(x => x.UserId, opt => opt.MapFrom(x => x.User.Id))
                 .ForMember(x => x.HasApplied, opt => opt.MapFrom(x => HasApplied(x.Applicants, userId)));
-
-            var result = Mapper.Map<DinnerDto>(dinner);
-            return result;
+            var dto = Mapper.Map<DinnerDto>(dinner);
+            
+            if (dinner.Partner != null)
+            {
+                var partner = dinner.Partner;
+                dto.PartnerFirstName = partner.FirstName;
+                dto.PartnerLastName = partner.LastName;
+                dto.PartnerId = partner.Id;
+                dto.PartnerImageUrl = partner.ProfileImageUrl;
+            }
+            return dto;
         }
 
         private bool HasApplied(IEnumerable<DinnerApplicant> applicants, Guid userId)

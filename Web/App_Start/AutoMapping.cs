@@ -23,7 +23,8 @@
                 .ForMember(x => x.Date, opt => opt.MapFrom(x => x.EventDate))
                 .AfterMap((src, dest) => { if (dest.ProfileImageUrl == null) dest.ProfileImageUrl = Placeholder; });
             Mapper.CreateMap<DinnerDto, ViewDinnerModel>()
-                .AfterMap((src, dest) => { if (dest.ProfileImageUrl == null) dest.ProfileImageUrl = Placeholder; });
+                .AfterMap((src, dest) => { if (dest.ProfileImageUrl == null) dest.ProfileImageUrl = Placeholder; })
+                .AfterMap((src, dest) => { if (dest.PartnerImageUrl == null) dest.PartnerImageUrl = Placeholder; });
         }
     }
 }
