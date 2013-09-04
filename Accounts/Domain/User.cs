@@ -33,7 +33,7 @@ namespace Accounts.Domain
 
         public Orientation Orientation { get; set; }
 
-        public ICollection<DinnerApplicant> AppliedDinners { get; set; }
+        public virtual ICollection<DinnerApplicant> AppliedDinners { get; set; }
 
         public User()
         {

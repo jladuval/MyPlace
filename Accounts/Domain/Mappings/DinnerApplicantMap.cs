@@ -12,9 +12,13 @@
                 .KeyReference(x => x.Dinner, "DinnerId")
                 .KeyReference(x => x.User, "UserId");
 
-          /*  References(x => x.User).Column("UserId").Not.Nullable().Cascade.All().LazyLoad(Laziness.False);
+/*            References(x => x.User).Column("UserId").Not.Nullable().LazyLoad(Laziness.False);
 
-            References(x => x.Dinner).Column("DinnerId").Not.Nullable().Cascade.All().LazyLoad(Laziness.False);*/
+            References(x => x.Dinner).Column("DinnerId").Not.Nullable().LazyLoad(Laziness.False);*/
+
+            References(x => x.Partner).Column("PartnerId").Nullable().Cascade.SaveUpdate();
+
+            Map(x => x.VerificationCode).Nullable();
 
             Map(x => x.Accepted).Not.Nullable();
 

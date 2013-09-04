@@ -1,5 +1,6 @@
 ﻿namespace Accounts.Handlers.Dinner
 {
+    using System;
     using System.Linq;
 
     using Domain;
@@ -29,12 +30,15 @@
             {
                 var dinner = _dinnerRepository.Load(command.DinnerId);
                 var user = _userRepository.Load(command.UserId);
-                if (dinner != null && user != null)
+                if (dinner == null || user == null) return;
+                var application = new DinnerApplicant(user, dinner);
+                if (!string.IsNullOrEmpty(command.PartnerEmail))
                 {
-                    var application = new DinnerApplicant(user, dinner);
-                    dinner.Applicants.Add(application);
-                    user.AppliedDinners.Add(application);
+                    application.VerificationCode = Guid.NewGuid();
+                    application.Partner = _userRepository.Find().Single(x => x.Email == command.PartnerEmail);
                 }
+                dinner.Applicants.Add(application);
+                user.AppliedDinners.Add(application);
             }
         }
     }

@@ -48,7 +48,7 @@
                 {
                     PartnerEmail = partnerEmail
                 });
-            return RedirectToAction("Index", new { id = id });
+            return new HttpStatusCodeResult(HttpStatusCode.Accepted);
         }
 
         [Authorize]

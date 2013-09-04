@@ -8,11 +8,15 @@
 
         public virtual Dinner Dinner { get; set; }
 
+        public virtual User Partner { get; set; }
+
+        public Guid? VerificationCode { get; set; }
+
         public bool Accepted { get; set; }
 
         public bool Rejected { get; set; }
 
-        private DinnerApplicant()
+        public DinnerApplicant()
         {
         }
 

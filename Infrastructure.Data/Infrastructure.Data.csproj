@@ -59,6 +59,7 @@
     <Compile Include="Migrations\008_AddDinnerApplicationJunctionTable.cs" />
     <Compile Include="Migrations\009_AddAcceptedRejectedToDinnerApplicants.cs" />
     <Compile Include="Migrations\011_AddPartnerToDinner.cs" />
+    <Compile Include="Migrations\012_AddPartnerToApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -43,7 +43,7 @@
             Dry = dry;
             Description = description;
             Date = date;
-            Applicants = new List<DinnerApplicant>();
+            Applicants = Applicants ?? new List<DinnerApplicant>();
         }
 
         public void Close()
