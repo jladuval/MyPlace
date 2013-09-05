@@ -2,6 +2,8 @@
 {
     public interface IMailer
     {
-        void Send<T>(IMailMessage<T> message) where T : class;
+        void Run();
+
+        void Send(int emailId);
     }
 }

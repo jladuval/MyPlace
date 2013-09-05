@@ -30,12 +30,46 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorTemplates.Core">
+      <HintPath>..\packages\RazorTemplates.1.2.0\lib\RazorTemplates.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,15 +77,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Content\IMessageContent.cs" />
+    <Compile Include="Content\Razor\RazorMessage.cs" />
+    <Compile Include="Content\SimpleMessageContent.cs" />
+    <Compile Include="Entities\Email.cs" />
+    <Compile Include="Entities\Mappings\EmailMap.cs" />
     <Compile Include="IMailer.cs" />
-    <Compile Include="IMailMessageFactory.cs" />
     <Compile Include="Mailer.cs" />
-    <Compile Include="IMailMessage.cs" />
-    <Compile Include="MailMessage.cs" />
-    <Compile Include="MailMessageFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transport\Email\EmailEnvelope.cs" />
+    <Compile Include="Transport\Email\EmailMessageEnvelopeFactory.cs" />
+    <Compile Include="Transport\Email\EmailTransport.cs" />
+    <Compile Include="Transport\IMessageEnvelope.cs" />
+    <Compile Include="Transport\IMessageEnvelopeFactory.cs" />
+    <Compile Include="Transport\IMessageTransport.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Base.Infrastructure.NHibernate\Infrastructure.NHibernate.csproj">
+      <Project>{A69FAEB3-AC87-4A05-B476-7005BBE82989}</Project>
+      <Name>Infrastructure.NHibernate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Base.StorageQueue\Base.AzureStorage.csproj">
       <Project>{cd07e9e5-d575-4c0c-b398-39c7d83c6ddf}</Project>
       <Name>Base.AzureStorage</Name>
@@ -60,6 +105,15 @@
       <Project>{093055ad-d153-497c-8573-0209748060f3}</Project>
       <Name>Base %28Base\Base%29</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Templates\AnswerQuestionnaireReminder.cshtml" />
+    <None Include="Templates\Shared\StdFooter.cshtml" />
+    <None Include="Templates\Shared\StdHeader.cshtml" />
+    <None Include="Templates\Web.config" />
+    <None Include="Templates\Welcome.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

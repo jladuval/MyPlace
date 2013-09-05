@@ -6,25 +6,25 @@
     using Base.Mailing;
 
     using Security.Events;
-    using Security.Mailing.MailData;
+    using MailData;
 
     [EventListeners]
     public class UserCreatedEventListener : IEventListener<UserCreatedEvent>
     {
-        public IMailMessageFactory MailMessageFactory { get; set; }
+        /*public IMailMessageFactory MailMessageFactory { get; set; }
 
-        public IMailer Mailer { get; set; }
+        public IMailer Mailer { get; set; }*/
 
         [EventListener(IsAsync = true)]
         public void Handle(UserCreatedEvent @event)
         {
-            var message = MailMessageFactory.Create(new VerificationEmailData(@event.UserId, @event.VerificationToken));
+            /*var message = MailMessageFactory.Create(new VerificationEmailData(@event.UserId, @event.VerificationToken));
             message.TemplateName = "verifyEmail";
             message.Recipients = new List<string>
                 {
                     @event.Email
                 };
-            Mailer.Send(message);
+            Mailer.Send(message);*/
         }
     }
 }
