@@ -1,7 +1,5 @@
-﻿namespace Base.Mailing.Entities
+﻿namespace Accounts.Domain
 {
-    using System;
-
     using Base.DDD.Domain;
 
     public class Email : Entity
@@ -13,7 +11,5 @@
         public string TemplateName { get; set; }
 
         public int Priority { get; set; }
-
-        public DateTime? SentDate { get; set; }
     }
 }

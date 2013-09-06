@@ -13,6 +13,8 @@
     using Newtonsoft.Json.Converters;
     using Transport;
 
+    using global::Mailing.Interfaces;
+
     [DomainService]
     public class Mailer : IMailer 	
     {
@@ -29,7 +31,7 @@
 
         public void Run()
         {
-            var emails = _emailRepository.Find().Where(x => x.SentDate == null).ToList();
+            var emails = _emailRepository.Find().Where(x => x.SentDate == null).OrderBy(x => x.Priority).ToList();
             foreach (var email in emails)
             {
                 Send(email);
@@ -37,26 +39,14 @@
             }
         }
 
-        public void Send(int emailId)
-        {
-            Task.Factory.StartNew(() =>
-            {
-                var email = _emailRepository.Find().SingleOrDefault(x => x.Id == emailId);
-                if (email != null)
-                {
-                    Send(email);
-                    email.SentDate = DateTime.UtcNow;
-                }
-            });
-        }
-
         private void Send(Email email)
         {
             var model = JsonConvert.DeserializeObject<ExpandoObject>(email.Payload, new ExpandoObjectConverter());
-            IMessageContent message = null;
-            message = new RazorMessage(email.TemplateName, model);
+
+            var message = new RazorMessage(email.TemplateName, model);
             
             var envelope = _messageEnvelopeFactory.GetEnvelope(GetSubject(email.TemplateName), email.Address, message);
+
             _messageTransport.Send(envelope);
 
         }
@@ -68,7 +58,10 @@
                 case "Welcome":
                     return "Welcome";
 
-                case "Reset Password":
+                case "ResetPassword":
+                    return "Here is your new password";
+
+                case "VerifyEmail":
                     return "Here is your new password";
 
                 default:

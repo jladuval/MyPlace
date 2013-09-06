@@ -1,4 +1,4 @@
-﻿namespace Base.Mailing.Entities.Mappings
+﻿namespace Accounts.Domain.Mappings
 {
     using System;
 
@@ -19,8 +19,6 @@
             Map(x => x.Address).Not.Nullable();
 
             Map(x => x.Payload).Nullable();
-
-            Map(x => x.SentDate).Nullable();
 
             Map(x => x.Priority).Not.Nullable();
 

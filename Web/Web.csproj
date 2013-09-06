@@ -178,6 +178,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MembershipController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\TaskRunnerController.cs" />
     <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Extensions\HtmlExtensions.cs" />
@@ -391,6 +392,10 @@
     <ProjectReference Include="..\Infrastructure.Data\Infrastructure.Data.csproj">
       <Project>{9f4e77be-b535-4338-b2ce-462592d7e0eb}</Project>
       <Name>Infrastructure.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mailing.Interfaces\Mailing.Interfaces.csproj">
+      <Project>{E8989F13-C99E-41F7-AD79-2B7A021BAD34}</Project>
+      <Name>Mailing.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Security.Interfaces\Security.Interfaces.csproj">
       <Project>{8ddafb9a-ff87-446e-bc29-08a14a8fe698}</Project>

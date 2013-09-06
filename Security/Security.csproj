@@ -83,9 +83,9 @@
       <Project>{A69FAEB3-AC87-4A05-B476-7005BBE82989}</Project>
       <Name>Infrastructure.NHibernate</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Base.Mailing\Base.Mailing.csproj">
+    <ProjectReference Include="..\Base.Mailing\Mailing.csproj">
       <Project>{a6d4aa68-1dec-49ad-a43f-ec1e9fa9ac51}</Project>
-      <Name>Base.Mailing</Name>
+      <Name>Mailing %28Bounded Contexts\Mailing\Mailing%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Base\Base.csproj">
       <Project>{093055ad-d153-497c-8573-0209748060f3}</Project>

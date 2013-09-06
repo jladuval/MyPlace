@@ -7,7 +7,6 @@
     [DomainService]
     public class EmailTransport : IMessageTransport
     {
-
         public void Send(IMessageEnvelope envelope)
         {
             var message = new MailMessage();

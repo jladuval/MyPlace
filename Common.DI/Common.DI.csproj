@@ -78,9 +78,9 @@
       <Project>{A69FAEB3-AC87-4A05-B476-7005BBE82989}</Project>
       <Name>Infrastructure.NHibernate</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Base.Mailing\Base.Mailing.csproj">
+    <ProjectReference Include="..\Base.Mailing\Mailing.csproj">
       <Project>{A6D4AA68-1DEC-49AD-A43F-EC1E9FA9AC51}</Project>
-      <Name>Base.Mailing</Name>
+      <Name>Mailing %28Bounded Contexts\Mailing\Mailing%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Base.StorageQueue\Base.AzureStorage.csproj">
       <Project>{cd07e9e5-d575-4c0c-b398-39c7d83c6ddf}</Project>
@@ -93,6 +93,10 @@
     <ProjectReference Include="..\Infrastructure.Data\Infrastructure.Data.csproj">
       <Project>{9F4E77BE-B535-4338-B2CE-462592D7E0EB}</Project>
       <Name>Infrastructure.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mailing.Interfaces\Mailing.Interfaces.csproj">
+      <Project>{E8989F13-C99E-41F7-AD79-2B7A021BAD34}</Project>
+      <Name>Mailing.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Security.Interfaces\Security.Interfaces.csproj">
       <Project>{8ddafb9a-ff87-446e-bc29-08a14a8fe698}</Project>

@@ -1,9 +1,7 @@
-﻿namespace Base.Mailing
+﻿namespace Mailing.Interfaces
 {
     public interface IMailer
     {
         void Run();
-
-        void Send(int emailId);
     }
 }

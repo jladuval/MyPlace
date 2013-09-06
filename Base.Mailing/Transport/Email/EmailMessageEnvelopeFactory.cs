@@ -1,8 +1,8 @@
 ﻿namespace Base.Mailing.Transport.Email
 {
-    using DDD.Domain.Annotations;
-    using Content;
-    using Transport;
+    using Base.DDD.Domain.Annotations;
+    using Base.Mailing.Content;
+    using Base.Mailing.Transport;
 
     [DomainService]
     public class EmailMessageEnvelopeFactory : IMessageEnvelopeFactory
