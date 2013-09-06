@@ -51,6 +51,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,6 +60,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Email.cs" />
+    <Compile Include="Domain\EmailMap.cs" />
     <Compile Include="Handlers\SignUpUserCommandHandler.cs" />
     <Compile Include="Domain\UserMap.cs">
       <SubType>Code</SubType>
@@ -72,7 +75,6 @@
     <Compile Include="Domain\User.cs" />
     <Compile Include="Domain\UserFactory.cs" />
     <Compile Include="Mailing\Events\UserCreatedEventListener.cs" />
-    <Compile Include="Mailing\MailData\VerificationEmailData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -82,10 +84,6 @@
     <ProjectReference Include="..\Base.Infrastructure.NHibernate\Infrastructure.NHibernate.csproj">
       <Project>{A69FAEB3-AC87-4A05-B476-7005BBE82989}</Project>
       <Name>Infrastructure.NHibernate</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Base.Mailing\Mailing.csproj">
-      <Project>{a6d4aa68-1dec-49ad-a43f-ec1e9fa9ac51}</Project>
-      <Name>Mailing %28Bounded Contexts\Mailing\Mailing%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Base\Base.csproj">
       <Project>{093055ad-d153-497c-8573-0209748060f3}</Project>

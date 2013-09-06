@@ -1,30 +1,40 @@
 ﻿namespace Security.Mailing.Events
 {
-    using System.Collections.Generic;
+    using System.Web.Helpers;
 
     using Base.DDD.Infrastructure.Events;
-    using Base.Mailing;
 
+    using Infrastructure.NHibernate.Repositories;
+
+    using Security.Domain;
     using Security.Events;
-    using MailData;
 
     [EventListeners]
     public class UserCreatedEventListener : IEventListener<UserCreatedEvent>
     {
-        /*public IMailMessageFactory MailMessageFactory { get; set; }
+        private readonly IRepository<Email> _emailRepository;
 
-        public IMailer Mailer { get; set; }*/
+        public UserCreatedEventListener(IRepository<Email> emailRepository)
+        {
+            _emailRepository = emailRepository;
+        }
 
         [EventListener(IsAsync = true)]
-        public void Handle(UserCreatedEvent @event)
+        public void Handle(UserCreatedEvent evt)
         {
-            /*var message = MailMessageFactory.Create(new VerificationEmailData(@event.UserId, @event.VerificationToken));
-            message.TemplateName = "verifyEmail";
-            message.Recipients = new List<string>
+            using (new UnitOfWork())
+            {
+                _emailRepository.Save(new Email
                 {
-                    @event.Email
-                };
-            Mailer.Send(message);*/
+                    Address = evt.Email,
+                    Priority = 1,
+                    TemplateName = "VerifyEmail",
+                    Payload = Json.Encode(new
+                    {
+                        VerificationToken = evt.VerificationToken
+                    })
+                 });
+            }
         }
     }
 }
