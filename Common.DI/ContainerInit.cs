@@ -1,5 +1,6 @@
 namespace Common.DI
 {
+    using Accounts.Handlers.Profile;
     using Base.CQRS.Commands;
     using Base.Mailing;
     using Base.StorageQueue;

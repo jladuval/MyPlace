@@ -10,5 +10,7 @@
         public IList<string> Roles { get; set; }
 
         public bool HasDetails { get; set; }
+
+        public string Email { get; set; }
     }
 }

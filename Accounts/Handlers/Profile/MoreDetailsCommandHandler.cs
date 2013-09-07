@@ -1,13 +1,8 @@
-﻿namespace Accounts.Handlers
+﻿namespace Accounts.Handlers.Profile
 {
-    using Domain;
-    using Interfaces.Commands;
-
     using Base.CQRS.Commands.Attributes;
     using Base.CQRS.Commands.Handler;
-
-    using GoogleMaps.LocationServices;
-
+    using Domain;
     using Infrastructure.NHibernate.Exceptions;
     using Infrastructure.NHibernate.Repositories;
     using Interfaces.Commands.Profile;

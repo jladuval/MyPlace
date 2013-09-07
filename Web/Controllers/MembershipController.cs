@@ -41,6 +41,18 @@
             return View("Login");
         }
 
+        public ActionResult Activate(string token)
+        {
+            var userdto = _securityUserReader.GetUserFromToken(token);
+            if (userdto != null)
+            {
+                _gate.Dispatch(new ActivateUserCommand(token));
+                _authenticationService.LogIn(userdto.Email, true, userdto.UserId, userdto.Roles, userdto.HasDetails);
+                return RedirectToAction("Index", "Profile");
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {

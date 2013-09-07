@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\UserRoles.cs" />
+    <Compile Include="Commands\ActivateUserCommand.cs" />
     <Compile Include="Commands\SignUpUserCommand.cs" />
     <Compile Include="Presentation\CheckUserCredentialsDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

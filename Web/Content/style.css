@@ -134,7 +134,7 @@ textarea:focus, input:focus, a:focus, *:focus {
 /* ==== Intro ==== */
 
 #slide_1 {
-	background: #852b99 url(http://placehold.it/1920x1200) fixed no-repeat;
+	background: #852b99 url('/Content/images/background-fish.jpg') fixed no-repeat;
 }
 
 #slide_2 {

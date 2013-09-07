@@ -7,5 +7,6 @@ namespace Security.Interfaces.Queries
         CheckUserCredentialsDto CheckUserCredentials(CheckUserCredentialsQuery query);
 
         bool UserExists(string email);
+        CheckUserCredentialsDto GetUserFromToken(string token);
     }
 }

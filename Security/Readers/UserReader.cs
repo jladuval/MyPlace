@@ -43,5 +43,19 @@
         {
             return _session.Query<User>().FirstOrDefault(x => x.Email == email) != null;
         }
+
+        public CheckUserCredentialsDto GetUserFromToken(string token)
+        {
+            var user = _session.Query<User>().FirstOrDefault(x => x.VerificationCode == token);
+            return user == null
+                ? null
+                : new CheckUserCredentialsDto
+                {
+                    Email = user.Email,
+                    UserId = user.Id,
+                    Roles = user.Roles.Select(x => x.Name).ToList(),
+                    HasDetails = user.FirstName != null
+                };
+        }
     }
 }
