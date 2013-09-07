@@ -1,5 +1,6 @@
 ﻿namespace Security.Readers
 {
+    using System;
     using System.Linq;
 
     using Base.CQRS.Query.Attributes;
@@ -50,6 +51,18 @@
             return user == null
                 ? null
                 : new CheckUserCredentialsDto
+                {
+                    Email = user.Email,
+                    UserId = user.Id,
+                    Roles = user.Roles.Select(x => x.Name).ToList(),
+                    HasDetails = user.FirstName != null
+                };
+        }
+
+        public CheckUserCredentialsDto GetUserById(Guid userId)
+        {
+            var user = _session.Query<User>().Single(x => x.Id == userId);
+            return new CheckUserCredentialsDto
                 {
                     Email = user.Email,
                     UserId = user.Id,

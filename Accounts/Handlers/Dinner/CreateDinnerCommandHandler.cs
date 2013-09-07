@@ -51,10 +51,10 @@
                     {
                         Address = partner.Email,
                         Priority = 1,
-                        TemplateName = "ApproveHostDinner",
+                        TemplateName = "ConfirmHost",
                         Payload = Json.Encode(new
                         {
-                            VerificationUrl = command.HostUrl + "/Dinner/Approve?token=" + dinner.VerificationCode,
+                            VerificationUrl = command.HostUrl + "?token=" + dinner.VerificationCode,
                             HostFirstName = dinner.User.FirstName,
                             HostLastName = dinner.User.LastName,
                             

@@ -2,7 +2,7 @@
 {
     using System;
     using System.Linq;
-
+    using System.Web.Helpers;
     using Domain;
     using Base.CQRS.Commands.Attributes;
     using Base.CQRS.Commands.Handler;
@@ -19,12 +19,18 @@
         private readonly IRepository<User> _userRepository;
 
         private readonly IRepository<DinnerApplicant> _dinnerApplicantRepository;
+        private readonly IRepository<Email> _emailRepository;
 
-        public ApplyForDinnerCommandHandler(IRepository<Dinner> dinnerRepository, IRepository<User> userRepository, IRepository<DinnerApplicant> dinnerApplicantRepository)
+        public ApplyForDinnerCommandHandler(
+            IRepository<Dinner> dinnerRepository, 
+            IRepository<User> userRepository, 
+            IRepository<DinnerApplicant> dinnerApplicantRepository, 
+            IRepository<Email> emailRepository)
         {
             _dinnerRepository = dinnerRepository;
             _userRepository = userRepository;
             _dinnerApplicantRepository = dinnerApplicantRepository;
+            _emailRepository = emailRepository;
         }
 
         public void Handle(ApplyForDinnerCommand command)
@@ -40,6 +46,16 @@
                 {
                     application.VerificationCode = Guid.NewGuid();
                     application.Partner = _userRepository.Find().Single(x => x.Email == command.PartnerEmail);
+                    _emailRepository.Save(new Email
+                    {
+                        Address = application.Partner.Email,
+                        Priority = 1,
+                        TemplateName = "ConfirmInvitation",
+                        Payload = Json.Encode(new
+                        {
+                            VerificationUrl = command.ConfirmUrl + "?token=" + application.VerificationCode
+                        })
+                    });
                 }
                 dinner.Applicants.Add(application);
                 user.AppliedDinners.Add(application);

@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Domain\Email.cs" />
     <Compile Include="Domain\EmailMap.cs" />
+    <Compile Include="Handlers\ActivateUserByIdCommandHandler.cs" />
     <Compile Include="Handlers\ActivateUserCommandHandler.cs" />
     <Compile Include="Handlers\SignUpUserCommandHandler.cs" />
     <Compile Include="Domain\UserMap.cs">

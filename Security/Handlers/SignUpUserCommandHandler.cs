@@ -52,7 +52,7 @@
                     TemplateName = "VerifyEmail",
                     Payload = Json.Encode(new
                     {
-                        VerificationUrl = command.HostPath + "/Membership/Activate?token=" + user.VerificationCode
+                        VerificationUrl = command.HostPath + "?token=" + user.VerificationCode
                     })
                 });
                 user.FinishedSignUp(command.HostPath);

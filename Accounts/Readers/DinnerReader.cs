@@ -103,6 +103,28 @@
             return result;
         }
 
+        public DinnerConfirmDto InvitationCanBeConfirmedByPartner(string token)
+        {
+            DinnerConfirmDto result = null;
+            Guid verificationToken;
+            if (Guid.TryParse(token, out verificationToken))
+            {
+                var invitation =
+                    _session.Query<DinnerApplicant>()
+                        .Fetch(x => x.Dinner)
+                        .FirstOrDefault(x => x.VerificationCode == verificationToken);
+                if (invitation != null)
+                {
+                    result = new DinnerConfirmDto
+                    {
+                        Id = invitation.Dinner.Id,
+                        UserId = invitation.Partner.Id
+                    };
+                }
+            }
+            return result;
+        }
+
         private bool HasApplied(IEnumerable<DinnerApplicant> applicants, Guid userId)
         {
             return

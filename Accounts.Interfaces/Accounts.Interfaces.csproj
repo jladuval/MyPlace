@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Commands\Dinner\ApplyForDinnerCommand.cs" />
     <Compile Include="Commands\Dinner\ConfirmHostCommand.cs" />
+    <Compile Include="Commands\Dinner\ConfirmInvitationCommand.cs" />
     <Compile Include="Commands\Profile\AddProfileImageCommand.cs" />
     <Compile Include="Commands\Dinner\CreateDinnerCommand.cs" />
     <Compile Include="Commands\Profile\AlterPrivateProfileCommand.cs" />

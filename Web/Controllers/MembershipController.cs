@@ -1,8 +1,9 @@
 ﻿namespace Web.Controllers
 {
     using System.Web.Mvc;
-
+    using Accounts.Interfaces.Commands.Dinner;
     using Accounts.Interfaces.Commands.Profile;
+    using Accounts.Interfaces.Readers;
     using Base.CQRS.Commands;
     using Mailing.Interfaces;
     using Security.Interfaces.Commands;
@@ -19,12 +20,14 @@
         private readonly IGate _gate;
 
         private readonly IAuthenticationService _authenticationService;
+        private readonly IDinnerReader _dinnerReader;
 
-        public MembershipController(ISecurityUserReader securityUserReader, IGate gate, IAuthenticationService authenticationService)
+        public MembershipController(ISecurityUserReader securityUserReader, IGate gate, IAuthenticationService authenticationService, IDinnerReader dinnerReader)
         {
             _securityUserReader = securityUserReader;
             _gate = gate;
             _authenticationService = authenticationService;
+            _dinnerReader = dinnerReader;
         }        
 
         [Authorize]
@@ -88,7 +91,7 @@
 
                 _gate.Dispatch(new SignUpUserCommand(email, password)
                 {
-                    HostPath = Request.Url.Host
+                    HostPath = @Url.Action("Activate")
                 });
                 var user = _securityUserReader.CheckUserCredentials(new CheckUserCredentialsQuery { Email = email, Password = password });
                 _authenticationService.LogIn(email, true, user.UserId, user.Roles, false);
@@ -123,6 +126,36 @@
                     model.Romance,
                     model.Friendship));
             return RedirectToAction("Index", "DinnerList");
+        }
+
+        public ActionResult ConfirmHost(string token)
+        {
+            var dinnerConfirmDto = _dinnerReader.DinnerCanBeConfirmedByPartner(token);
+            if (dinnerConfirmDto != null)
+            {
+                _gate.Dispatch(new ConfirmHostCommand(token));
+                var user = _securityUserReader.GetUserById(dinnerConfirmDto.UserId);
+                _gate.Dispatch(new ActivateUserByIdCommand(user.UserId));
+                _authenticationService.LogIn(user.Email, true, user.UserId, user.Roles, false);
+
+                return RedirectToAction("View", "Dinner", new { Id = dinnerConfirmDto.Id });
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult ConfirmAttending(string token)
+        {
+            var dinnerConfirmDto = _dinnerReader.InvitationCanBeConfirmedByPartner(token);
+            if (dinnerConfirmDto != null)
+            {
+                _gate.Dispatch(new ConfirmInvitationCommand(token));
+                var user = _securityUserReader.GetUserById(dinnerConfirmDto.UserId);
+                _gate.Dispatch(new ActivateUserByIdCommand(user.UserId));
+                _authenticationService.LogIn(user.Email, true, user.UserId, user.Roles, false);
+
+                return RedirectToAction("View", "Dinner", new { Id = dinnerConfirmDto.Id });
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }
