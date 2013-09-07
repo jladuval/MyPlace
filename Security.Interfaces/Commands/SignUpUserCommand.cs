@@ -7,6 +7,7 @@ namespace Security.Interfaces.Commands
     {
         public string Email { get; private set; }
         public string Password { get; private set; }
+        public string HostPath { get; set; }
 
         public SignUpUserCommand(string email, string password)
         {

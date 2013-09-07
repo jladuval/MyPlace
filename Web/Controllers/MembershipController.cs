@@ -6,7 +6,7 @@
     using Accounts.Interfaces.Commands;
     using Accounts.Interfaces.Commands.Profile;
     using Base.CQRS.Commands;
-
+    using Mailing.Interfaces;
     using Security.Interfaces.Commands;
     using Security.Interfaces.Queries;
 
@@ -76,9 +76,13 @@
                 var email = model.Email;
                 var password = model.Password;
 
-                _gate.Dispatch(new SignUpUserCommand(email, password));
+                _gate.Dispatch(new SignUpUserCommand(email, password)
+                {
+                    HostPath = Request.Url.Host
+                });
                 var user = _securityUserReader.CheckUserCredentials(new CheckUserCredentialsQuery { Email = email, Password = password });
                 _authenticationService.LogIn(email, true, user.UserId, user.Roles, false);
+                _gate.Dispatch(new RunMailerCommand());
                 return RedirectToAction("MoreDetails");
             }
             return View("SignUp", model);

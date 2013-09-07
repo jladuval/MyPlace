@@ -12,6 +12,8 @@
 
         public string VerificationToken { get; set; }
 
+        public string HostPath { get; set; }
+
         public UserCreatedEvent(Guid userId, string email, string verificationToken)
         {
             UserId = userId;

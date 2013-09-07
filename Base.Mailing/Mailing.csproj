@@ -94,8 +94,10 @@
     <Compile Include="Content\SimpleMessageContent.cs" />
     <Compile Include="Entities\Email.cs" />
     <Compile Include="Entities\Mappings\EmailMap.cs" />
+    <Compile Include="IMailer.cs" />
     <Compile Include="Mailer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RunMailerCommandHandler.cs" />
     <Compile Include="Transport\Email\EmailEnvelope.cs" />
     <Compile Include="Transport\Email\EmailMessageEnvelopeFactory.cs" />
     <Compile Include="Transport\Email\EmailTransport.cs" />

@@ -3,8 +3,6 @@
     using System;
     using System.Dynamic;
     using System.Linq;
-    using System.Threading.Tasks;
-    using Content;
     using Content.Razor;
     using DDD.Domain.Annotations;
     using Entities;
@@ -31,11 +29,14 @@
 
         public void Run()
         {
-            var emails = _emailRepository.Find().Where(x => x.SentDate == null).OrderBy(x => x.Priority).ToList();
-            foreach (var email in emails)
+            using (new UnitOfWork())
             {
-                Send(email);
-                email.SentDate = DateTime.UtcNow;
+                var emails = _emailRepository.Find().Where(x => x.SentDate == null).OrderBy(x => x.Priority).ToList();
+                foreach (var email in emails)
+                {
+                    Send(email);
+                    email.SentDate = DateTime.UtcNow;
+                }
             }
         }
 

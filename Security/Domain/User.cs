@@ -35,9 +35,9 @@
             Salt = salt;
         }
 
-        public void FinishedSignUp()
+        public void FinishedSignUp(string hostPath)
         {
-            EventPublisher.Publish(new UserCreatedEvent(Id, Email, VerificationCode));
+            EventPublisher.Publish(new UserCreatedEvent(Id, Email, VerificationCode){HostPath = hostPath});
         }
     }
 }

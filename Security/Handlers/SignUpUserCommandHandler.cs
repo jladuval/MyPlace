@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Web.Helpers;
     using Base.CQRS.Commands.Attributes;
     using Base.CQRS.Commands.Handler;
     using Infrastructure.NHibernate.Repositories;
@@ -19,17 +20,20 @@
         private readonly UserFactory _userFactory;
 
         private readonly IRepository<Role> _roleRepository;
+        private readonly IRepository<Email> _emailRepository;
 
         public SignUpUserCommandHandler(
             IRepository<User> userRepository,
             ICryptoService cryptoService, 
             UserFactory userFactory,
-            IRepository<Role> roleRepository)
+            IRepository<Role> roleRepository,
+            IRepository<Email> emailRepository)
         {
             _userRepository = userRepository;
             _cryptoService = cryptoService;
             _userFactory = userFactory;
             _roleRepository = roleRepository;
+            _emailRepository = emailRepository;
         }
 
         public void Handle(SignUpUserCommand command)
@@ -41,7 +45,17 @@
                 user.Roles = new List<Role> { _roleRepository.Find().Single(x => x.Name == "User") };
                 user.VerificationCode = _cryptoService.GenerateRandomHash();
                 _userRepository.Save(user);
-                user.FinishedSignUp();
+                _emailRepository.Save(new Email
+                {
+                    Address = user.Email,
+                    Priority = 1,
+                    TemplateName = "VerifyEmail",
+                    Payload = Json.Encode(new
+                    {
+                        VerificationUrl = command.HostPath + "/Membership/Activate?token=" + user.VerificationCode
+                    })
+                });
+                user.FinishedSignUp(command.HostPath);
             }
         }
     }

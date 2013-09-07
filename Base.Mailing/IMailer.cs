@@ -1,4 +1,4 @@
-﻿namespace Mailing.Interfaces
+﻿namespace Base.Mailing
 {
     public interface IMailer
     {

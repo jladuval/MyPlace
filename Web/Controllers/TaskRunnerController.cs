@@ -2,21 +2,21 @@
 {
     using System.Net;
     using System.Web.Mvc;
-
+    using Base.CQRS.Commands;
     using Mailing.Interfaces;
 
     public class TaskRunnerController : Controller
     {
-        private readonly IMailer _mailer;
+        private readonly IGate _gate;
 
-        public TaskRunnerController(IMailer mailer)
+        public TaskRunnerController(IGate gate)
         {
-            _mailer = mailer;
+            _gate = gate;
         }
 
         public ActionResult Mailer()
         {
-            _mailer.Run();
+            _gate.Dispatch(new RunMailerCommand());
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
