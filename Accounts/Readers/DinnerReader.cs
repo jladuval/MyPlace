@@ -130,7 +130,7 @@
             return
                 applicants.Any(
                     applicant =>
-                    applicant.User.Id == userId || (applicant.Partner != null && applicant.Partner.Id == userId));
+                    applicant.User.Id == userId /*|| (applicant.Partner != null && applicant.Partner.Id == userId)*/);
         }
     }
 }

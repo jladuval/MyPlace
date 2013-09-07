@@ -67,7 +67,7 @@
                 if (user != null)
                 {
                     _authenticationService.LogIn(email, rememberMe, user.UserId, user.Roles, user.HasDetails);
-                    return RedirectToAction("MoreDetails");
+                    return RedirectToAction("Index", "Profile");
                 }
             }
             return View(model);
@@ -91,7 +91,7 @@
 
                 _gate.Dispatch(new SignUpUserCommand(email, password)
                 {
-                    HostPath = @Url.Action("Activate")
+                    HostPath = @Url.Action("Activate", null, null, Request.Url.Scheme)
                 });
                 var user = _securityUserReader.CheckUserCredentials(new CheckUserCredentialsQuery { Email = email, Password = password });
                 _authenticationService.LogIn(email, true, user.UserId, user.Roles, false);

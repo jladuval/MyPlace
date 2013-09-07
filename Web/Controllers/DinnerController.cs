@@ -9,6 +9,7 @@
     using AutoMapper;
     using Base.CQRS.Commands;
     using Core.Extensions;
+    using Mailing.Interfaces;
     using Models.Dinner;
 
     using Security.Interfaces.Queries;
@@ -51,8 +52,13 @@
                 new ApplyForDinnerCommand(User.TryGetPrincipal().UserId, id)
                 {
                     PartnerEmail = partnerEmail,
-                    ConfirmUrl = Url.Action("ConfirmAttending", "Membership")
+                    ConfirmUrl = Url.Action("ConfirmAttending", "Membership", null, Request.Url.Scheme)
                 });
+
+            if (partnerEmail != null)
+            {
+                _gate.Dispatch(new RunMailerCommand());
+            }
             return new HttpStatusCodeResult(HttpStatusCode.Accepted);
         }
 
@@ -91,8 +97,9 @@
                             Description = model.Description,
                             Date = date,
                             PartnerEmail = model.PartnerEmail,
-                            HostUrl = Url.Action("ConfirmHost", "Membership")
+                            HostUrl = Url.Action("ConfirmHost", "Membership", null, Request.Url.Scheme)
                         });
+                _gate.Dispatch(new RunMailerCommand());
                 return RedirectToAction("Index", "DinnerList");
             }
             return View("Create", model);
@@ -102,7 +109,5 @@
         {
             return View("Create", new CreateDinnerModel());
         }
-
-        
     }
 }

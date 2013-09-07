@@ -28,7 +28,7 @@
 
         public Guid? VerificationCode { get; set; }
 
-        public User Partner { get; set; }
+        public virtual User Partner { get; set; }
 
         public Dinner() { }
 

@@ -40,6 +40,7 @@
 
             HasMany(x => x.Applicants)
                 .KeyColumn("DinnerId")
+                .Inverse()
                 .Cascade.All();
         }
     }
