@@ -84,6 +84,25 @@
             return dto;
         }
 
+        public DinnerConfirmDto DinnerCanBeConfirmedByPartner(string token)
+        {
+            DinnerConfirmDto result = null;
+            Guid verificationToken;
+            if (Guid.TryParse(token, out verificationToken))
+            {
+                var dinner = _session.Query<Dinner>().Fetch(x => x.Partner).FirstOrDefault(x => x.VerificationCode == verificationToken);
+                if (dinner != null)
+                {
+                    result = new DinnerConfirmDto
+                        {
+                            Id = dinner.Id,
+                            UserId = dinner.Partner.Id
+                        };
+                }
+            }
+            return result;
+        }
+
         private bool HasApplied(IEnumerable<DinnerApplicant> applicants, Guid userId)
         {
             return

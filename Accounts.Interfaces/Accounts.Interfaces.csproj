@@ -40,12 +40,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Dinner\ApplyForDinnerCommand.cs" />
+    <Compile Include="Commands\Dinner\ConfirmHostCommand.cs" />
     <Compile Include="Commands\Profile\AddProfileImageCommand.cs" />
     <Compile Include="Commands\Dinner\CreateDinnerCommand.cs" />
     <Compile Include="Commands\Profile\AlterPrivateProfileCommand.cs" />
     <Compile Include="Commands\Profile\DeleteProfileImageCommand.cs" />
     <Compile Include="Commands\Profile\MoreDetailsCommand.cs" />
     <Compile Include="Commands\Profile\SelectProfileImageCommand.cs" />
+    <Compile Include="Presentation\Dinner\DinnerConfirmDto.cs" />
     <Compile Include="Presentation\Dinner\DinnerDto.cs" />
     <Compile Include="Presentation\Dinner\DinnerListDto.cs" />
     <Compile Include="Presentation\Dinner\DinnerListItemDto.cs" />

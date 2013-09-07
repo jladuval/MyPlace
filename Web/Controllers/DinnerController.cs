@@ -89,7 +89,8 @@
                             Dry = model.DryDinner,
                             Description = model.Description,
                             Date = date,
-                            PartnerEmail = model.PartnerEmail
+                            PartnerEmail = model.PartnerEmail,
+                            HostUrl = Url.Action("ConfirmHost", "Dinner")
                         });
                 return RedirectToAction("Index", "DinnerList");
             }
@@ -99,6 +100,17 @@
         public ActionResult View(Guid id)
         {
             return View("Create", new CreateDinnerModel());
+        }
+
+        public ActionResult ConfirmHost(string token)
+        {
+            var dinnerConfirmDto = _dinnerReader.DinnerCanBeConfirmedByPartner(token);
+            if (dinnerConfirmDto == null)
+            {
+                _gate.Dispatch(new ConfirmHostCommand(token));
+                return RedirectToAction("View", "Dinner", new { Id = dinnerConfirmDto.Id});
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }

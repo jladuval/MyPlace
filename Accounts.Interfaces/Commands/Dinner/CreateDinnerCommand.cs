@@ -19,5 +19,7 @@
         public DateTime Date { get; set; }
 
         public string PartnerEmail { get; set; }
+
+        public string HostUrl { get; set; }
     }
 }

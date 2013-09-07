@@ -1,10 +1,9 @@
-﻿namespace Events.Handlers
+﻿namespace Accounts.Handlers.Dinner
 {
     using System;
     using System.Linq;
-
+    using System.Web.Helpers;
     using Accounts.Domain;
-    using Accounts.Interfaces.Commands;
     using Accounts.Interfaces.Commands.Dinner;
     using Base.CQRS.Commands.Attributes;
     using Base.CQRS.Commands.Handler;
@@ -17,11 +16,13 @@
         private readonly IRepository<Dinner> _dinnerRepository;
 
         private readonly IRepository<User> _userRepository;
+        private readonly IRepository<Email> _emailRepository;
 
-        public CreateDinnerCommandHandler(IRepository<Dinner> dinnerRepository, IRepository<User> userRepository)
+        public CreateDinnerCommandHandler(IRepository<Dinner> dinnerRepository, IRepository<User> userRepository, IRepository<Email> emailRepository)
         {
             _dinnerRepository = dinnerRepository;
             _userRepository = userRepository;
+            _emailRepository = emailRepository;
         }
 
         public void Handle(CreateDinnerCommand command)
@@ -46,6 +47,19 @@
                     var partner = _userRepository.Find().Single(x => x.Email == command.PartnerEmail);
                     dinner.VerificationCode = Guid.NewGuid();
                     dinner.Partner = partner;
+                    _emailRepository.Save(new Email
+                    {
+                        Address = partner.Email,
+                        Priority = 1,
+                        TemplateName = "ApproveHostDinner",
+                        Payload = Json.Encode(new
+                        {
+                            VerificationUrl = command.HostUrl + "/Dinner/Approve?token=" + dinner.VerificationCode,
+                            HostFirstName = dinner.User.FirstName,
+                            HostLastName = dinner.User.LastName,
+                            
+                        })
+                    });
                 }
 
                 _dinnerRepository.Save(dinner);

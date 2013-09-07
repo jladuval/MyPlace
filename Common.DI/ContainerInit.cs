@@ -33,9 +33,6 @@ namespace Common.DI
     using Castle.MicroKernel.Registration;
     using Castle.MicroKernel.Resolvers.SpecializedResolvers;
     using Castle.Windsor;
-
-    using Events.Handlers;
-
     using Infrastructure.NHibernate.Configuration;
     using Infrastructure.NHibernate.Conventions;
 
