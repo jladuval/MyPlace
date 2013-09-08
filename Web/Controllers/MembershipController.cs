@@ -49,8 +49,11 @@
             {
                 _gate.Dispatch(new ActivateUserCommand(token));
                 _authenticationService.LogIn(userdto.Email, true, userdto.UserId, userdto.Roles, userdto.HasDetails);
+                TempData["SuccessMessage"] = "Your email have been activated.";
                 return RedirectToAction("Index", "Profile");
             }
+
+            TempData["ErrorMessage"] = "That appears to be an invalid activation token";
             return RedirectToAction("Index", "Home");
         }
 
@@ -138,8 +141,10 @@
                 _gate.Dispatch(new ActivateUserByIdCommand(user.UserId));
                 _authenticationService.LogIn(user.Email, true, user.UserId, user.Roles, false);
 
+                TempData["SuccessMessage"] = "Confirmation successful! Have a good night.";
                 return RedirectToAction("View", "Dinner", new { Id = dinnerConfirmDto.Id });
             }
+            TempData["ErrorMessage"] = "That confirmation token is invalid.";
             return RedirectToAction("Index", "Home");
         }
 
@@ -153,8 +158,10 @@
                 _gate.Dispatch(new ActivateUserByIdCommand(user.UserId));
                 _authenticationService.LogIn(user.Email, true, user.UserId, user.Roles, false);
 
+                TempData["SuccessMessage"] = "Confirmation successful! Good luck.";
                 return RedirectToAction("View", "Dinner", new { Id = dinnerConfirmDto.Id });
             }
+            TempData["ErrorMessage"] = "That confirmation token is invalid.";
             return RedirectToAction("Index", "Home");
         }
     }

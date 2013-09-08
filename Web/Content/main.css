@@ -42,3 +42,11 @@
 .heading-inline {
     display: inline-block;
 }
+
+.custom-alert {
+    position: fixed;
+    top: 20%;
+    z-index: 100;
+    right: 30%;
+    left:30%
+}
