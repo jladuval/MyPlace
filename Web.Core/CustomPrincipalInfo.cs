@@ -13,6 +13,8 @@
 
         public bool HasDetails { get; set; }
 
+        public bool IsVerified { get; set; }
+
         public static explicit operator CustomPrincipal(CustomPrincipalInfo info)
         {
             if (null == info) return null;
@@ -22,7 +24,8 @@
                 UserId = info.UserId,
                 Email = info.Email,
                 Roles = info.Roles,
-                HasDetails = info.HasDetails
+                HasDetails = info.HasDetails,
+                IsVerified = info.IsVerified
             };
             return user;
         }
@@ -39,7 +42,8 @@
                 UserId = info.UserId,
                 Email = info.Identity.Name,
                 Roles = info.Roles,
-                HasDetails = info.HasDetails
+                HasDetails = info.HasDetails,
+                IsVerified = info.IsVerified
             };
 
             return user;

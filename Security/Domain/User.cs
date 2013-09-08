@@ -20,8 +20,6 @@
 
         public string VerificationCode { get; set; }
 
-        public bool IsVerified { get; set; }
-
         public IList<Role> Roles { get; set; }
 
         public User()

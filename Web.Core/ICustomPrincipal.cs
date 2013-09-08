@@ -13,5 +13,7 @@
         IList<string> Roles { get; set; }
 
         bool HasDetails { get; set; }
+
+        bool IsVerified { get; set; }
     }
 }

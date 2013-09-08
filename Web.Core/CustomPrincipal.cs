@@ -22,6 +22,8 @@
 
         public bool HasDetails { get; set; }
 
+        public bool IsVerified { get; set; }
+
         public bool IsInRole(string role)
         {
             return Roles.Any(x => x == role);

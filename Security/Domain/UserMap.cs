@@ -26,8 +26,6 @@
 
             Map(x => x.Salt).Nullable();
 
-            Map(x => x.IsVerified).Nullable();
-
             Map(x => x.VerificationCode);
 
             HasManyToMany(x => x.Roles)

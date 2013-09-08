@@ -35,7 +35,8 @@
                            {
                                UserId = user.Id,
                                Roles = user.Roles.Select(x => x.Name).ToList(),
-                               HasDetails = user.FirstName != null
+                               HasDetails = user.FirstName != null,
+                               IsVerified = user.VerificationCode == null
                            }
                        : null;
         }
@@ -67,7 +68,8 @@
                     Email = user.Email,
                     UserId = user.Id,
                     Roles = user.Roles.Select(x => x.Name).ToList(),
-                    HasDetails = user.FirstName != null
+                    HasDetails = user.FirstName != null,
+                    IsVerified = user.VerificationCode == null
                 };
         }
     }

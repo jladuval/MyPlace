@@ -65,12 +65,18 @@
         [Authorize]
         public ActionResult Create()
         {
-            return View(
-                "Create",
-                new CreateDinnerModel
+            if (User.TryGetPrincipal().IsVerified)
+            {
+                return View(
+                    "Create",
+                    new CreateDinnerModel
                     {
                         CurrentLocation = _profileReader.GetLocationString(User.TryGetPrincipal().UserId)
                     });
+            }
+            
+            TempData["ErrorMessage"] = "You have to verify your email before creating a dinner.";
+            return RedirectToAction("Index", "DinnerList");
         }
 
         [Authorize]

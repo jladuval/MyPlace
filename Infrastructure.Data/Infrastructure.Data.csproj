@@ -61,6 +61,7 @@
     <Compile Include="Migrations\011_AddPartnerToDinner.cs" />
     <Compile Include="Migrations\012_AddPartnerToApplication.cs" />
     <Compile Include="Migrations\013_Emails.cs" />
+    <Compile Include="Migrations\014_RemovedIsVerifiedFromUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

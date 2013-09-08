@@ -20,14 +20,15 @@
             FormsAuthentication.SignOut();
         }
 
-        public void LogIn(string email, bool rememberMe, Guid userId, IList<string> roles, bool hasDetails)
+        public void LogIn(string email, bool rememberMe, Guid userId, IList<string> roles, bool hasDetails, bool isVerified)
         {
             var info = new CustomPrincipalInfo
             {
                 Email = email,
                 UserId = userId,
                 Roles = roles,
-                HasDetails = hasDetails
+                HasDetails = hasDetails,
+                IsVerified = isVerified
             };
             var cookie = info.CreateAuthenticationCookie(DateTime.Now, Timeout, rememberMe);
             HttpContext.Current.Response.Cookies.Add(cookie);
@@ -41,7 +42,8 @@
                 Email = principal.Email,
                 UserId = principal.UserId,
                 Roles = principal.Roles,
-                HasDetails = true
+                HasDetails = true,
+                IsVerified = principal.IsVerified
             };
             var cookie = info.CreateAuthenticationCookie(DateTime.Now, Timeout, true);
             HttpContext.Current.Response.Cookies.Add(cookie);

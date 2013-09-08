@@ -48,7 +48,7 @@
             if (userdto != null)
             {
                 _gate.Dispatch(new ActivateUserCommand(token));
-                _authenticationService.LogIn(userdto.Email, true, userdto.UserId, userdto.Roles, userdto.HasDetails);
+                _authenticationService.LogIn(userdto.Email, true, userdto.UserId, userdto.Roles, userdto.HasDetails, true);
                 TempData["SuccessMessage"] = "Your email have been activated.";
                 return RedirectToAction("Index", "Profile");
             }
@@ -69,7 +69,7 @@
                 var user = _securityUserReader.CheckUserCredentials(new CheckUserCredentialsQuery { Email = email, Password = pass });
                 if (user != null)
                 {
-                    _authenticationService.LogIn(email, rememberMe, user.UserId, user.Roles, user.HasDetails);
+                    _authenticationService.LogIn(email, rememberMe, user.UserId, user.Roles, user.HasDetails, user.IsVerified);
                     return RedirectToAction("Index", "Profile");
                 }
             }
@@ -97,7 +97,7 @@
                     HostPath = @Url.Action("Activate", null, null, Request.Url.Scheme)
                 });
                 var user = _securityUserReader.CheckUserCredentials(new CheckUserCredentialsQuery { Email = email, Password = password });
-                _authenticationService.LogIn(email, true, user.UserId, user.Roles, false);
+                _authenticationService.LogIn(email, true, user.UserId, user.Roles, false, false);
                 _gate.Dispatch(new RunMailerCommand());
                 return RedirectToAction("MoreDetails");
             }
@@ -139,7 +139,7 @@
                 _gate.Dispatch(new ConfirmHostCommand(token));
                 var user = _securityUserReader.GetUserById(dinnerConfirmDto.UserId);
                 _gate.Dispatch(new ActivateUserByIdCommand(user.UserId));
-                _authenticationService.LogIn(user.Email, true, user.UserId, user.Roles, false);
+                _authenticationService.LogIn(user.Email, true, user.UserId, user.Roles, user.HasDetails, true);
 
                 TempData["SuccessMessage"] = "Confirmation successful! Have a good night.";
                 return RedirectToAction("View", "Dinner", new { Id = dinnerConfirmDto.Id });
@@ -156,7 +156,7 @@
                 _gate.Dispatch(new ConfirmInvitationCommand(token));
                 var user = _securityUserReader.GetUserById(dinnerConfirmDto.UserId);
                 _gate.Dispatch(new ActivateUserByIdCommand(user.UserId));
-                _authenticationService.LogIn(user.Email, true, user.UserId, user.Roles, false);
+                _authenticationService.LogIn(user.Email, true, user.UserId, user.Roles, user.HasDetails, true);
 
                 TempData["SuccessMessage"] = "Confirmation successful! Good luck.";
                 return RedirectToAction("View", "Dinner", new { Id = dinnerConfirmDto.Id });

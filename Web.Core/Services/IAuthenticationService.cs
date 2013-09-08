@@ -7,7 +7,7 @@
     {
         void LogOff();
 
-        void LogIn(string email, bool rememberMe, Guid userId, IList<string> roles, bool hasDetails);
+        void LogIn(string email, bool rememberMe, Guid userId, IList<string> roles, bool hasDetails, bool isVerified);
 
         void AddedDetails(ICustomPrincipal principal);
     }
