@@ -69,7 +69,7 @@ namespace Common.DI
         }
 
         private static IEnumerable<Assembly> GetAssemblies()
-        {
+        {   
             return new[]
                 {
                     typeof(CryptoService).Assembly,

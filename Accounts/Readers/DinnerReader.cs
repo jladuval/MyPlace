@@ -7,6 +7,7 @@
     using Accounts.Domain;
     using AutoMapper;
     using Base.CQRS.Query.Attributes;
+    using Interfaces.Presentation.Comments;
     using Interfaces.Presentation.Dinner;
     using Interfaces.Presentation.Profile;
     using Interfaces.Readers;
@@ -125,12 +126,29 @@
             return result;
         }
 
+        public ICollection<CommentDto> GetCommentsForDinner(Guid dinnerId)
+        {
+            return _session.Query<Dinner>()
+                .FetchMany(x => x.Comments)
+                .ThenFetch(x => x.User)
+                .Single(x => x.Id == dinnerId)
+                .Comments.Select(x => new CommentDto
+                {
+                    UserId = x.User.Id.ToString(),
+                    Id = x.Id.ToString(),
+                    ProfileImageUrl = x.User.ProfileImageUrl,
+                    CreatedDate = x.CreatedDate,
+                    Name = x.User.FullName(),
+                    Text = x.Text
+                }).ToList();
+        }
+
         private bool HasApplied(IEnumerable<DinnerApplicant> applicants, Guid userId)
         {
             return
                 applicants.Any(
                     applicant =>
-                    applicant.User.Id == userId /*|| (applicant.Partner != null && applicant.Partner.Id == userId)*/);
+                    applicant.User.Id == userId || (applicant.Partner != null && applicant.Partner.Id == userId));
         }
     }
 }

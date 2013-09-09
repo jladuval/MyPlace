@@ -9,7 +9,7 @@
 
 <section id="intro" class="content no-header">
     <div class="container">
-        <div class="row">
+        <div class="row" id="dinnerInfo">
             <div class="col-lg-10">
                 <a href="/Profile?id=@Model.UserId"><h1 class="heading-inline">@Model.FirstName @Model.LastName </h1></a>
                 @if (hasPartner)
@@ -89,6 +89,27 @@
                 </div>
             </div>
         </div>
+        <div class="row" id="comments">
+            <div>
+                <!-- ko foreach: Comments-->
+                <div class="comment">
+                    <div class="comment-head">
+                        <span data-bind="text: Name"></span> on 
+                        <span class="blue" data-bind="text: CreatedDate"></span>
+                    </div>
+                    <div class="comment-text">
+                        <span class="comment-text" data-bind="text: Text"></span>
+                    </div>
+                </div>
+                <!-- /ko -->
+                <a class="btn" data-bind="click: ToggleNewComment, visible: !NewCommentVisible()" href="#">New Comment</a>
+                <!-- ko if: NewCommentVisible -->
+                <textarea data-bind="value: NewComment, valueUpdate: 'afterkeydown'"></textarea>
+                <a class="btn" data-bind="click: Save" href="#">Save</a>
+                <a class="btn" data-bind="click: ToggleNewComment" href="#">Cancel</a>
+                <!-- /ko -->
+            </div>
+        </div>
     </div>
 							
 </section>
@@ -96,7 +117,9 @@
 @section PageScripts
 {
     <script src="~/Scripts/Custom/NewDinner.js"></script>
+    <script src="~/Scripts/Custom/Comments.js"></script>
     <script type="text/javascript">
-        ko.applyBindings(ViewDinnerVM("@Model.Id"));
+        ko.applyBindings(ViewDinnerVM("@Model.Id", document.getElementById("dinnerInfo")));
+        ko.applyBindings(CommentsVM("@Model.Id", document.getElementById("comments")));
     </script>
 }

@@ -1,6 +1,7 @@
 ﻿namespace Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Net;
     using System.Web.Mvc;
@@ -11,7 +12,7 @@
     using Core.Extensions;
     using Mailing.Interfaces;
     using Models.Dinner;
-
+    using Models.Shared;
     using Security.Interfaces.Queries;
 
     using Web.Attributes;
@@ -62,7 +63,29 @@
             return new HttpStatusCodeResult(HttpStatusCode.Accepted);
         }
 
-        [Authorize]
+        [HttpPost]
+        public ActionResult GetComments(string dinnerId)
+        {
+            var data = new List<CommentModel>();
+            Guid id;
+            if (Guid.TryParse(dinnerId, out id))
+            {
+                data = Mapper.Map<List<CommentModel>>(_dinnerReader.GetCommentsForDinner(id));
+            }
+            return new JsonResult{ Data = data };
+        }
+
+        [HttpPost]
+        public ActionResult SaveNewComment(string dinnerId, string text)
+        {
+            Guid teaId;
+            if (Guid.TryParse(dinnerId, out teaId))
+            {
+                _gate.Dispatch(new AddCommentToDinnerCommand(teaId, text, User.TryGetPrincipal().UserId));
+            }
+            return new JsonResult { Data = "success" };
+        }
+
         public ActionResult Create()
         {
             if (User.TryGetPrincipal().IsVerified)
@@ -79,7 +102,6 @@
             return RedirectToAction("Index", "DinnerList");
         }
 
-        [Authorize]
         [HttpPost]
         public ActionResult Create(CreateDinnerModel model)
         {
@@ -109,11 +131,6 @@
                 return RedirectToAction("Index", "DinnerList");
             }
             return View("Create", model);
-        }
-
-        public ActionResult View(Guid id)
-        {
-            return View("Create", new CreateDinnerModel());
         }
     }
 }

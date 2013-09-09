@@ -26,6 +26,8 @@
 
         public virtual ICollection<DinnerApplicant> Applicants { get; set; }
 
+        public virtual ICollection<Comment> Comments { get; set; }
+
         public Guid? VerificationCode { get; set; }
 
         public virtual User Partner { get; set; }
@@ -49,6 +51,11 @@
         public void Close()
         {
             ClosedDate = DateTime.UtcNow;
+        }
+
+        public void AddComment(Comment comment)
+        {
+            Comments.Add(comment);
         }
     }
 }

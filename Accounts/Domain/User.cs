@@ -40,6 +40,11 @@ namespace Accounts.Domain
             AppliedDinners = new List<DinnerApplicant>();
         }
 
+        public string FullName()
+        {
+            return FirstName + " " + LastName;
+        }
+
         public void AddProfileImage(Image image)
         {
             var profileImage =

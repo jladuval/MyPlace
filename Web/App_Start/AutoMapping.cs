@@ -1,6 +1,7 @@
 ﻿namespace Web.App_Start
 {
     using Accounts.Interfaces.Presentation;
+    using Accounts.Interfaces.Presentation.Comments;
     using Accounts.Interfaces.Presentation.Dinner;
     using Accounts.Interfaces.Presentation.Profile;
     using AutoMapper;
@@ -25,6 +26,7 @@
             Mapper.CreateMap<DinnerDto, ViewDinnerModel>()
                 .AfterMap((src, dest) => { if (dest.ProfileImageUrl == null) dest.ProfileImageUrl = Placeholder; })
                 .AfterMap((src, dest) => { if (dest.PartnerImageUrl == null) dest.PartnerImageUrl = Placeholder; });
+            Mapper.CreateMap<CommentDto, CommentModel>();
         }
     }
 }

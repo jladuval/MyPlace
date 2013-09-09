@@ -74,11 +74,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Comment.cs" />
     <Compile Include="Domain\Dinner.cs" />
     <Compile Include="Domain\DinnerApplicant.cs" />
     <Compile Include="Domain\Email.cs" />
     <Compile Include="Domain\Image.cs" />
     <Compile Include="Domain\Location.cs" />
+    <Compile Include="Domain\Mappings\CommentMap.cs" />
     <Compile Include="Domain\Mappings\DinnerApplicantMap.cs" />
     <Compile Include="Domain\Mappings\DinnerMap.cs" />
     <Compile Include="Domain\Mappings\EmailMap.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Domain\Mappings\UserMap.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Handlers\Dinner\AddCommentToDinnerCommandHandler.cs" />
     <Compile Include="Handlers\Dinner\ApplyForDinnerCommandHandler.cs" />
     <Compile Include="Handlers\Dinner\ConfirmHostCommandHandler.cs" />
     <Compile Include="Handlers\Dinner\ConfirmInvitationCommandHandler.cs" />
