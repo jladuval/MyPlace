@@ -27,7 +27,7 @@
                 .AfterMap((src, dest) => { if (dest.ProfileImageUrl == null) dest.ProfileImageUrl = Placeholder; })
                 .AfterMap((src, dest) => { if (dest.PartnerImageUrl == null) dest.PartnerImageUrl = Placeholder; });
             Mapper.CreateMap<CommentDto, CommentModel>()
-                .ForMember(x => x.CreatedDate, opt => opt.MapFrom(x => x.CreatedDate.ToString()));
+                .ForMember(x => x.CreatedDate, opt => opt.MapFrom(x => x.CreatedDate.ToShortDateString()));
         }
     }
 }
