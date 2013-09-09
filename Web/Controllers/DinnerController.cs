@@ -70,7 +70,8 @@
             Guid id;
             if (Guid.TryParse(dinnerId, out id))
             {
-                data = Mapper.Map<List<CommentModel>>(_dinnerReader.GetCommentsForDinner(id));
+                var comments = _dinnerReader.GetCommentsForDinner(id);
+                data = Mapper.Map<List<CommentModel>>(comments);
             }
             return new JsonResult{ Data = data };
         }

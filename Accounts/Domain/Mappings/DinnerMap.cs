@@ -45,7 +45,6 @@
 
             HasMany(x => x.Comments)
                 .KeyColumn("DinnerId")
-                .Inverse()
                 .Cascade.All();
         }
     }

@@ -26,7 +26,8 @@
             Mapper.CreateMap<DinnerDto, ViewDinnerModel>()
                 .AfterMap((src, dest) => { if (dest.ProfileImageUrl == null) dest.ProfileImageUrl = Placeholder; })
                 .AfterMap((src, dest) => { if (dest.PartnerImageUrl == null) dest.PartnerImageUrl = Placeholder; });
-            Mapper.CreateMap<CommentDto, CommentModel>();
+            Mapper.CreateMap<CommentDto, CommentModel>()
+                .ForMember(x => x.CreatedDate, opt => opt.MapFrom(x => x.CreatedDate.ToString()));
         }
     }
 }

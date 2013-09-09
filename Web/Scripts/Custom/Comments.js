@@ -6,7 +6,7 @@
     _this.loadDetails = function () {
         $.post('/Dinner/GetComments', { DinnerId: dinnerId })
             .done(function(response) {
-                var comments = response.Data;
+                var comments = response;
                 _.each(comments, function(comment) {
                     _this.Comments.push(Comment(comment));
                 });

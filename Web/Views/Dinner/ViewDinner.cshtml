@@ -91,6 +91,7 @@
         </div>
         <div class="row" id="comments">
             <div>
+                <!-- ko if: Comments -->
                 <!-- ko foreach: Comments-->
                 <div class="comment">
                     <div class="comment-head">
@@ -101,6 +102,7 @@
                         <span class="comment-text" data-bind="text: Text"></span>
                     </div>
                 </div>
+                <!-- /ko -->
                 <!-- /ko -->
                 <a class="btn" data-bind="click: ToggleNewComment, visible: !NewCommentVisible()" href="#">New Comment</a>
                 <!-- ko if: NewCommentVisible -->
@@ -119,7 +121,7 @@
     <script src="~/Scripts/Custom/NewDinner.js"></script>
     <script src="~/Scripts/Custom/Comments.js"></script>
     <script type="text/javascript">
-        ko.applyBindings(ViewDinnerVM("@Model.Id", document.getElementById("dinnerInfo")));
-        ko.applyBindings(CommentsVM("@Model.Id", document.getElementById("comments")));
+        ko.applyBindings(ViewDinnerVM("@Model.Id"), document.getElementById("dinnerInfo"));
+        ko.applyBindings(CommentsVM("@Model.Id"), document.getElementById("comments"));
     </script>
 }
