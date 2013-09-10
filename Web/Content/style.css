@@ -33,7 +33,6 @@ Table of Contents:
 body {
 	padding: 0;
 	font-family: 'Open Sans', sans-serif;
-	background: #fff;
 	color: #25272B;
 }
 
@@ -362,7 +361,6 @@ textarea:focus, input:focus, a:focus, *:focus {
 }
 
 .content.no-header {
-	background: #fff;
 	padding: 70px 0px;
 	margin-top: 90px;
 }

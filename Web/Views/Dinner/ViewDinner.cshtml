@@ -89,13 +89,15 @@
                 </div>
             </div>
         </div>
+        <div class="divider"></div>
         <div class="row" id="comments">
-            <div>
+            <div class="col-md-6 col-offset-4">
+                <h2>Comments</h2>
                 <!-- ko if: Comments -->
                 <!-- ko foreach: Comments-->
-                <div class="comment">
-                    <div class="comment-head">
-                        <span data-bind="text: Name"></span> on 
+                <div class="comment col-sm-12">
+                    <div class="">
+                        <strong data-bind="text: Name"></strong> on 
                         <span class="blue" data-bind="text: CreatedDate"></span>
                     </div>
                     <div class="comment-text">
@@ -104,11 +106,11 @@
                 </div>
                 <!-- /ko -->
                 <!-- /ko -->
-                <a class="btn" data-bind="click: ToggleNewComment, visible: !NewCommentVisible()" href="#">New Comment</a>
+                <a class="btn btn-syndicate" data-bind="click: ToggleNewComment, visible: !NewCommentVisible()" href="#">New Comment</a>
                 <!-- ko if: NewCommentVisible -->
-                <textarea data-bind="value: NewComment, valueUpdate: 'afterkeydown'"></textarea>
-                <a class="btn" data-bind="click: Save" href="#">Save</a>
-                <a class="btn" data-bind="click: ToggleNewComment" href="#">Cancel</a>
+                <textarea class="form-control" placeholder="Comment..." data-bind="value: NewComment, valueUpdate: 'afterkeydown'"></textarea>
+                <a class="btn btn-syndicate" data-bind="click: Save" href="#">Save</a>
+                <a class="btn btn-cool" data-bind="click: ToggleNewComment" href="#">Cancel</a>
                 <!-- /ko -->
             </div>
         </div>

@@ -205,8 +205,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dropzone.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Content\images\background-fish.jpg" />
-    <Content Include="Content\images\background-fish2.jpg" />
     <Content Include="Content\images\marker.png" />
     <Content Include="Content\images\placeholder.jpg" />
     <Content Include="Content\images\preload.gif" />
