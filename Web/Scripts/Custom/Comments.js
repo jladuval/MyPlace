@@ -49,7 +49,13 @@ function Comment(commentData) {
 
     _this.CreatedDate = ko.observable(commentData.CreatedDate);
 
-    _this.ProfileImageUrl = ko.observable(commentData.ProfileImageUrl);
+    _this.ProfileUrl = ko.observable("/Profile?id=" + commentData.UserId);
+    
+    if (commentData.UserId) {
+        _this.ProfileUrl("/Profile?id=" + commentData.UserId);
+    } else {
+        _this.ProfileUrl("/Profile");
+    }
 
     return _this;
 }

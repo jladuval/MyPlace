@@ -91,13 +91,13 @@
         </div>
         <div class="divider"></div>
         <div class="row" id="comments">
-            <div class="col-md-6 col-offset-4">
+            <div class="col-md-6">
                 <h2>Comments</h2>
                 <!-- ko if: Comments -->
                 <!-- ko foreach: Comments-->
                 <div class="comment col-sm-12">
                     <div class="">
-                        <strong data-bind="text: Name"></strong> on 
+                        <a data-bind="attr: { href: ProfileUrl }"><strong data-bind="text: Name"></strong></a>,  
                         <span class="blue" data-bind="text: CreatedDate"></span>
                     </div>
                     <div class="comment-text">
