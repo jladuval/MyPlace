@@ -16,13 +16,15 @@
 
             References(x => x.Dinner).Column("DinnerId").Not.Nullable().LazyLoad(Laziness.False);
 
-            References(x => x.Partner).Column("PartnerId").Nullable().Cascade.SaveUpdate();
+            References(x => x.Partner).Column("PartnerId").Nullable().LazyLoad(Laziness.False).Cascade.SaveUpdate();
 
             Map(x => x.VerificationCode).Nullable();
 
             Map(x => x.Accepted).Not.Nullable();
 
             Map(x => x.Rejected).Not.Nullable();
+
+            Map(x => x.Hidden).Not.Nullable();
 
         }
     }

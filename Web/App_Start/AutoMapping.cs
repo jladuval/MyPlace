@@ -7,6 +7,7 @@
     using AutoMapper;
     using Models.Dinner;
     using Models.DinnerList;
+    using Models.MyEvents;
     using Models.Profile;
     using Models.Shared;
 
@@ -18,6 +19,7 @@
         {
             Mapper.CreateMap<PrivateProfileDto, PrivateProfileModel>();
             Mapper.CreateMap<PublicProfileDto, PublicProfileModel>();
+            Mapper.CreateMap<PersonalDinnerListItem, MyEventsDinnerModel>();
             Mapper.CreateMap<ImageDto, ImageModel>();
             Mapper.CreateMap<DinnerListDto, DinnerListModel>();
             Mapper.CreateMap<DinnerListItemDto, DinnerListItemModel>()

@@ -177,6 +177,7 @@
     <Compile Include="Controllers\DinnerListController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MembershipController.cs" />
+    <Compile Include="Controllers\MyEventsController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\TaskRunnerController.cs" />
     <Compile Include="Controllers\TemplateController.cs" />
@@ -193,6 +194,8 @@
     <Compile Include="Models\Membership\LoginModel.cs" />
     <Compile Include="Models\Membership\MoreDetailsModel.cs" />
     <Compile Include="Models\Membership\SignupModel.cs" />
+    <Compile Include="Models\MyEvents\MyEventsDinnerModel.cs" />
+    <Compile Include="Models\MyEvents\MyEventsModel.cs" />
     <Compile Include="Models\Profile\PrivateProfileModel.cs" />
     <Compile Include="Models\Profile\PublicProfileModel.cs" />
     <Compile Include="Models\Shared\CommentModel.cs" />
@@ -363,6 +366,7 @@
     <Content Include="Views\Template\Team.cshtml" />
     <Content Include="Views\Template\Work.cshtml" />
     <Content Include="Scripts\underscore.min.map" />
+    <Content Include="Views\MyEvents\MyEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

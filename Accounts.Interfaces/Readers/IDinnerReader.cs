@@ -12,5 +12,8 @@
         DinnerConfirmDto DinnerCanBeConfirmedByPartner(string token);
         DinnerConfirmDto InvitationCanBeConfirmedByPartner(string token);
         ICollection<CommentDto> GetCommentsForDinner(Guid dinnerId);
+        ICollection<PersonalDinnerListItem> GetAppliedDinnerList(Guid userId);
+        ICollection<PersonalDinnerListItem> GetAttendedDinnerList(Guid userId);
+        ICollection<PersonalDinnerListItem> GetHostedDinnerList(Guid userId);
     }
 }

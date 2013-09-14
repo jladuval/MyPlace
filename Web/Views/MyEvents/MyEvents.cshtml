@@ -1,0 +1,67 @@
+﻿@model Web.Models.MyEvents.MyEventsModel
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>My Events</h2>
+
+<h4>Hosted</h4>
+@foreach (var dinner in Model.HostedDinners)
+{
+    <div class="row">
+        <a href="@Url.Action("Index", "Dinner", new { id = dinner.DinnerId })">
+            <div class="col-sm-3">@dinner.Date
+                @if (!String.IsNullOrEmpty(dinner.Partner))
+                {
+                    <span> with @dinner.Partner</span>
+                }
+            </div>
+            <div class="col-sm-3">@dinner.ApplicantCount Applicants</div>
+        </a>
+    </div>
+}
+
+<h4>Applied</h4>
+@foreach (var dinner in Model.AppliedDinners)
+{
+    <div class="row">
+        <a href="@Url.Action("Index", "Dinner", new { id = dinner.DinnerId })">
+            <div class="col-sm-3">@dinner.Host
+                @if (!String.IsNullOrEmpty(dinner.Partner))
+                {
+                    <span> and @dinner.Partner</span>
+                }
+            </div>
+            <div class="col-sm-3">@dinner.Date
+                
+            </div>
+            @if (!String.IsNullOrEmpty(dinner.AppliedPartner))
+            {
+                <div class="col-sm-3">with @dinner.AppliedPartner</div>
+            }
+        </a>
+    </div>
+}
+
+<h4>Attended</h4>
+@foreach (var dinner in Model.AttendedDinners)
+{
+    <div class="row">
+        <a href="@Url.Action("Index", "Dinner", new { id = dinner.DinnerId })">
+            <div class="col-sm-3">@dinner.Host
+                @if (!String.IsNullOrEmpty(dinner.Partner))
+                {
+                    <span> and @dinner.Partner</span>
+                }
+            </div>
+            <div class="col-sm-3">@dinner.Date
+                
+            </div>
+            @if (!String.IsNullOrEmpty(dinner.AppliedPartner))
+            {
+                <div class="col-sm-3">with @dinner.AppliedPartner</div>
+            }
+        </a>
+    </div>
+}

@@ -18,6 +18,8 @@
 
         public bool Rejected { get; set; }
 
+        public bool Hidden { get; set; }
+
         public DinnerApplicant()
         {
         }

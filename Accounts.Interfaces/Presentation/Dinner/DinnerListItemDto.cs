@@ -16,6 +16,8 @@
 
         public bool DryDinner { get; set; }
 
+        public bool Accepted { get; set; }
+
         public DateTime EventDate { get; set; }
 
         public double Distance { get; set; }

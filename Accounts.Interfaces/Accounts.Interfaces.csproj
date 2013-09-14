@@ -54,6 +54,7 @@
     <Compile Include="Presentation\Dinner\DinnerDto.cs" />
     <Compile Include="Presentation\Dinner\DinnerListDto.cs" />
     <Compile Include="Presentation\Dinner\DinnerListItemDto.cs" />
+    <Compile Include="Presentation\Dinner\PersonalDinnerListItem.cs" />
     <Compile Include="Presentation\ImageDto.cs" />
     <Compile Include="Presentation\LatLngDto.cs" />
     <Compile Include="Presentation\Profile\PrivateProfileDto.cs" />
