@@ -8,9 +8,6 @@
     using Base.CQRS.Commands.Handler;
     using Infrastructure.NHibernate.Repositories;
     using Interfaces.Commands.Dinner;
-    using NHibernate.Dialect.Function;
-
-    using NHibernate.Linq;
 
     [CommandHandler]
     public class ApplyForDinnerCommandHandler : ICommandHandler<ApplyForDinnerCommand>
@@ -46,7 +43,7 @@
                 {
                     application.VerificationCode = Guid.NewGuid();
                     application.Partner = _userRepository.Find().Single(x => x.Email == command.PartnerEmail);
-                    _emailRepository.Save(new Email
+                    var email = new Email
                     {
                         Address = application.Partner.Email,
                         Priority = 1,
@@ -55,7 +52,8 @@
                         {
                             VerificationUrl = command.ConfirmUrl + "?token=" + application.VerificationCode
                         })
-                    });
+                    };
+                    _emailRepository.Save(email);
                 }
                 dinner.Applicants.Add(application);
                 user.AppliedDinners.Add(application);

@@ -155,34 +155,43 @@
                     Accepted = x.Accepted,
                     DinnerId = x.Dinner.Id,
                     ApplicantCount = x.Dinner.Applicants.Count,
-                    AppliedPartner = x.Partner.Id == userId ? x.User.FullName() : x.Partner.FullName(),
+                    AppliedPartner = AppliedPartner(x, userId),
                     ApprovalToken = x.User.Id == userId ? null : x.VerificationCode,
                     Date = x.Dinner.Date.ToShortDateString(),
                     Host = x.Dinner.User.FullName(),
-                    Partner = x.Dinner.Partner.FullName(),
+                    Partner = x.Dinner.Partner == null ? null : x.Dinner.Partner.FullName(),
                     Pending = x.VerificationCode != null
                 }).ToList();
         }
 
         public ICollection<PersonalDinnerListItem> GetAttendedDinnerList(Guid userId)
         {
-            return _session.Query<DinnerApplicant>()
+            var asGuest = _session.Query<DinnerApplicant>()
                .Fetch(x => x.Dinner).ThenFetch(x => x.User)
                .Fetch(x => x.Dinner).ThenFetch(x => x.Partner)
                .Where(x => x.Dinner.Date < DateTime.UtcNow)
                .Where(x => x.Accepted)
                .Select(x => new PersonalDinnerListItem
                {
-                   Accepted = x.Accepted,
                    DinnerId = x.Dinner.Id,
-                   ApplicantCount = x.Dinner.Applicants.Count,
-                   AppliedPartner = x.Partner.Id == userId ? x.User.FullName() : x.Partner.FullName(),
-                   ApprovalToken = x.User.Id == userId ? null : x.VerificationCode,
+                   AppliedPartner = AppliedPartner(x, userId),
                    Date = x.Dinner.Date.ToShortDateString(),
                    Host = x.Dinner.User.FullName(),
-                   Partner = x.Dinner.Partner.FullName(),
-                   Pending = x.VerificationCode != null
+                   Partner = x.Dinner.Partner == null ? null : x.Dinner.Partner.FullName(),
                }).ToList();
+
+            var asHost = _session.Query<Dinner>()
+                .Where(x => x.User.Id == userId)
+                .Where(x => x.Date < DateTime.UtcNow)
+                .Select(x => new PersonalDinnerListItem
+                {
+                    Host = "You",
+                    DinnerId = x.Id,
+                    Partner = DinnerHostPartner(x, userId),
+                    Date = x.Date.ToShortDateString()
+                }).ToList();
+
+            return asGuest.Concat(asHost).ToList();
         }
 
         public ICollection<PersonalDinnerListItem> GetHostedDinnerList(Guid userId)
@@ -196,9 +205,27 @@
                     DinnerId = x.Id,
                     Pending = x.VerificationCode != null,
                     ApprovalToken = x.User.Id == userId ? null : x.VerificationCode,
-                    Partner = x.Partner.Id == userId ? x.User.FullName() : x.Partner.FullName(),
+                    Partner = DinnerHostPartner(x, userId),
                     Date = x.Date.ToShortDateString()
                 }).ToList();
+        }
+
+        private string AppliedPartner(DinnerApplicant dinnerApplicant, Guid userId)
+        {
+            if (dinnerApplicant.Partner == null)
+                return null;
+            return dinnerApplicant.Partner.Id == userId
+                ? dinnerApplicant.User.FullName()
+                : dinnerApplicant.Partner.FullName();
+        }
+
+        private string DinnerHostPartner(Dinner dinner, Guid userId)
+        {
+            if (dinner.Partner == null)
+                return null;
+            return dinner.Partner.Id == userId
+                ? dinner.User.FullName()
+                : dinner.Partner.FullName();
         }
 
         private bool HasApplied(IEnumerable<DinnerApplicant> applicants, Guid userId)

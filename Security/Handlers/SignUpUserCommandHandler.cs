@@ -1,5 +1,6 @@
 ﻿namespace Security.Handlers
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Helpers;
@@ -43,7 +44,7 @@
                 var salt = _cryptoService.GenerateSalt();
                 var user = _userFactory.CreateUser(command.Email, _cryptoService.Hash(command.Password, salt), salt);
                 user.Roles = new List<Role> { _roleRepository.Find().Single(x => x.Name == "User") };
-                user.VerificationCode = _cryptoService.GenerateRandomHash();
+                user.VerificationCode = Guid.NewGuid().ToString();
                 _userRepository.Save(user);
                 _emailRepository.Save(new Email
                 {

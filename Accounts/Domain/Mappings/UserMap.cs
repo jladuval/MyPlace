@@ -1,7 +1,6 @@
-﻿namespace Accounts.Domain
+﻿namespace Accounts.Domain.Mappings
 {
     using System;
-    using System.Security.Cryptography.X509Certificates;
     using FluentNHibernate.Mapping;
 
     public class UserMap : ClassMap<User>
