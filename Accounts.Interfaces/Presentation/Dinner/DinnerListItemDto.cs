@@ -21,5 +21,7 @@
         public DateTime EventDate { get; set; }
 
         public double Distance { get; set; }
+
+        public Guid? Token { get; set; }
     }
 }

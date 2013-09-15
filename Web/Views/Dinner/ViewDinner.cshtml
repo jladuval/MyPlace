@@ -55,7 +55,7 @@
                         <p class="lead">@Model.Description<br><br>
                     </div>
                     <div class="col-sm-12">
-                        @if (Model.UserId != User.TryGetPrincipal().UserId)
+                        @if (Model.UserId != User.TryGetPrincipal().UserId && Model.PartnerId != User.TryGetPrincipal().UserId)
                         {
                             if (!User.TryGetPrincipal().IsVerified)
                             {

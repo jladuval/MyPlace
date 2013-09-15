@@ -12,7 +12,7 @@
     using Interfaces.Readers;
     using NHibernate;
     using NHibernate.Linq;
-    using NHibernate.Transform;
+    using Queries.Dinner;
 
     [Reader]
     public class DinnerReader : IDinnerReader
@@ -26,40 +26,7 @@
 
         public DinnerListDto GetDinnerList(double lat, double lng, int skip, int take)
         {
-            var selectDinnerByDistance = string.Format(
-                @"DECLARE @dist AS Geography = 'POINT({0} {1})'
-                Select 
-                    u.ProfileImageUrl as ProfileImageUrl, 
-                    d.Starter as Starter,
-                    d.Main as Main,
-                    d.Id as Id,
-                    d.Dessert as Dessert,
-                    d.Dry as DryDinner,
-                    d.[Date] as EventDate,
-                    l.GeoLoc.STDistance(@dist.STBuffer(0.2).STAsText()) as Distance
-                    from dbo.Locations l
-                    join Dinners d on d.LocationId = l.Id
-                    join Users u on u.Id = d.UserId
-                    Order by Distance asc
-                    OFFSET {2} ROWS
-                    FETCH NEXT {3} ROWS ONLY", 
-                lng,
-                lat, 
-                skip, 
-                take);
-
-            var dinnerListByDistance = _session.CreateSQLQuery(selectDinnerByDistance)
-                .SetResultTransformer(Transformers.AliasToBean<DinnerListItemDto>())
-                .List<DinnerListItemDto>();
-
-            var total = _session.Query<Dinner>().Count(x => x.Date < DateTime.UtcNow);
-
-            return new DinnerListDto
-                       {
-                           TotalPages = total / take,
-                           TotalResults = total,
-                           Dinners = dinnerListByDistance
-                       };
+            return new GetDinnerListQuery(_session).Execute(lat, lng, skip, take);
         }
 
         public DinnerDto GetDinner(Guid id, Guid userId)
@@ -147,7 +114,6 @@
             return _session.Query<DinnerApplicant>()
                 .Fetch(x => x.Dinner).ThenFetch(x => x.User)
                 .Fetch(x => x.Dinner).ThenFetch(x => x.Partner)
-                .Where(x => x.User.Id == userId && !x.Hidden)
                 .Where(x => x.Dinner.Date > DateTime.UtcNow)
                 .Where(x => x.User.Id == userId || x.Partner.Id == userId)
                 .Select(x => new PersonalDinnerListItem
@@ -199,7 +165,7 @@
         public ICollection<PersonalDinnerListItem> GetHostedDinnerList(Guid userId)
         {
             return _session.Query<Dinner>()
-                .Where(x => x.User.Id == userId)
+                .Where(x => x.User.Id == userId || x.Partner.Id == userId)
                 .Where(x => x.Date > DateTime.UtcNow)
                 .Select(x => new PersonalDinnerListItem
                 {

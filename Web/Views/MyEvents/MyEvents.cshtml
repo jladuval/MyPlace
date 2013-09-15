@@ -31,6 +31,7 @@
                                     <span class="col-sm-6">
                                         <a class="btn btn-eco" 
                                            data-toggle="tooltip" 
+                                           data-placement="bottom"
                                            title="You need to confirm that you would like to co-host this dinner with @dinner.Partner" 
                                            href="@Url.Action("ConfirmHost", "Membership", new { token = dinner.ApprovalToken })">
                                             Confirm Co-Host
@@ -72,6 +73,7 @@
                                     <span class="col-sm-6">
                                         <a class="btn btn-eco" 
                                            data-toggle="tooltip" 
+                                           data-placement="bottom"
                                            title="You need to confirm that you would like to attend this dinner with @dinner.AppliedPartner" 
                                            href="@Url.Action("ConfirmAttending", "Membership", new { token = dinner.ApprovalToken })">
                                             Approve Attendance
