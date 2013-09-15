@@ -9,7 +9,6 @@
     using Base.CQRS.Query.Attributes;
     using Interfaces.Presentation.Comments;
     using Interfaces.Presentation.Dinner;
-    using Interfaces.Presentation.Profile;
     using Interfaces.Readers;
     using NHibernate;
     using NHibernate.Linq;
@@ -150,6 +149,7 @@
                 .Fetch(x => x.Dinner).ThenFetch(x => x.Partner)
                 .Where(x => x.User.Id == userId && !x.Hidden)
                 .Where(x => x.Dinner.Date > DateTime.UtcNow)
+                .Where(x => x.User.Id == userId || x.Partner.Id == userId)
                 .Select(x => new PersonalDinnerListItem
                 {
                     Accepted = x.Accepted,
@@ -171,6 +171,7 @@
                .Fetch(x => x.Dinner).ThenFetch(x => x.Partner)
                .Where(x => x.Dinner.Date < DateTime.UtcNow)
                .Where(x => x.Accepted)
+               .Where(x => x.User.Id == userId || x.Partner.Id == userId)
                .Select(x => new PersonalDinnerListItem
                {
                    DinnerId = x.Dinner.Id,
@@ -183,6 +184,7 @@
             var asHost = _session.Query<Dinner>()
                 .Where(x => x.User.Id == userId)
                 .Where(x => x.Date < DateTime.UtcNow)
+                .Where(x => x.User.Id == userId || x.Partner.Id == userId)
                 .Select(x => new PersonalDinnerListItem
                 {
                     Host = "You",
