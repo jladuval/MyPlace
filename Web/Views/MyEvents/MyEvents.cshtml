@@ -1,77 +1,116 @@
 ﻿@model Web.Models.MyEvents.MyEventsModel
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "My Events";
 }
 
-<h2>My Events</h2>
+<section id="intro" class="content no-header">
+    <div class="container">
+        <div class="row">
+            <h2>My Events</h2>
+            <div class="col-sm-10 col-sm-offset-2">
+                <h5>Hosting</h5>
+                
+                @foreach (var dinner in Model.HostedDinners)
+                {
+                    <div class="col-sm-12">
+                        <a class="col-sm-4" href="@Url.Action("Index", "Dinner", new { id = dinner.DinnerId })">
+                            <blockquote>@if (dinner.Pending){<span class="text-warning">Pending partner approval</span><br/>}
+                                @dinner.Date
+                                @if (!String.IsNullOrEmpty(dinner.Partner))
+                                {
+                                    <span> with @dinner.Partner</span>
+                                }
+                                <br> 
+                                @dinner.ApplicantCount Applicants
+                            </blockquote>
+                        </a>
+                        @if (dinner.ApprovalToken != null)
+                        {
+                            <span class="col-sm-6">
+                                <a class="btn btn-eco" 
+                                   data-toggle="tooltip" 
+                                   title="You need to confirm that you would like to co-host this dinner with @dinner.Partner" 
+                                   href="@Url.Action("ConfirmHost", "Membership", new { token = dinner.ApprovalToken })">
+                                    Confirm Co-Host
+                                </a>
+                            </span>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-2">
+                <h5>Applied</h5>
+                
+                @if (!Model.AppliedDinners.Any())
+                {
+                    <div class="col-sm-12">You haven't applied for any active dinners.</div>
+                }
+                @foreach (var dinner in Model.AppliedDinners)
+                {
+                    <div class="col-sm-12">
+                        <a class="col-sm-4" href="@Url.Action("Index", "Dinner", new { id = dinner.DinnerId })">
+                            <blockquote>@if (dinner.Pending){<span class="text-warning">Pending partner approval</span><br/>}
+                                @dinner.Host
+                                @if (!String.IsNullOrEmpty(dinner.Partner))
+                                {
+                                    <span> and @dinner.Partner</span>
+                                }
+                                <br> 
 
-<h4>Hosted</h4>
-<div class="row">
-    @if (!Model.HostedDinners.Any())
-    {
-        <div class="col-sm-8">You aren't currently hosting any dinners.</div>
-    }
-    @foreach (var dinner in Model.HostedDinners)
-    {
-        <a href="@Url.Action("Index", "Dinner", new { id = dinner.DinnerId })">
-            <div class="col-sm-3">@dinner.Date
-                @if (!String.IsNullOrEmpty(dinner.Partner))
-                {
-                    <span> with @dinner.Partner</span>
+                                @dinner.Date
+                                @if (!String.IsNullOrEmpty(dinner.AppliedPartner))
+                                {
+                                    <br /><span>with @dinner.AppliedPartner</span>
+                                }
+                            </blockquote>
+                        </a>
+                        @if (dinner.ApprovalToken != null)
+                        {
+                            <span class="col-sm-6">
+                                <a class="btn btn-eco" 
+                                   data-toggle="tooltip" 
+                                   title="You need to confirm that you would like to attend this dinner with @dinner.AppliedPartner" 
+                                   href="@Url.Action("ConfirmAttending", "Membership", new { token = dinner.ApprovalToken })">
+                                    Approve Attendance
+                                </a>
+                            </span>
+                        }
+                    </div>
                 }
             </div>
-            <div class="col-sm-3">@dinner.ApplicantCount Applicants</div>
-        </a>
-    }
-</div>
-<h4>Applied</h4>
-<div class="row">
-    @if (!Model.AppliedDinners.Any())
-    {
-        <div class="col-sm-8">You haven't applied for any active dinners.</div>
-    }
-    @foreach (var dinner in Model.AppliedDinners)
-    {
-        <a href="@Url.Action("Index", "Dinner", new { id = dinner.DinnerId })">
-            <div class="col-sm-3">@dinner.Host
-                @if (!String.IsNullOrEmpty(dinner.Partner))
-                {
-                    <span> and @dinner.Partner</span>
-                }
-            </div>
-            <div class="col-sm-3">@dinner.Date
+        </div>  
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-2">
+                <h5>Attended</h5>
                 
-            </div>
-            @if (!String.IsNullOrEmpty(dinner.AppliedPartner))
-            {
-                <div class="col-sm-3">with @dinner.AppliedPartner</div>
-            }
-        </a>
-    }
-</div>
-<h4>Attended</h4>
-<div class="row">
-    @if (!Model.AttendedDinners.Any())
-    {
-        <div class="col-sm-8">You haven't attended any dinners.</div>
-    }
-    @foreach (var dinner in Model.AttendedDinners)
-    {
-        <a href="@Url.Action("Index", "Dinner", new { id = dinner.DinnerId })">
-            <div class="col-sm-3">@dinner.Host
-                @if (!String.IsNullOrEmpty(dinner.Partner))
+                @if (!Model.AttendedDinners.Any())
                 {
-                    <span> and @dinner.Partner</span>
+                    <div class="col-sm-12">You haven't attended any dinners.</div>
+                }
+                @foreach (var dinner in Model.AttendedDinners)
+                {
+                    <div class="col-sm-12">
+                        <a href="@Url.Action("Index", "Dinner", new { id = dinner.DinnerId })">
+                            <blockquote>@dinner.Host
+                                @if (!String.IsNullOrEmpty(dinner.Partner))
+                                {
+                                    <span> and @dinner.Partner</span>
+                                }
+                                <br> 
+                                @dinner.Date
+                                @if (!String.IsNullOrEmpty(dinner.AppliedPartner))
+                                {
+                                    <br /><span>with @dinner.AppliedPartner</span>
+                                }
+                            </blockquote>
+                        </a>
+                    </div>
                 }
             </div>
-            <div class="col-sm-3">@dinner.Date
-                
-            </div>
-            @if (!String.IsNullOrEmpty(dinner.AppliedPartner))
-            {
-                <div class="col-sm-3">with @dinner.AppliedPartner</div>
-            }
-        </a>
-    }
-</div>
+        </div>
+        <div class="divider"></div>
+    </div>
+</section>
