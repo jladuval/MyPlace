@@ -138,7 +138,7 @@
 
         public ReviewApplicantsDto GetDinnerForReview(Guid id)
         {
-            throw new NotImplementedException();
+            return new GetDinnerForReviewQuery(_session).Execute(id);
         }
 
         private bool HasApplied(IEnumerable<DinnerApplicant> applicants, Guid userId)
