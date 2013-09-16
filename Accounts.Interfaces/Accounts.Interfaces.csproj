@@ -50,11 +50,13 @@
     <Compile Include="Commands\Profile\MoreDetailsCommand.cs" />
     <Compile Include="Commands\Profile\SelectProfileImageCommand.cs" />
     <Compile Include="Presentation\Comments\CommentDto.cs" />
+    <Compile Include="Presentation\Dinner\DinnerApplicantDto.cs" />
     <Compile Include="Presentation\Dinner\DinnerConfirmDto.cs" />
     <Compile Include="Presentation\Dinner\DinnerDto.cs" />
     <Compile Include="Presentation\Dinner\DinnerListDto.cs" />
     <Compile Include="Presentation\Dinner\DinnerListItemDto.cs" />
     <Compile Include="Presentation\Dinner\PersonalDinnerListItem.cs" />
+    <Compile Include="Presentation\Dinner\ReviewApplicantsDto.cs" />
     <Compile Include="Presentation\ImageDto.cs" />
     <Compile Include="Presentation\LatLngDto.cs" />
     <Compile Include="Presentation\Profile\PrivateProfileDto.cs" />

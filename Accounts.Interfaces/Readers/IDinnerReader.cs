@@ -15,5 +15,7 @@
         ICollection<PersonalDinnerListItem> GetAppliedDinnerList(Guid userId);
         ICollection<PersonalDinnerListItem> GetAttendedDinnerList(Guid userId);
         ICollection<PersonalDinnerListItem> GetHostedDinnerList(Guid userId);
+        bool UserIsOwner(Guid userId, Guid dinnerId);
+        ReviewApplicantsDto GetDinnerForReview(Guid id);
     }
 }

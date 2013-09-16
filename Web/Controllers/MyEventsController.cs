@@ -2,10 +2,11 @@
 
 namespace Web.Controllers
 {
+    using System;
     using System.Collections.Generic;
-    using Accounts.Interfaces.Presentation.Dinner;
     using Accounts.Interfaces.Readers;
     using AutoMapper;
+    using Base.CQRS.Commands;
     using Core.Extensions;
     using Models.MyEvents;
 
@@ -13,10 +14,12 @@ namespace Web.Controllers
     public class MyEventsController : Controller
     {
         private readonly IDinnerReader _dinnerReader;
+        private readonly IGate _gate;
 
-        public MyEventsController(IDinnerReader dinnerReader)
+        public MyEventsController(IDinnerReader dinnerReader, IGate gate)
         {
             _dinnerReader = dinnerReader;
+            _gate = gate;
         }
 
         public ActionResult Index()
@@ -28,6 +31,16 @@ namespace Web.Controllers
                 AttendedDinners = Mapper.Map<List<MyEventsDinnerModel>>(_dinnerReader.GetAttendedDinnerList(userId)),
                 HostedDinners = Mapper.Map<List<MyEventsDinnerModel>>(_dinnerReader.GetHostedDinnerList(userId))
             });
+        }
+
+        public ActionResult Review(Guid id)
+        {
+            if (_dinnerReader.UserIsOwner(User.TryGetPrincipal().UserId, id))
+            {
+                var model = _dinnerReader.GetDinnerForReview(id);
+            }
+            TempData["ErrorMessage"] = "You need to have hosted this dinner to review it";
+            return RedirectToAction("Index");
         }
     }
 }
