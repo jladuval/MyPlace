@@ -196,6 +196,8 @@
     <Compile Include="Models\Membership\SignupModel.cs" />
     <Compile Include="Models\MyEvents\MyEventsDinnerModel.cs" />
     <Compile Include="Models\MyEvents\MyEventsModel.cs" />
+    <Compile Include="Models\MyEvents\ReviewApplicantModel.cs" />
+    <Compile Include="Models\MyEvents\ReviewModel.cs" />
     <Compile Include="Models\Profile\PrivateProfileModel.cs" />
     <Compile Include="Models\Profile\PublicProfileModel.cs" />
     <Compile Include="Models\Shared\CommentModel.cs" />
@@ -367,6 +369,7 @@
     <Content Include="Views\Template\Work.cshtml" />
     <Content Include="Scripts\underscore.min.map" />
     <Content Include="Views\MyEvents\MyEvents.cshtml" />
+    <Content Include="Views\MyEvents\ReviewApplicants.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

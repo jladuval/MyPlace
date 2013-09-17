@@ -1,5 +1,6 @@
 ﻿namespace Web.App_Start
 {
+    using System.Security.Cryptography.X509Certificates;
     using Accounts.Interfaces.Presentation;
     using Accounts.Interfaces.Presentation.Comments;
     using Accounts.Interfaces.Presentation.Dinner;
@@ -30,6 +31,8 @@
                 .AfterMap((src, dest) => { if (dest.PartnerImageUrl == null) dest.PartnerImageUrl = Placeholder; });
             Mapper.CreateMap<CommentDto, CommentModel>()
                 .ForMember(x => x.CreatedDate, opt => opt.MapFrom(x => x.CreatedDate.ToShortDateString()));
+            Mapper.CreateMap<DinnerApplicantDto, ReviewApplicantModel>();
+            Mapper.CreateMap<ReviewApplicantsDto, ReviewModel>();
         }
     }
 }

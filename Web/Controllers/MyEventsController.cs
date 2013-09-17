@@ -37,7 +37,8 @@ namespace Web.Controllers
         {
             if (_dinnerReader.UserIsOwner(User.TryGetPrincipal().UserId, id))
             {
-                var model = _dinnerReader.GetDinnerForReview(id);
+                var model = Mapper.Map<ReviewModel>(_dinnerReader.GetDinnerForReview(id));
+                return View("ReviewApplicants", model);
             }
             TempData["ErrorMessage"] = "You need to have hosted this dinner to review it";
             return RedirectToAction("Index");
