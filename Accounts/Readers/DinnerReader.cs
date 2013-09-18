@@ -132,8 +132,8 @@
         {
             return _session.Query<Dinner>()
                 .SingleOrDefault(x => x.Id == dinnerId
-                                      && x.User.Id == userId
-                                      || (x.Partner != null && x.Partner.Id == userId)) != null;
+                                      && (x.User.Id == userId
+                                      || (x.Partner != null && x.Partner.Id == userId))) != null;
         }
 
         public ReviewApplicantsDto GetDinnerForReview(Guid id)

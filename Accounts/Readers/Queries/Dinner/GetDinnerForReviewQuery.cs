@@ -18,25 +18,25 @@
 
         public ReviewApplicantsDto Execute(Guid dinnerId)
         {
-            return _session.Query<Dinner>()
+            var dinner = _session.Query<Dinner>()
                 .FetchMany(x => x.Applicants)
                 .ThenFetch(x => x.User)
                 .FetchMany(x => x.Applicants)
                 .ThenFetch(x => x.Partner)
-                .Where(x => x.Id == dinnerId)
-                .Select(x => new ReviewApplicantsDto
-                {
-                    Id = x.Id,
-                    Date = x.Date.ToShortDateString(),
-                    Dessert = x.Dessert,
-                    Main = x.Main,
-                    Starter = x.Starter,
-                    Applicants = x.Applicants
+                .Single(x => x.Id == dinnerId);
+            return new ReviewApplicantsDto
+            {
+                Id = dinner.Id,
+                Date = dinner.Date,
+                Dessert = dinner.Dessert,
+                Main = dinner.Main,
+                Starter = dinner.Starter,
+                Applicants = dinner.Applicants
                         .Where(y => !y.Hidden)
                         .Select(y => new DinnerApplicantDto
                         {
                             Id = y.Id,
-                            Name = x.User.FullName(),
+                            Name = y.User.FullName(),
                             ApplicantId = y.Id,
                             GenderOrientation =
                                 String.Format("{0} {1}", y.User.Gender.ToString(), y.User.Orientation.ToString()),
@@ -45,7 +45,7 @@
                             PartnerId = y.Partner.Id,
                             PartnerName = y.Partner.FullName()
                         }).ToList()
-                }).Single();
+            };
         }
     }
 }

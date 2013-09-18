@@ -26,9 +26,15 @@
                                         @dinner.ApplicantCount Applicants
                                     </blockquote>
                                 </a>
+                                <span class="col-sm-3">
+                                        <a class="btn btn-syndicate" 
+                                           href="@Url.Action("Review", "MyEvents", new { Id = dinner.DinnerId })">
+                                            Review Applicants
+                                        </a>
+                                </span>
                                 @if (dinner.ApprovalToken != null)
                                 {
-                                    <span class="col-sm-6">
+                                    <span class="col-sm-3">
                                         <a class="btn btn-eco" 
                                            data-toggle="tooltip" 
                                            data-placement="bottom"

@@ -4,4 +4,28 @@
     ViewBag.Title = "Review Applicants";
 }
 
-<h2>title</h2>
+<section id="intro" class="content no-header">
+		<div class="container">
+		    <div class="row">
+		        <h2>Review Applicants</h2>
+		        <h3>@Model.Date.ToString("dddd, MMMM d") at @Model.Date.ToShortTimeString()</h3>
+                <h5>@Model.Starter</h5>
+                <h5>@Model.Main</h5>
+                <h5>@Model.Dessert</h5>
+		        <div class="col-sm-12">
+		            @foreach (var applicant in Model.Applicants)
+		            {
+		                <div class="row">
+		                   <a href="/Profile?id=@applicant.ApplicationId"><h5 class="heading-inline">@applicant.Name</h5>[@applicant.GenderOrientation]</a>
+                                @if (applicant.PartnerId != null)
+                                {
+                                    <h5 class="heading-inline">&nbsp;and&nbsp;</h5>
+                                    <a href="/Profile?id=@applicant.PartnerId"><h1 class="heading-inline">@applicant.PartnerName</h1>[@applicant.GenderOrientation]</a>
+                                }
+                            <a class="btn btn-eco" href="#">Accept Invite</a>
+		                </div>
+		            }
+		        </div>
+		    </div>
+		</div>
+	</section>
