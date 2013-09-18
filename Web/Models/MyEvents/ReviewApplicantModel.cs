@@ -4,7 +4,7 @@
 
     public class ReviewApplicantModel
     {
-        public Guid ApplicationId { get; set; }
+        public Guid ApplicantId { get; set; }
 
         public Guid? PartnerId { get; set; }
 

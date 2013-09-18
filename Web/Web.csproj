@@ -306,6 +306,7 @@
     <Content Include="Scripts\Custom\DinnerSetup.js" />
     <Content Include="Scripts\Custom\ImageUpload.js" />
     <Content Include="Scripts\Custom\NewDinner.js" />
+    <Content Include="Scripts\Custom\ReviewApplicantsVM.js" />
     <Content Include="Scripts\Custom\SelectLocation.js" />
     <Content Include="Scripts\dropzone.js" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />

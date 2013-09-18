@@ -37,13 +37,13 @@
                         {
                             Id = y.Id,
                             Name = y.User.FullName(),
-                            ApplicantId = y.Id,
+                            ApplicantId = y.User.Id,
                             GenderOrientation =
                                 String.Format("{0} {1}", y.User.Gender.ToString(), y.User.Orientation.ToString()),
-                            PartnerGenderOrientation =
+                            PartnerGenderOrientation = y.Partner == null ? null :
                                 String.Format("{0} {1}", y.Partner.Gender.ToString(), y.Partner.Orientation.ToString()),
-                            PartnerId = y.Partner.Id,
-                            PartnerName = y.Partner.FullName()
+                            PartnerId = y.Partner == null ? null : (Guid?)y.Partner.Id,
+                            PartnerName = y.Partner == null ? null : y.Partner.FullName()
                         }).ToList()
             };
         }

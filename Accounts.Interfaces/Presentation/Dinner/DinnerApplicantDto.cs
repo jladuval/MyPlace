@@ -6,7 +6,7 @@
     {
         public Guid ApplicantId { get; set; }
 
-        public Guid PartnerId { get; set; }
+        public Guid? PartnerId { get; set; }
 
         public Guid Id { get; set; }
 

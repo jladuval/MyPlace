@@ -10,9 +10,12 @@
             <div class="col-sm-11 col-offset-1">
                 <h2>My Events</h2>
                 <div class="row">
-                    <div class="col-sm-11 col-offset-1">
+                    <div class="col-sm-11">
                         <h5>Hosting</h5>
-                
+                        @if (!Model.HostedDinners.Any())
+                        {
+                            <div class="col-sm-12">You aren't hosting any dinners</div>
+                        }
                         @foreach (var dinner in Model.HostedDinners)
                         {
                             <div class="col-sm-12">
@@ -49,7 +52,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-11 col-offset-1">
+                    <div class="col-sm-11">
                         <h5>Applied</h5>
                 
                         @if (!Model.AppliedDinners.Any())
@@ -91,7 +94,7 @@
                     </div>
                 </div>  
                 <div class="row">
-                    <div class="col-sm-11 col-offset-1">
+                    <div class="col-sm-11">
                         <h5>Attended</h5>
                 
                         @if (!Model.AttendedDinners.Any())

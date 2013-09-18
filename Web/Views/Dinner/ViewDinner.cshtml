@@ -57,9 +57,9 @@
                     <div class="col-sm-12">
                         @if (Model.UserId != User.TryGetPrincipal().UserId && Model.PartnerId != User.TryGetPrincipal().UserId)
                         {
-                            if (!User.TryGetPrincipal().IsVerified)
+                            if (!(User.TryGetPrincipal().IsVerified))
                             {
-                                <div class="alert alert-danger squared soft-hidden" id="applied">
+                                <div class="alert alert-danger squared">
                                     You need to activate your email before you can apply to join a dinner.
                                 </div>
                             }
