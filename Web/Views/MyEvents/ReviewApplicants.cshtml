@@ -16,16 +16,18 @@
                 <!-- ko foreach: Applicants -->
                     <!-- ko if: Visible -->
                         <div class="row">
-                            <a data-bind="attr: {href: ApplicantUrl}"><h4 class="heading-inline" data-bind="text: Name"></h4><span data-bind="text: GenderOrientation"></span></a>
+                            <a data-bind="attr: {href: ApplicantUrl}" data-toggle="tooltip" 
+                               data-placement="bottom"
+                               title="Go to Profile"><h4 class="heading-inline" data-bind="text: Name"></h4><span data-bind="text: GenderOrientation"></span></a>
                                 <!-- ko if: PartnerId -->
                                     <h4 class="heading-inline">&nbsp;and&nbsp;</h4>
                                     <a data-bind="attr: { href: PartnerUrl }"><h4 class="heading-inline" data-bind="text: PartnerName"></h4><span data-bind="text: PartnerGenderOrientation"></span></a>
                                 <!-- /ko -->
-                            <a class="btn btn-eco accept" href="#">Accept</a>
+                            <a class="btn btn-eco accept" href="#" data-bind="click: $parents[0].Accept">Accept</a>
                             <a class="btn btn-cool remove" href="#" 
                                data-toggle="tooltip" 
                                data-placement="bottom"
-                               title="This application will be removed from the list." >Remove</a>
+                               title="This application will be removed from the list." data-bind="click: $parents[0].Remove" >Remove</a>
                         </div>
                     <!-- /ko -->
                 <!-- /ko -->

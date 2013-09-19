@@ -4,6 +4,7 @@ namespace Web.Controllers
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using Accounts.Interfaces.Readers;
     using AutoMapper;
     using Base.CQRS.Commands;
@@ -42,6 +43,16 @@ namespace Web.Controllers
             }
             TempData["ErrorMessage"] = "You need to have hosted this dinner to review it";
             return RedirectToAction("Index");
+        }
+
+        public ActionResult AcceptApplicant(Guid dinnerId, Guid applicationId)
+        {
+            return new HttpStatusCodeResult(HttpStatusCode.Accepted);
+        }
+
+        public ActionResult HideApplicant(Guid dinnerId, Guid applicationId)
+        {
+            return new HttpStatusCodeResult(HttpStatusCode.Accepted);
         }
     }
 }
