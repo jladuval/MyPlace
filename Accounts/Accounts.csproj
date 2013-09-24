@@ -90,8 +90,10 @@
     <Compile Include="Domain\Mappings\UserMap.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Handlers\Applications\AcceptApplicantCommandHandler.cs" />
+    <Compile Include="Handlers\Applications\HideApplicantCommandHandler.cs" />
     <Compile Include="Handlers\Dinner\AddCommentToDinnerCommandHandler.cs" />
-    <Compile Include="Handlers\Dinner\ApplyForDinnerCommandHandler.cs" />
+    <Compile Include="Handlers\Applications\ApplyForDinnerCommandHandler.cs" />
     <Compile Include="Handlers\Dinner\ConfirmHostCommandHandler.cs" />
     <Compile Include="Handlers\Dinner\ConfirmInvitationCommandHandler.cs" />
     <Compile Include="Handlers\Profile\AddProfileImageCommandHandler.cs" />

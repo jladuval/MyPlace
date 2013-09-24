@@ -5,6 +5,7 @@
     using System.Globalization;
     using System.Net;
     using System.Web.Mvc;
+    using Accounts.Interfaces.Commands.Applications;
     using Accounts.Interfaces.Commands.Dinner;
     using Accounts.Interfaces.Readers;
     using AutoMapper;

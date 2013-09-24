@@ -39,8 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Applications\AcceptApplicantCommand.cs" />
+    <Compile Include="Commands\Applications\HideApplicantCommand.cs" />
     <Compile Include="Commands\Dinner\AddCommentToDinnerCommand.cs" />
-    <Compile Include="Commands\Dinner\ApplyForDinnerCommand.cs" />
+    <Compile Include="Commands\Applications\ApplyForDinnerCommand.cs" />
     <Compile Include="Commands\Dinner\ConfirmHostCommand.cs" />
     <Compile Include="Commands\Dinner\ConfirmInvitationCommand.cs" />
     <Compile Include="Commands\Profile\AddProfileImageCommand.cs" />

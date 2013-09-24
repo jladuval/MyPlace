@@ -1,4 +1,4 @@
-﻿namespace Accounts.Interfaces.Commands.Dinner
+﻿namespace Accounts.Interfaces.Commands.Applications
 {
     using System;
 

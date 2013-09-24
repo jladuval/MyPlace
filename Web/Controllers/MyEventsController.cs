@@ -5,6 +5,7 @@ namespace Web.Controllers
     using System;
     using System.Collections.Generic;
     using System.Net;
+    using Accounts.Interfaces.Commands.Applications;
     using Accounts.Interfaces.Readers;
     using AutoMapper;
     using Base.CQRS.Commands;
@@ -47,11 +48,13 @@ namespace Web.Controllers
 
         public ActionResult AcceptApplicant(Guid dinnerId, Guid applicationId)
         {
+            _gate.Dispatch(new AcceptApplicantCommand(applicationId, User.TryGetPrincipal().UserId));
             return new HttpStatusCodeResult(HttpStatusCode.Accepted);
         }
 
         public ActionResult HideApplicant(Guid dinnerId, Guid applicationId)
         {
+            _gate.Dispatch(new HideApplicantCommand(applicationId, User.TryGetPrincipal().UserId));
             return new HttpStatusCodeResult(HttpStatusCode.Accepted);
         }
     }

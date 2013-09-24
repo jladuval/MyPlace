@@ -1,13 +1,13 @@
-﻿namespace Accounts.Handlers.Dinner
+﻿namespace Accounts.Handlers.Applications
 {
     using System;
     using System.Linq;
     using System.Web.Helpers;
-    using Domain;
     using Base.CQRS.Commands.Attributes;
     using Base.CQRS.Commands.Handler;
+    using Domain;
     using Infrastructure.NHibernate.Repositories;
-    using Interfaces.Commands.Dinner;
+    using Interfaces.Commands.Applications;
 
     [CommandHandler]
     public class ApplyForDinnerCommandHandler : ICommandHandler<ApplyForDinnerCommand>
