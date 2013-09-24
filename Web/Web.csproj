@@ -213,6 +213,10 @@
     <Content Include="Content\images\marker.png" />
     <Content Include="Content\images\placeholder.jpg" />
     <Content Include="Content\images\preload.gif" />
+    <Content Include="Content\images\slider_1.JPG" />
+    <Content Include="Content\images\slider_2.JPG" />
+    <Content Include="Content\images\slider_3.JPG" />
+    <Content Include="Content\images\slider_4.JPG" />
     <Content Include="Content\images\spritemap%402x.png" />
     <Content Include="Content\images\spritemap.png" />
     <Content Include="Content\main.css" />

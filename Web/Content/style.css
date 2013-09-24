@@ -133,29 +133,25 @@ textarea:focus, input:focus, a:focus, *:focus {
 /* ==== Intro ==== */
 
 #slide_1 {
-	background: #852b99 url('http://placehold.it/1920x1200') fixed no-repeat;
+	background: #852b99 url('images/slider_1.jpg') fixed no-repeat;
 }
 
 #slide_2 {
-	background: #852b99 url(http://placehold.it/1920x1200) fixed no-repeat;
+	background: #852b99 url('images/slider_2.jpg') fixed no-repeat;
 }
 
 #slide_3 {
-	background: #852b99 url(http://placehold.it/1920x1200) fixed no-repeat;
+	background: #852b99 url('images/slider_3.jpg') fixed no-repeat;
 }
 
-@media (min-width: 1920px) {
-	#slide_1, #slide_2, #slide_3 {
-		background-size: cover;
-	}
+#slide_4 {
+	background: #852b99 url('images/slider_4.jpg') fixed no-repeat;
 }
 
-@media (max-width: 1024px) {
-	#slide_1, #slide_2, #slide_3 {
-		background-size: 1024px auto;
-		background-position: center top;
-		padding-top: 60px;
-	}
+#slide_1, #slide_2, #slide_3, #slide_4 {
+	background-size:  100%;
+	background-position: center top;
+	padding-top: 60px;
 }
 
 /* ==== Services / Details / Customers ==== */
