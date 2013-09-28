@@ -79,14 +79,11 @@
     <Compile Include="Conventions\AutomappingConfiguration.cs" />
     <Compile Include="CustomTypes\Wgs84GeographyType.cs" />
     <Compile Include="Exceptions\EntityNotFoundException.cs" />
-    <Compile Include="Repositories\DbExtensions.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
-    <Compile Include="Repositories\AggregateRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\SessionExtensions.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
-    <Compile Include="SqlStatementInterceptor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

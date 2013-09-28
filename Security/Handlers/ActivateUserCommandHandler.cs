@@ -6,7 +6,6 @@
     using Domain;
     using Infrastructure.NHibernate.Repositories;
     using Interfaces.Commands;
-    using NHibernate.Linq;
 
     [CommandHandler]
     public class ActivateUserCommandHandler : ICommandHandler<ActivateUserCommand>

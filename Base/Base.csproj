@@ -71,10 +71,8 @@
     <Compile Include="CQRS\Query\Attributes\ReaderAttribute.cs" />
     <Compile Include="CQRS\Query\PaginatedResult.cs" />
     <Compile Include="DDD\Application\IApplicationEventPublisher.cs" />
-    <Compile Include="DDD\Application\ISystemUser.cs" />
     <Compile Include="DDD\Application\Metadata\ApplicationEvent.cs" />
     <Compile Include="DDD\Application\Metadata\ApplicationServiceAttribute.cs" />
-    <Compile Include="DDD\Application\SystemUser.cs" />
     <Compile Include="DDD\Domain\AggregateRoot.cs" />
     <Compile Include="DDD\Domain\Annotations\DomainAggregateRootAttribute.cs" />
     <Compile Include="DDD\Domain\Annotations\DomainEntityAttribute.cs" />

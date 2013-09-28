@@ -15,8 +15,6 @@ namespace Common.DI
     using System.Web;
     using System.Web.Mvc;
 
-    using Accounts.Handlers;
-
     using Base.CQRS.Commands.Decorator;
     using Base.CQRS.Commands.Handler;
     using Base.CQRS.Query.Attributes;
@@ -287,7 +285,7 @@ namespace Common.DI
             {
                 var assembly = model.Implementation.GetInterfaces().Any(x =>
                     x.IsGenericType &&
-                    x.GetGenericTypeDefinition() == typeof(IRepository<>)) 
+                    x.GetGenericTypeDefinition() == typeof(IRepository<>))
                         ? context.Handler.ComponentModel.Implementation.Assembly 
                         : model.Implementation.Assembly;
 

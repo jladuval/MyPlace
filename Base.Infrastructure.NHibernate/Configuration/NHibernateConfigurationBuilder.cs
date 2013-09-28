@@ -43,10 +43,6 @@
         private void ApplyAdditionalConfiguration(Configuration c)
         {
             c.SetProperty(global::NHibernate.Cfg.Environment.UseProxyValidator, bool.FalseString);
-#if DEBUG
-            // write generated sql to the VS Output
-            c.SetInterceptor(new SqlStatementInterceptor());
-#endif
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Base.CQRS.Commands.Decorator
             ICommandHandler<TCommand> handler = null;
             try
             {
-                ICommandHandler commandHandler = _factory.CreateByName(command.GetType().FullName);
+                var commandHandler = _factory.CreateByName(command.GetType().FullName);
 
                 handler = (ICommandHandler<TCommand>)commandHandler;
                 handler.Handle(command);
